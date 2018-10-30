@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Linchpin",
+      "authorEmail": "team@linchpin.com",
+      "authorUrl": "linchpin.com"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+/**
+ * Theme Name:         <%= theme_name %>
+ * Theme URI:          <%= theme_url %>
+ * Github Theme URI:   https://github.com/linchpinagency/hatch
+ * Description:        <%= theme_description %>
+ * Version:            <%= theme_version %>
+ * Author:             <%= theme_author %>
+ * Author URI:         <%= theme_author_uri %>
+ *
+ * Text Domain:        <%= text_domain %>
+ *
+ * License:            GPLv3 License
+ * License URI:        http://opensource.org/licenses/GPL-3.0
+ */
