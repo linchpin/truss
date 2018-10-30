@@ -4,6 +4,11 @@ A Yeoman generator for Linchpin's starter theme, **[theme_name]**.
 
 Built on Foundation 6.4.x, [theme_name] is a responsive WordPress theme engineered to streamline the build process in a few easy steps. 
 
+## Requirements
+```
+npm install --global yo
+```
+
 ## Getting Started
 
 #### Clone Generator Repo
