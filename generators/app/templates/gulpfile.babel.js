@@ -122,9 +122,9 @@ function images() {
 
 // Start a server with BrowserSync to preview the site in
 function server(done) {
-  browser.init({
-    server: PATHS.dist, port: PORT
-  }, done);
+    browser.init({
+        proxy : 'http://truss.test'
+    });
 }
 
 // Reload the browser with BrowserSync
