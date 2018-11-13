@@ -1,13 +1,13 @@
 <?php
 /**
- * Truss
+ * ClientName
  *
  * @author Linchpin
- * @package Truss
+ * @package ClientName
  *
  */
 
-class Truss {
+class ClientName {
 
 	public $apple_favicon_sizes = array(
 		57,
@@ -37,7 +37,7 @@ class Truss {
 	function __construct() {
 
 		$foundation = new Foundation();
-		$hatch  = new Hatch();
+		$truss  = new Truss();
 
 		add_filter( 'upload_mimes',			array( $this, 'upload_mimes' ) );
 		add_filter( 'admin_footer_text', 	array( $this, 'admin_footer_text' ) );
@@ -70,14 +70,14 @@ class Truss {
 	}
 
 	/**
-	 * Add in the theme author info, hatch info and be sure to keep love for WordPress
+	 * Add in the theme author info, truss info and be sure to keep love for WordPress
 	 * admin_footer_text function.
 	 *
 	 * @access public
 	 * @return void
 	 */
 	function admin_footer_text() {
-		echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Created by <a href="http://linchpin.agency/?utm_source=hatch&utm_medium=rebar_footer&utm_campaign=rebar_notice" target="_blank">Brian Fischer</a> and augmented by the <a href="http://github.com/linchpin/rebar/?utm_source=hatch&utm_medium=rebar_footer&utm_campaign=rebar_notice" target="_blank">Rebar</a>';
+		echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Created by <a href="http://linchpin.agency/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Brian Fischer</a> and augmented by the <a href="http://github.com/linchpin/truss/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Truss</a>';
 	}
 
 	/**
@@ -199,7 +199,7 @@ class Truss {
 	 * @return void
 	 */
 	function wp_enqueue_scripts() {
-		wp_enqueue_script( 'app-js', get_stylesheet_directory_uri() . '/js/truss.js', array( 'jquery' ), TRUSS_VERSION, true );
+		wp_enqueue_script( 'app-js', get_stylesheet_directory_uri() . '/js/clientname.js', array( 'jquery' ), CLIENTNAME_VERSION, true );
 	}
 
 	/**
@@ -209,7 +209,7 @@ class Truss {
 	 * @return void
 	 */
 	function wp_enqueue_styles() {
-		wp_enqueue_style( 'app-css', get_stylesheet_directory_uri() . '/css/truss.css' );
+		wp_enqueue_style( 'app-css', get_stylesheet_directory_uri() . '/css/clientname.css' );
 	}
 
 	/*
@@ -227,14 +227,14 @@ class Truss {
 	function customize_register ( $wp_customize ) {
 
 		$wp_customize->add_section (
-			'truss_logo', array(
-				'title' 	=> __('Site Logo', 'Truss' ),
+			'clientname_logo', array(
+				'title' 	=> __('Site Logo', 'ClientName' ),
 				'priority' 	=> 80,
 			)
 		);
 
 		$wp_customize->add_setting (
-			'truss_theme_options[logo_upload]', array(
+			'clientname_theme_options[logo_upload]', array(
 				'default'		=> get_stylesheet_directory_uri() . '/assets/images/linchpin-icon-white.svg',
 				'capability' 	=> 'edit_theme_options',
 				'type'			=> 'option',
@@ -243,9 +243,9 @@ class Truss {
 
 		$wp_customize->add_control (
 			new WP_Customize_Image_Control( $wp_customize, 'logo_upload', array (
-				'label'		=> __('Site Logo', 'Truss' ),
-				'section' 	=> 'truss_logo',
-				'settings' 	=> 'truss_theme_options[logo_upload]',
+				'label'		=> __('Site Logo', 'ClientName' ),
+				'section' 	=> 'clientname_logo',
+				'settings' 	=> 'clientname_theme_options[logo_upload]',
 				'extensions'	=> array( 'jpg', 'jpeg', 'png', 'gif', 'svg' ),
 			) )
 		);

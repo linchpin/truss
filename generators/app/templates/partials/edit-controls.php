@@ -13,5 +13,5 @@
 ?>
 
 <div class="utility edit-post-link-container">
-	<?php edit_post_link( __( 'Edit Content', 'truss' ) , '<span class="float-right">', '</span>', '', esc_attr( 'button', 'truss' ) ); ?>
+	<?php edit_post_link( __( 'Edit Content', 'clientname' ) , '<span class="float-right">', '</span>', '', esc_attr( 'button', 'clientname' ) ); ?>
 </div>

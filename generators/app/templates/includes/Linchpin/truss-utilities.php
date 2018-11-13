@@ -1,17 +1,17 @@
 <?php
 /**
- * HatchUtilities
+ * TrussUtilities
  *
  * Houses various utility methods.
  *
- * @package Hatch
+ * @package Truss
  * @since 1.0
  */
 
 /**
- * Class HatchUtilities
+ * Class TrussUtilities
  */
-class HatchUtilities {
+class TrussUtilities {
 
 	/**
 	 * __construct function.
@@ -22,7 +22,7 @@ class HatchUtilities {
 		add_action( 'edit_category', array( $this, 'category_transient_flusher' ) );
 		add_action( 'save_post',     array( $this, 'category_transient_flusher' ) );
 
-		add_action( 'rebar_before_content', array( 'HatchUtilities', 'breadcrumbs' ) );
+		add_action( 'truss_before_content', array( 'TrussUtilities', 'breadcrumbs' ) );
 	}
 
 	/**
@@ -34,7 +34,7 @@ class HatchUtilities {
 	 * @return bool
 	 */
 	static function categorized_blog() {
-		if ( false === ( $all_the_cool_cats = get_transient( 'rebar_categories' ) ) ) {
+		if ( false === ( $all_the_cool_cats = get_transient( 'truss_categories' ) ) ) {
 
 			// Create an array of all the categories that are attached to posts.
 			$all_the_cool_cats = get_categories( array(
@@ -48,7 +48,7 @@ class HatchUtilities {
 			// Count the number of categories that are attached to the posts.
 			$all_the_cool_cats = count( $all_the_cool_cats );
 
-			set_transient( 'rebar_categories', $all_the_cool_cats );
+			set_transient( 'truss_categories', $all_the_cool_cats );
 		}
 
 		if ( $all_the_cool_cats > 1 ) {
@@ -67,7 +67,7 @@ class HatchUtilities {
 	 * @return void
 	 */
 	function category_transient_flusher() {
-		delete_transient( 'rebar_categories' ); // Like, beat it. Dig?
+		delete_transient( 'truss_categories' ); // Like, beat it. Dig?
 	}
 
 	/**
@@ -105,7 +105,7 @@ class HatchUtilities {
 
 		<?php if ( ! is_home() ) { ?>
 
-			<li><a href="<?php esc_attr_e( get_option( 'home' ) ); ?>"><?php esc_html_e( 'Home', 'truss' ); ?></a></li>
+			<li><a href="<?php esc_attr_e( get_option( 'home' ) ); ?>"><?php esc_html_e( 'Home', 'clientname' ); ?></a></li>
 
 			<?php if ( is_category() || is_single() ) : ?>
 
@@ -173,14 +173,14 @@ class HatchUtilities {
 		// Are there comments to navigate through?
 		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 		<nav class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'truss' ); ?></h2>
+			<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'clientname' ); ?></h2>
 			<div class="nav-links">
 				<?php
-					if ( $prev_link = get_previous_comments_link( __( 'Older Comments', 'truss' ) ) ) :
+					if ( $prev_link = get_previous_comments_link( __( 'Older Comments', 'clientname' ) ) ) :
 						printf( '<div class="nav-previous">%s</div>', $prev_link );
 					endif;
 
-					if ( $next_link = get_next_comments_link( __( 'Newer Comments', 'truss' ) ) ) :
+					if ( $next_link = get_next_comments_link( __( 'Newer Comments', 'clientname' ) ) ) :
 						printf( '<div class="nav-next">%s</div>', $next_link );
 					endif;
 				?>
@@ -192,28 +192,28 @@ class HatchUtilities {
 }
 
 /**
- * Utility method for rebar_breadcrumbs function.
+ * Utility method for truss_breadcrumbs function.
  *
  * @access public
  */
-function rebar_breadcrumbs() {
-	HatchUtilities::breadcrumbs();
+function truss_breadcrumbs() {
+	TrussUtilities::breadcrumbs();
 }
 
 /**
- * Utility method for rebar_categorized_blog function.
+ * Utility method for truss_categorized_blog function.
  *
  * @access public
  */
-function rebar_categorized_blog() {
-	HatchUtilities::categorized_blog();
+function truss_categorized_blog() {
+	TrussUtilities::categorized_blog();
 }
 
 /**
- * Utility method for rebar_comment_nav function.
+ * Utility method for truss_comment_nav function.
  *
  * @access public
  */
-function rebar_comment_nav() {
-	HatchUtilities::comment_nav();
+function truss_comment_nav() {
+	TrussUtilities::comment_nav();
 }

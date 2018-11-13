@@ -17,14 +17,14 @@
 	<div class="small-12 large-8 columns" role="main">
 
 		<?php
-		/** This action is documented in includes/Linchpin/hatch-hooks.php */
-		do_action( 'rebar_content_before' ); ?>
+		/** This action is documented in includes/Linchpin/truss-hooks.php */
+		do_action( 'truss_content_before' ); ?>
 
 		<?php if ( have_posts() ) : ?>
 
 			<?php
-			/** This action is documented in includes/Linchpin/hatch-hooks.php */
-			do_action( 'rebar_loop_before' ); ?>
+			/** This action is documented in includes/Linchpin/truss-hooks.php */
+			do_action( 'truss_loop_before' ); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
@@ -33,8 +33,8 @@
 			<?php endwhile; ?>
 
 			<?php
-			/** This action is documented in includes/Linchpin/hatch-hooks.php */
-			do_action( 'rebar_loop_after' ); ?>
+			/** This action is documented in includes/Linchpin/truss-hooks.php */
+			do_action( 'truss_loop_after' ); ?>
 
 		<?php else : ?>
 
@@ -43,8 +43,8 @@
 		<?php endif; ?>
 
 		<?php
-		/** This action is documented in includes/Linchpin/hatch-hooks.php */
-		do_action( 'rebar_content_after' ); ?>
+		/** This action is documented in includes/Linchpin/truss-hooks.php */
+		do_action( 'truss_content_after' ); ?>
 
 	</div>
 

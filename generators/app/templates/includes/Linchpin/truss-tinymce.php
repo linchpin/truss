@@ -2,14 +2,14 @@
 /**
  * Modifications to the TinyMCE editor.
  *
- * @package Hatch
+ * @package Truss
  * @since 1.2.0
  */
 
 /**
- * Class rebar_TinyMCE
+ * Class truss_TinyMCE
  */
-class rebar_TinyMCE {
+class truss_TinyMCE {
 
 	/**
 	 * Construct.
@@ -34,4 +34,4 @@ class rebar_TinyMCE {
 	}
 }
 
-$rebar_tinymce = new rebar_TinyMCE();
+$truss_tinymce = new truss_TinyMCE();

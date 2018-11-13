@@ -61,7 +61,7 @@ function sass() {
     // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
   ].filter(Boolean);
 
-  return gulp.src('assets/scss/truss.scss')
+  return gulp.src('assets/scss/clientname.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       includePaths: PATHS.sass

@@ -1,15 +1,15 @@
 <?php
 /**
- * HatchMenu class.
+ * TrussMenu class.
  *
- * @package Hatch
+ * @package Truss
  * @since 1.0.0
  */
 
 /**
- * Class HatchMenu
+ * Class TrussMenu
  */
-class HatchMenu {
+class TrussMenu {
 	/**
 	 * Construct.
 	 *

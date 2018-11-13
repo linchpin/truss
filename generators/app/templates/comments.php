@@ -20,27 +20,27 @@ if ( post_password_required() ) : ?>
 
 <section id="comments">
 	<div class="notice">
-		<p class="bottom"><?php esc_html_e( 'This post is password protected. Enter the password to view comments.', 'truss' ); ?></p>
+		<p class="bottom"><?php esc_html_e( 'This post is password protected. Enter the password to view comments.', 'clientname' ); ?></p>
 	</div>
 </section>
 
 <?php else: ?>
 
 <?php
-/** This action is documented in includes/Linchpin/hatch-hooks.php */
-do_action( 'rebar_comments_before' ); ?>
+/** This action is documented in includes/Linchpin/truss-hooks.php */
+do_action( 'truss_comments_before' ); ?>
 
 <div id="comments" class="comments-area">
 
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
-				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'truss' ),
+				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'clientname' ),
 					number_format_i18n( get_comments_number() ), get_the_title() );
 			?>
 		</h2>
 
-		<?php rebar_comment_nav(); ?>
+		<?php truss_comment_nav(); ?>
 
 		<ol class="comment-list">
 			<?php
@@ -52,7 +52,7 @@ do_action( 'rebar_comments_before' ); ?>
 			?>
 		</ol><!-- .comment-list -->
 
-		<?php rebar_comment_nav(); ?>
+		<?php truss_comment_nav(); ?>
 
 	<?php endif; // have_comments() ?>
 
@@ -60,7 +60,7 @@ do_action( 'rebar_comments_before' ); ?>
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'truss' ); ?></p>
+		<p class="no-comments"><?php _e( 'Comments are closed.', 'clientname' ); ?></p>
 	<?php endif; ?>
 
 	<?php comment_form(); ?>
@@ -68,7 +68,7 @@ do_action( 'rebar_comments_before' ); ?>
 </div><!-- .comments-area -->
 
 <?php
-/** This action is documented in includes/Linchpin/hatch-hooks.php */
-do_action( 'rebar_comments_after' );
+/** This action is documented in includes/Linchpin/truss-hooks.php */
+do_action( 'truss_comments_after' );
 
 endif;

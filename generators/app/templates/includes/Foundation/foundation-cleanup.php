@@ -6,7 +6,7 @@
  *
  * @since 1.0
  *
- * @package Hatch
+ * @package Truss
  * @subpackage Foundation
  */
 

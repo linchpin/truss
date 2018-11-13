@@ -13,14 +13,14 @@
 ?>
 
 <?php
-/** This action is documented in includes/Linchpin/hatch-hooks.php */
-do_action( 'rebar_post_before' ); ?>
+/** This action is documented in includes/Linchpin/truss-hooks.php */
+do_action( 'truss_post_before' ); ?>
 
 	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
 		<header>
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-			<?php rebar_entry_meta(); ?>
+			<?php truss_entry_meta(); ?>
 		</header>
 
 		<div class="entry-content">
@@ -34,19 +34,19 @@ do_action( 'rebar_post_before' ); ?>
 			<?php endif; ?>
 
 			<?php
-			/** This action is documented in includes/Linchpin/hatch-hooks.php */
-			do_action( 'rebar_post_entry_content_before' ); ?>
+			/** This action is documented in includes/Linchpin/truss-hooks.php */
+			do_action( 'truss_post_entry_content_before' ); ?>
 
 			<?php the_content(); ?>
 
 			<?php
-			/** This action is documented in includes/Linchpin/hatch-hooks.php */
-			do_action( 'rebar_post_entry_content_after' ); ?>
+			/** This action is documented in includes/Linchpin/truss-hooks.php */
+			do_action( 'truss_post_entry_content_after' ); ?>
 		</div>
 
 		<footer>
 			<?php wp_link_pages( array(
-				'before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'truss' ),
+				'before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'clientname' ),
 				'after'  => '</p></nav>',
 			) ); ?>
 			<div class="tags"><?php the_tags(); ?></div>
@@ -65,5 +65,5 @@ do_action( 'rebar_post_before' ); ?>
 
 	</article>
 <?php
-/** This action is documented in includes/Linchpin/hatch-hooks.php */
-do_action( 'rebar_post_after' );
+/** This action is documented in includes/Linchpin/truss-hooks.php */
+do_action( 'truss_post_after' );

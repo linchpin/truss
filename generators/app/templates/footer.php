@@ -15,14 +15,14 @@
 				</section>
 
 				<?php
-				/** This action is documented in includes/Linchpin/hatch-hooks.php */
-				do_action( 'rebar_footer_before' ); ?>
+				/** This action is documented in includes/Linchpin/truss-hooks.php */
+				do_action( 'truss_footer_before' ); ?>
 
 				<footer id="footer">
 					<div class="main-footer container small">
 						<?php
-						/** This action is documented in includes/Linchpin/hatch-hooks.php */
-						do_action( 'rebar_main_footer_inner_before' ); ?>
+						/** This action is documented in includes/Linchpin/truss-hooks.php */
+						do_action( 'truss_main_footer_inner_before' ); ?>
 
 						<div class="row">
 							<div class="small-12 columns">
@@ -33,14 +33,14 @@
 						</div>
 
 						<?php
-						/** This action is documented in includes/Linchpin/hatch-hooks.php */
-						do_action( 'rebar_main_footer_inner_after' ); ?>
+						/** This action is documented in includes/Linchpin/truss-hooks.php */
+						do_action( 'truss_main_footer_inner_after' ); ?>
 					</div>
 
 					<div class="sub-footer container small">
 						<?php
-						/** This action is documented in includes/Linchpin/hatch-hooks.php */
-						do_action( 'rebar_sub_footer_inner_before' ); ?>
+						/** This action is documented in includes/Linchpin/truss-hooks.php */
+						do_action( 'truss_sub_footer_inner_before' ); ?>
 
 						<div class="row">
 							<div class="small-12 medium-6 columns">
@@ -63,25 +63,25 @@
 							</div>
 
 							<div class="small-12 medium-6 columns text-right">
-								<?php echo sprintf( '&copy; %s %s. All Rights Reserved.', date( 'Y' ), __( get_bloginfo( 'name' ), 'truss' ) ); ?>
+								<?php echo sprintf( '&copy; %s %s. All Rights Reserved.', date( 'Y' ), __( get_bloginfo( 'name' ), 'clientname' ) ); ?>
 							</div>
 						</div>
 
 						<?php
-						/** This action is documented in includes/Linchpin/hatch-hooks.php */
-						do_action( 'rebar_sub_footer_inner_after' ); ?>
+						/** This action is documented in includes/Linchpin/truss-hooks.php */
+						do_action( 'truss_sub_footer_inner_after' ); ?>
 					</div>
 				</footer>
 
 				<?php
-				/** This action is documented in includes/Linchpin/hatch-hooks.php */
-				do_action( 'rebar_footer_after' ); ?>
+				/** This action is documented in includes/Linchpin/truss-hooks.php */
+				do_action( 'truss_footer_after' ); ?>
 
 				<a class="exit-off-canvas"></a>
 
 				<?php
-				/** This action is documented in includes/Linchpin/hatch-hooks.php */
-				do_action( 'rebar_layout_end' ); ?>
+				/** This action is documented in includes/Linchpin/truss-hooks.php */
+				do_action( 'truss_layout_end' ); ?>
 
 			</div>
 		</div>
@@ -97,7 +97,7 @@
 		 *
 		 *
 		 */
-		/** This action is documented in includes/Linchpin/hatch-hooks.php */
-		do_action( 'rebar_body_before_close' ); ?>
+		/** This action is documented in includes/Linchpin/truss-hooks.php */
+		do_action( 'truss_body_before_close' ); ?>
 	</body>
 </html>

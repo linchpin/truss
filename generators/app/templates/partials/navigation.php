@@ -12,7 +12,7 @@
 
 ?>
 <?php
-$options = get_option( 'truss_theme_options' );
+$options = get_option( 'clientname_theme_options' );
 
 if ( isset( $options['logo_upload'] ) ) {
 	$logo = true;

@@ -1,17 +1,17 @@
 @font-face {
-	font-family: 'rebar';
-	src:  url('fonts/rebar.eot?vvlf1s');
-	src:  url('fonts/rebar.eot?vvlf1s#iefix') format('embedded-opentype'),
-	url('fonts/rebar.ttf?vvlf1s') format('truetype'),
-	url('fonts/rebar.woff?vvlf1s') format('woff'),
-	url('fonts/rebar.svg?vvlf1s#rebar') format('svg');
+	font-family: 'truss';
+	src:  url('fonts/truss.eot?vvlf1s');
+	src:  url('fonts/truss.eot?vvlf1s#iefix') format('embedded-opentype'),
+	url('fonts/truss.ttf?vvlf1s') format('truetype'),
+	url('fonts/truss.woff?vvlf1s') format('woff'),
+	url('fonts/truss.svg?vvlf1s#truss') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
 	/* use !important to prevent issues with browser extensions that change fonts */
-	font-family: 'rebar' !important;
+	font-family: 'truss' !important;
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -65,9 +65,4 @@
 }
 .icon-close:before {
 	content: "\e90c";
-}
-
-body {
-	background: green;
-	color: lime;
 }

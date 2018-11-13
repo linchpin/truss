@@ -12,15 +12,15 @@
 
 ?>
 
-<?php do_action( 'rebar_pagination_before' ); ?>
+<?php do_action( 'truss_pagination_before' ); ?>
 
-<?php if ( function_exists( 'rebar_pagination' ) ) :
-	rebar_pagination( '&laquo;', '&raquo;' );
+<?php if ( function_exists( 'truss_pagination' ) ) :
+	truss_pagination( '&laquo;', '&raquo;' );
 elseif ( is_paged() ) : ?>
 	<nav id="post-nav">
-		<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'truss' ) ); ?></div>
-		<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'truss' ) ); ?></div>
+		<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'clientname' ) ); ?></div>
+		<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'clientname' ) ); ?></div>
 	</nav>
 <?php endif; ?>
 
-<?php do_action( 'rebar_pagination_after' );
+<?php do_action( 'truss_pagination_after' );

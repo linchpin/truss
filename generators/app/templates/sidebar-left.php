@@ -12,16 +12,16 @@
 
 ?>
 
-<?php do_action( 'rebar_sidebar_before' ); ?>
+<?php do_action( 'truss_sidebar_before' ); ?>
 
 <aside id="sidebar" class="small-12 large-4 columns large-pull-8">
 
-	<?php do_action( 'rebar_sidebar_inside_before' ); ?>
+	<?php do_action( 'truss_sidebar_inside_before' ); ?>
 
 	<?php dynamic_sidebar( 'page-widgets' ); ?>
 
-	<?php do_action( 'rebar_sidebar_inside_after' ); ?>
+	<?php do_action( 'truss_sidebar_inside_after' ); ?>
 
 </aside>
 
-<?php do_action( 'rebar_after_sidebar' );
+<?php do_action( 'truss_after_sidebar' );

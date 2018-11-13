@@ -82,9 +82,9 @@ class FoundationUtilities {
 
 		$html = '<div class="alert-box secondary">';
 
-		$html .= sprintf( esc_html( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.' ), 'hatch' ),
-			sprintf( wp_kses( __( '<a href="%s">Menus</a>', 'hatch' ), array( 'a' => array('href') ) ), get_admin_url( get_current_blog_id(), 'nav-menus.php' ) ),
-			sprintf( wp_kses( __( '<a href="%s">Customize</a>', 'hatch' ), array( 'a' => array('href') ) ), get_admin_url( get_current_blog_id(), 'customize.php' ) )
+		$html .= sprintf( esc_html( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.' ), 'truss' ),
+			sprintf( wp_kses( __( '<a href="%s">Menus</a>', 'truss' ), array( 'a' => array('href') ) ), get_admin_url( get_current_blog_id(), 'nav-menus.php' ) ),
+			sprintf( wp_kses( __( '<a href="%s">Customize</a>', 'truss' ), array( 'a' => array('href') ) ), get_admin_url( get_current_blog_id(), 'customize.php' ) )
 		);
 		$html .= '</div>';
 
@@ -104,12 +104,12 @@ class FoundationUtilities {
  *
  * @access public
  */
-function rebar_menu_fallback() {
+function truss_menu_fallback() {
 	echo FoundationUtilities::menu_fallback();
 }
 
 /**
- * Hatch pagination pass through function.
+ * Truss pagination pass through function.
  *
  * @since 1.0
  *
@@ -118,7 +118,7 @@ function rebar_menu_fallback() {
  * @param mixed $prev_text Text for our previous link.
  * @param mixed $next_text Text for our next link.
  */
-function rebar_pagination( $prev_text, $next_text ) {
+function truss_pagination( $prev_text, $next_text ) {
 	echo FoundationUtilities::paginate_links( $prev_text, $next_text );
 }
 
@@ -130,10 +130,10 @@ function rebar_pagination( $prev_text, $next_text ) {
  * @access public
  * @return void
  */
-function rebar_entry_meta() {
+function truss_entry_meta() {
 	?>
-	<time class="updated" datetime="<?php echo get_the_time( 'c' ); ?>" pubdate><?php printf( esc_html( __( 'Posted on %s at %s.', 'hatch' ) ), get_the_time( 'l, F jS, Y' ), get_the_time() ); ?></time>
-	<p class="byline author"><?php esc_html_e( 'Written by ', 'hatch' ); ?><a href="<?php esc_attr_e( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author" class="fn"><?php echo get_the_author(); ?></a></p>
+	<time class="updated" datetime="<?php echo get_the_time( 'c' ); ?>" pubdate><?php printf( esc_html( __( 'Posted on %s at %s.', 'truss' ) ), get_the_time( 'l, F jS, Y' ), get_the_time() ); ?></time>
+	<p class="byline author"><?php esc_html_e( 'Written by ', 'truss' ); ?><a href="<?php esc_attr_e( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author" class="fn"><?php echo get_the_author(); ?></a></p>
 	<?php
 }
 
@@ -141,7 +141,7 @@ function rebar_entry_meta() {
  * Left top bar
  * http://codex.wordpress.org/Function_Reference/wp_nav_menu
  */
-function rebar_top_bar_l() {
+function truss_top_bar_l() {
 	wp_nav_menu( array(
 		'container'       => false,
 		'container_class' => '',
@@ -162,7 +162,7 @@ function rebar_top_bar_l() {
  * Right top bar
  * http://codex.wordpress.org/Function_Reference/wp_nav_menu
  */
-function rebar_top_bar_r() {
+function truss_top_bar_r() {
 	wp_nav_menu( array(
 		'container'       => false,
 		'container_class' => '',
@@ -182,7 +182,7 @@ function rebar_top_bar_r() {
 /**
  * Footer
  */
-function rebar_footer() {
+function truss_footer() {
 	wp_nav_menu( array(
 		'container'       => false,
 		'container_class' => '',
@@ -201,7 +201,7 @@ function rebar_footer() {
 /**
  * Mobile off-canvas
  */
-function rebar_mobile_off_canvas() {
+function truss_mobile_off_canvas() {
 	wp_nav_menu( array(
 		'container'       => false,
 		'container_class' => '',

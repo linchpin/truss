@@ -19,13 +19,13 @@
     <?php wp_head(); ?>
 
 	<?php
-	/** This action is documented in includes/Linchpin/hatch-hooks.php */
-	do_action( 'rebar_head_scripts' ); ?>
+	/** This action is documented in includes/Linchpin/truss-hooks.php */
+	do_action( 'truss_head_scripts' ); ?>
 
 </head>
 <body <?php body_class(); ?>>
 
-<?php do_action( 'rebar_body_tag_after' ); ?>
+<?php do_action( 'truss_body_tag_after' ); ?>
 
 <div class="off-canvas-wrapper">
 	<div class="off-canvas position-right" id="offCanvas" data-off-canvas>
@@ -51,17 +51,17 @@
 	<div class="inner-wrap off-canvas-content" data-off-canvas-content>
 
 		<?php
-		/** This action is documented in includes/Linchpin/hatch-hooks.php */
-		do_action( 'rebar_layout_start' ); ?>
+		/** This action is documented in includes/Linchpin/truss-hooks.php */
+		do_action( 'truss_layout_start' ); ?>
 
 		<?php
-		/** This action is documented in includes/Linchpin/hatch-hooks.php */
-		do_action( 'rebar_header_before' ); ?>
+		/** This action is documented in includes/Linchpin/truss-hooks.php */
+		do_action( 'truss_header_before' ); ?>
 
 		<?php get_template_part( 'partials/navigation' ); ?>
 
 		<?php
-		/** This action is documented in includes/Linchpin/hatch-hooks.php */
-		do_action( 'rebar_header_after' ); ?>
+		/** This action is documented in includes/Linchpin/truss-hooks.php */
+		do_action( 'truss_header_after' ); ?>
 
 		<section role="document">

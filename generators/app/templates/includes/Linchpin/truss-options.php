@@ -1,19 +1,19 @@
 <?php
 /**
- * Hatch Options page
+ * Truss Options page
  *
- * This is the main controller for the Hatch theme options
+ * This is the main controller for the Truss theme options
  * Some items are derived from other "blank" themes including
  * Blank, _s, and Roots etc.
  *
- * @package Hatch
+ * @package Truss
  * @since 1.0
  */
 
 /**
- * Class HatchOptions
+ * Class TrussOptions
  */
-class HatchOptions {
+class TrussOptions {
 
 	/**
 	 * Construct
@@ -36,21 +36,21 @@ class HatchOptions {
 	 * @return void
 	 */
 	function init() {
-		if ( false === rebar_get_theme_options() ) {
-			add_option( 'rebar_theme_options', self::get_default_theme_options() );
+		if ( false === truss_get_theme_options() ) {
+			add_option( 'truss_theme_options', self::get_default_theme_options() );
 		}
 
-		register_setting( 'rebar_options', 'rebar_theme_options', array( &$this, 'theme_options_validate' ) );
+		register_setting( 'truss_options', 'truss_theme_options', array( &$this, 'theme_options_validate' ) );
 	}
 
 	/**
 	 * Display additional header scripts entered in the admin
 	 */
 	function wp_head() {
-		$rebar_options = rebar_get_theme_options();
+		$truss_options = truss_get_theme_options();
 
-		if( ! empty ( $rebar_options['additional_header_scripts'] ) ) {
-			echo wp_kses( $rebar_options['additional_header_scripts'], array(
+		if( ! empty ( $truss_options['additional_header_scripts'] ) ) {
+			echo wp_kses( $truss_options['additional_header_scripts'], array(
 				'script' => array(
 					'src' => array(),
 					'async'=> array(),
@@ -74,10 +74,10 @@ class HatchOptions {
 	 * Display additional footer scripts entered in the admin
 	 */
 	function wp_footer() {
-		$rebar_options = rebar_get_theme_options();
+		$truss_options = truss_get_theme_options();
 
-		if( ! empty ( $rebar_options['additional_footer_scripts'] ) ) {
-			echo wp_kses( $rebar_options['additional_footer_scripts'], array(
+		if( ! empty ( $truss_options['additional_footer_scripts'] ) ) {
+			echo wp_kses( $truss_options['additional_footer_scripts'], array(
 				'script' => array(
 					'src' => array(),
 					'async'=> array(),
@@ -103,7 +103,7 @@ class HatchOptions {
 	 * @todo we need to validate the settings better
 	 */
 	function validate_required_settings() {
-		global $rebar_options;
+		global $truss_options;
 	}
 
 	/**
@@ -120,7 +120,7 @@ class HatchOptions {
 			'typekit_async'             => false,
 		);
 
-		return apply_filters( 'rebar_default_theme_options', $default_theme_options );
+		return apply_filters( 'truss_default_theme_options', $default_theme_options );
 	}
 
 	/**
@@ -130,8 +130,8 @@ class HatchOptions {
 	function theme_options_add_page() {
 
 		$theme_page = add_theme_page(
-			__( 'Additional Options', 'hatch' ),
-			__( 'Additional Options', 'hatch' ),
+			__( 'Additional Options', 'truss' ),
+			__( 'Additional Options', 'truss' ),
 			'edit_theme_options',
 			'theme_options',
 			array( &$this, 'theme_options_render_page' )
@@ -149,10 +149,10 @@ class HatchOptions {
 	 * @since 1.0
 	 */
 function theme_options_render_page() {
-	global $rebar_options, $linchpin_classes_dir;
+	global $truss_options, $linchpin_classes_dir;
 	?>
 	<div class="wrap">
-		<div id="hatch-wrap">
+		<div id="truss-wrap">
 
 		<?php
 
@@ -164,25 +164,25 @@ function theme_options_render_page() {
 
 		<h2 class="nav-tab-wrapper">
 			<a href="?page=theme_options&tab=display_options"
-			   class="nav-tab <?php echo ( 'display_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Footer Content', 'hatch' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
+			   class="nav-tab <?php echo ( 'display_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Footer Content', 'truss' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
 			<a href="?page=theme_options&tab=script_options"
-			   class="nav-tab <?php echo ( 'script_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Scripts', 'hatch' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
+			   class="nav-tab <?php echo ( 'script_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Scripts', 'truss' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
 		</h2>
 
 		<?php settings_errors(); ?>
 
 		<form method="post" action="options.php">
 
-			<?php settings_fields( 'rebar_options' );
-			$rebar_options         = rebar_get_theme_options();
-			$rebar_default_options = self::get_default_theme_options();
+			<?php settings_fields( 'truss_options' );
+			$truss_options         = truss_get_theme_options();
+			$truss_default_options = self::get_default_theme_options();
 
 			if ( 'display_options' === $active_tab ) {
-				include_once( 'hatch-options/theme-options.php' );
+				include_once( 'truss-options/theme-options.php' );
 			} elseif ( 'script_options' === $active_tab ) {
-				include_once( 'hatch-options/integration-options.php' );
+				include_once( 'truss-options/integration-options.php' );
 			} ?>
-			<input type="hidden" value="1" name="rebar_theme_options[first_run]"/>
+			<input type="hidden" value="1" name="truss_theme_options[first_run]"/>
 			<?php submit_button(); ?>
 		</form>
 	</div>
@@ -259,7 +259,7 @@ function admin_enqueue_scripts( $hook ) {
 	$sidebars = array();
 
 	foreach ( $wp_sidebars as $key => $sidebar ) {
-		$sidebars[ 'sidebar_layout_' . $key ] = get_option( 'rebar_sidebar_layout_' . $key, '' );
+		$sidebars[ 'sidebar_layout_' . $key ] = get_option( 'truss_sidebar_layout_' . $key, '' );
 	}
 
 	$sidebar_options = array(
@@ -278,13 +278,13 @@ function admin_enqueue_scripts( $hook ) {
  * @author aware
  */
 function admin_head() {
-global $rebar_options;
+global $truss_options;
 ?>
 	<script type="text/javascript">
 		//<![CDATA[
-		var hatch = {
+		var truss = {
 			ajaxurl: "<?php echo admin_url( 'admin-ajax.php' ); ?>",
-			nonce: "<?php echo wp_create_nonce( 'hatch-nonce' ) ?>"
+			nonce: "<?php echo wp_create_nonce( 'truss-nonce' ) ?>"
 		};
 		//]]>
 	</script>
@@ -390,7 +390,7 @@ function admin_footer() {
 			'additional_header_scripts' => '',
 			'terms_conditions'          => '',
 			'footer_info'               => '',
-			'rebar_tracking'            => '',
+			'truss_tracking'            => '',
 		);
 
 		$output = $defaults = self::get_default_theme_options();
@@ -410,18 +410,18 @@ function admin_footer() {
 			}
 		}
 
-		return apply_filters( 'rebar_theme_options_validate', $output, $input, $defaults );
+		return apply_filters( 'truss_theme_options_validate', $output, $input, $defaults );
 	}
 }
 
 ?>
 <?php
 /**
- * rebar_get_theme_options function.
+ * truss_get_theme_options function.
  *
  * @access public
  * @return array of theme options
  */
-function rebar_get_theme_options() {
-	return get_option( 'rebar_theme_options', HatchOptions::get_default_theme_options() );
+function truss_get_theme_options() {
+	return get_option( 'truss_theme_options', TrussOptions::get_default_theme_options() );
 }

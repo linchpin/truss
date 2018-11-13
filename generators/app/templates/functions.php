@@ -15,25 +15,25 @@
  */
 
 // Useful global constants
-define( 'TRUSS_VERSION', '1.0.0' );
+define( 'CLIENTNAME_VERSION', '1.0.0' );
 
 if ( ! defined( 'SCRIPT_DEBUG' ) ) {
 	define( 'SCRIPT_DEBUG', true ); // enable script debug by default
 }
 
-include_once( 'includes/Linchpin/hatch.php' );        // Hatch Classes
+include_once( 'includes/Linchpin/truss.php' );        // Truss Classes
 include_once( 'includes/Foundation/foundation.php' ); // Foundation Classes
-include_once( 'includes/Truss.php' ); // Theme Class
+include_once( 'includes/ClientName.php' ); // Theme Class
 
 /**
  *	Instantiate our classes.
  */
 
-$theme = new Truss();
+$theme = new ClientName();
 
-global $rebar_templates_with_title;
+global $truss_templates_with_title;
 
-$rebar_templates_with_title = array(
+$truss_templates_with_title = array(
 	'page-beefy-header.php',
 	'page-slim-header.php'
 );

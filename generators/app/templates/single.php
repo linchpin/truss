@@ -16,7 +16,7 @@
 	<div class="row container">
 		<div class="small-12 medium-8 columns" role="main">
 
-			<?php do_action( 'rebar_content_before' ); ?>
+			<?php do_action( 'truss_content_before' ); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
@@ -24,7 +24,7 @@
 
 			<?php endwhile; ?>
 
-			<?php do_action( 'rebar_after_content' ); ?>
+			<?php do_action( 'truss_after_content' ); ?>
 
 		</div>
 		<?php get_sidebar(); ?>

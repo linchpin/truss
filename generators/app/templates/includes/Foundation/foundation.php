@@ -4,7 +4,7 @@
  *
  * Where is all starts. Includes all of our Classes
  *
- * @package Hatch
+ * @package Truss
  * @subpackage Foundation
  * @since 1.0
  */
