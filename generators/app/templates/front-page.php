@@ -17,31 +17,33 @@
 
 	<?php get_template_part( 'hero' ); ?>
 
-	<div class="row container">
-		<div class="small-12 columns" role="main">
+	<div class="grid-container">
+        <div class="grid-x">
+            <div class="cell small-12" role="main">
 
-			<?php do_action( 'rebar_content_before' ); ?>
+                <?php do_action( 'rebar_content_before' ); ?>
 
-			<?php if ( have_posts() ) : ?>
+                <?php if ( have_posts() ) : ?>
 
-				<?php do_action( 'rebar_loop_before' ); ?>
+                    <?php do_action( 'rebar_loop_before' ); ?>
 
-				<?php while ( have_posts() ) : the_post(); ?>
+                    <?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'content', 'page' ); ?>
+                        <?php get_template_part( 'content', 'page' ); ?>
 
-				<?php endwhile; ?>
+                    <?php endwhile; ?>
 
-				<?php do_action( 'rebar_loop_after' ); ?>
+                    <?php do_action( 'rebar_loop_after' ); ?>
 
-			<?php else : ?>
+                <?php else : ?>
 
-				<?php get_template_part( 'content', 'none' ); ?>
+                    <?php get_template_part( 'content', 'none' ); ?>
 
-			<?php endif; ?>
+                <?php endif; ?>
 
-			<?php do_action( 'rebar_content_after' ); ?>
+                <?php do_action( 'rebar_content_after' ); ?>
 
+            </div>
 		</div>
 	</div>
 

@@ -33,7 +33,7 @@ gulp.task('build',
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
-  gulp.series('build', server, watch));
+  gulp.series('build', gulp.parallel(watch, server))); // removed server from middle
 
 // This happens every time a build starts
 function clean(done) {
@@ -132,7 +132,7 @@ function reload(done) {
 // Watch for changes to static assets, Sass, and JavaScript
 function watch() {
   gulp.watch(PATHS.assets, copy);
-  gulp.watch('assets/scss/**/*.scss').on('all', gulp.series(sass, browser.reload));
+  gulp.watch('assets/scss/**/*.scss').on('all', sass);
   gulp.watch('assets/js/**/*.js').on('all', gulp.series(javascript, browser.reload));
   gulp.watch('assets/img/**/*').on('all', gulp.series(images, browser.reload));
 }
