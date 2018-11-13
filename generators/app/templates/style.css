@@ -1,14 +1,29 @@
 /**
- * Theme Name:         <%= theme_name %>
- * Theme URI:          <%= theme_url %>
+ * Theme Name:         Truss Zurb
+ * Theme URI:          http://linchpin.agency
  * Github Theme URI:   https://github.com/linchpinagency/hatch
- * Description:        <%= theme_description %>
- * Version:            <%= theme_version %>
- * Author:             <%= theme_author %>
- * Author URI:         <%= theme_author_uri %>
+ * Description:        A brief description about the theme or client.
+ * Version:            1.0.0
+ * Author:             Linchpin
+ * Author URI:         http://linchpin.agency
  *
- * Text Domain:        <%= text_domain %>
+ * Text Domain:        truss
  *
  * License:            GPLv3 License
  * License URI:        http://opensource.org/licenses/GPL-3.0
+ */
+
+/* Additional Notes
+ *
+ * Sass is a CSS pre-compiler that adds in amazing features
+ * such as variables, nested selectors and loops.
+ *
+ * It's also the easiest way to customize Foundation, and this Theme
+ *
+ * All Sass files are located in the /scss folder.
+ *
+ * Please read the README.md file before getting started. More info on how
+ * to use Sass with Foundation can be found here:
+ * http://foundation.zurb.com/docs/sass.html
+ *
  */

@@ -1,10 +1,10 @@
 <?php
 /**
- * Catch All Template
+ * Archive Template
  *
- * Catch all template file within the Template Hierarchy.
+ * Template for display all default archive pages.
  *
- * @since 1.0
+ * @since 1.0.0
  *
  * @package 
  * @subpackage Templates
@@ -15,7 +15,8 @@
 <?php get_header(); ?>
 
 <div class="row container">
-	<div class="small-12 large-8 columns" role="main">
+	<div class="small-12 medium-8 columns" role="main">
+
 
 		<?php
 		/** This action is documented in includes/Linchpin/hatch-hooks.php */
@@ -41,14 +42,13 @@
 
 			<?php get_template_part( 'content', 'none' ); ?>
 
-		<?php endif;?>
-
-		<?php get_template_part( 'partials/pagination' ); ?>
+		<?php endif; ?>
 
 		<?php
 		/** This action is documented in includes/Linchpin/hatch-hooks.php */
 		do_action( 'rebar_content_after' ); ?>
 
+		<?php get_template_part( 'includes/partials/pagination' ); ?>
 	</div>
 	<?php get_sidebar(); ?>
 </div>

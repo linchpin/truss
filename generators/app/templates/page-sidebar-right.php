@@ -1,17 +1,16 @@
 <?php
 /**
- * Catch All Template
+ * Template Name: Right Sidebar
  *
- * Catch all template file within the Template Hierarchy.
+ * Default template utilized for single posts
  *
- * @since 1.0
+ * @since 1.0.0
  *
  * @package 
  * @subpackage Templates
  */
 
 ?>
-
 <?php get_header(); ?>
 
 <div class="row container">
@@ -29,7 +28,7 @@
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'partials/loop-post', get_post_type() ); ?>
+				<?php get_template_part( 'content', 'page' ); ?>
 
 			<?php endwhile; ?>
 
@@ -41,15 +40,14 @@
 
 			<?php get_template_part( 'content', 'none' ); ?>
 
-		<?php endif;?>
-
-		<?php get_template_part( 'partials/pagination' ); ?>
+		<?php endif; ?>
 
 		<?php
 		/** This action is documented in includes/Linchpin/hatch-hooks.php */
 		do_action( 'rebar_content_after' ); ?>
 
 	</div>
+
 	<?php get_sidebar(); ?>
 </div>
 <?php get_footer();

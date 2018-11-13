@@ -8,5 +8,7 @@ import Foundation from 'foundation-sites';
 // the line below
 //import './lib/foundation-explicit-pieces';
 
+console.log('bob');
+
 
 $(document).foundation();

@@ -1,0 +1,68 @@
+/**
+ * 01. Spacing
+ * 02. Placeholder
+ * 03. Global Forms
+ */
+
+
+// 01. Spacing
+
+@mixin spacing-layout( $property, $prefix: '' ) {
+  $property_class: #{$property} !default;
+
+  @if $prefix != '' {
+    $property_class: #{$prefix}-#{$property};
+  }
+
+  @each $direction in $directions {
+    .#{$property_class}-#{$direction} {
+      #{$property}-#{$direction}: 2rem;
+    }
+
+    @each $type, $size in $spacing-sizes {
+      .#{$property_class}-#{$direction}-#{$type} {
+        #{$property}-#{$direction}: $size;
+      }
+    }
+  }
+
+  .#{$property_class}-all {
+    #{$property}: 2rem;
+  }
+
+  @each $type, $size in $spacing-sizes {
+    .#{$property_class}-all-#{$type} {
+      #{$property}: $size;
+    }
+  }
+}
+
+
+// 02. Placeholder
+
+@mixin placeholder-style() {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    @content;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+
+// 03. Global Forms
+
+@mixin global-form-styles {
+  background: white;
+  border: 1px solid $medium-gray;
+  box-shadow: none;
+}

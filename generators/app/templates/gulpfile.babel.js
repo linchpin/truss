@@ -4,15 +4,12 @@ import plugins       from 'gulp-load-plugins';
 import yargs         from 'yargs';
 import browser       from 'browser-sync';
 import gulp          from 'gulp';
-// import panini        from 'panini';
 import rimraf        from 'rimraf';
-// import sherpa        from 'style-sherpa';
 import yaml          from 'js-yaml';
 import fs            from 'fs';
 import webpackStream from 'webpack-stream';
 import webpack2      from 'webpack';
 import named         from 'vinyl-named';
-// import uncss         from 'uncss';
 import autoprefixer  from 'autoprefixer';
 
 // Load all Gulp plugins into one variable
@@ -52,7 +49,7 @@ function copy() {
     .pipe(gulp.dest('other/assets'));
 }
 
-// Compile Sass into CSS
+
 // In production, the CSS is compressed
 function sass() {
 
@@ -64,7 +61,7 @@ function sass() {
     // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
   ].filter(Boolean);
 
-  return gulp.src('assets/scss/app.scss')
+  return gulp.src('assets/scss/truss.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       includePaths: PATHS.sass
@@ -96,7 +93,7 @@ let webpackConfig = {
   devtool: !PRODUCTION && 'source-map'
 }
 
-// Combine JavaScript into one file
+
 // In production, the file is minified
 function javascript() {
   return gulp.src(PATHS.entries)
@@ -110,7 +107,6 @@ function javascript() {
     .pipe(gulp.dest('js'));
 }
 
-// Copy images to the "dist" folder
 // In production, the images are compressed
 function images() {
   return gulp.src('assets/img/**/*')
@@ -136,7 +132,7 @@ function reload(done) {
 // Watch for changes to static assets, Sass, and JavaScript
 function watch() {
   gulp.watch(PATHS.assets, copy);
-  gulp.watch('assets/scss/**/*.scss').on('all', sass);
+  gulp.watch('assets/scss/**/*.scss').on('all', gulp.series(sass, browser.reload));
   gulp.watch('assets/js/**/*.js').on('all', gulp.series(javascript, browser.reload));
   gulp.watch('assets/img/**/*').on('all', gulp.series(images, browser.reload));
 }

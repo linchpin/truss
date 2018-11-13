@@ -1,0 +1,93 @@
+/**
+ * 01. Colors
+ * -- Include functions that require colors
+ * 02. Animations
+ * 03. Spacing
+ * 04. Topbar Extended
+ * 05. Primary Menu
+ * 06. Footer
+ * 07. Forms
+ * 08. Comments
+ * 09. Page Templates
+ */
+
+
+// 01. Colors
+$color-map: (
+		primary     : get-color(primary),
+		secondary   : get-color(secondary),
+		light-gray  : $light-gray,
+		medium-gray : $medium-gray,
+		dark-gray   : $dark-gray,
+		black       : $black,
+		white       : $white
+);
+
+// -- functions that require colors
+
+@import 'functions';
+
+// 02. Animations
+$global-timing: 400ms;
+$global-easing: ease-in-out;
+
+
+// 03. Spacing
+$directions: (
+		top,
+		right,
+		bottom,
+		left
+);
+
+$spacing-sizes: (
+		none   : 0,
+		small  : 1rem,
+		medium : 2rem,
+		large  : 4rem
+);
+
+
+// 04. Topbar Extended
+$topbar-height:         rem-calc(50);
+$topbar-height-small:   rem-calc(32);
+$topbar-support-width:  rem-calc(300);
+$topbar-item-height:    $topbar-height - 1rem;
+$topbar-padding-medium: .5rem (map-get($grid-column-gutter, medium)/2);
+
+
+// 05. Primary Menu
+$primary-menu-height:      $topbar-height;
+$primary-menu-line-height: $topbar-height;
+$primary-menu-margin-top:  -.5rem;
+
+$primary-submenu-bg-color:   scale-color($topbar-background, $lightness: -40%);
+$primary-submenu-link-color: $anchor-color;
+
+
+// 06. Footer
+$footer-bg-color:   $light-gray;
+$footer-text-color: $dark-gray;
+$footer-link-color: $footer-text-color;
+
+$subfooter-bg-color:   $dark-gray;
+$subfooter-text-color: $light-gray;
+$subfooter-link-color: $subfooter-text-color;
+
+
+// 07. Forms
+$form-item-padding: .5rem;
+
+
+// 08. Comments
+$comment-border-radius: 0;
+$comment-original-bg:   scale-color( $light-gray, $lightness: 50% );
+$comment-border-color:  $medium-gray;
+$comment-reply-bg:      $white;
+$comment-gutter:        1.5rem;
+
+
+// 09. Page Templates
+
+$full-page-header-background: get-color(secondary);
+$full-page-header-color:      color-legibility($full-page-header-background);

@@ -1,0 +1,17 @@
+/**
+ * 01. Color Legibility
+ */
+
+
+// 01. Color Legibility
+
+@function color-legibility( $color ) {
+	$color-lightness: lightness($color);
+	$return-color:    $white !default;
+
+	@if ( $color-lightness > 50% ) {
+		$return-color: $black;
+	}
+
+	@return $return-color;
+}
