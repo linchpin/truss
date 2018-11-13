@@ -73,37 +73,17 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copyTpl(
-      this.templatePath('**/*'),
-      this.destinationPath(),
-      {
-        theme_name: this.answers.theme_name,
-        theme_description: this.answers.theme_description,
-        theme_url: this.answers.theme_url,
-        theme_version: this.answers.theme_version,
-        theme_author: this.answers.theme_author,
-        theme_author_uri: this.answers.theme_author_uri,
-        class_name: this.class_name.class_name,
-        text_domain: this.domainprefix.text_domain,
-        prefix: this.domainprefix.prefix
-      }
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('.*'),
-      this.destinationPath(),
-      {
-        theme_name: this.answers.theme_name,
-        theme_description: this.answers.theme_description,
-        theme_url: this.answers.theme_url,
-        theme_version: this.answers.theme_version,
-        theme_author: this.answers.theme_author,
-        theme_author_uri: this.answers.theme_author_uri,
-        class_name: this.class_name.class_name,
-        text_domain: this.domainprefix.text_domain,
-        prefix: this.domainprefix.prefix
-      }
-    );
+    this.fs.copyTpl(this.templatePath('**/*'), this.destinationPath(), {
+      theme_name: this.answers.theme_name,
+      theme_description: this.answers.theme_description,
+      theme_url: this.answers.theme_url,
+      theme_version: this.answers.theme_version,
+      theme_author: this.answers.theme_author,
+      theme_author_uri: this.answers.theme_author_uri,
+      class_name: this.class_name.class_name,
+      text_domain: this.domainprefix.text_domain,
+      prefix: this.domainprefix.prefix
+    });
   }
 
   install() {
