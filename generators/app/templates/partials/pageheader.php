@@ -10,8 +10,8 @@
 ?>
 
 <div class="full-page-header container">
-	<div class="row">
-		<div class="small-12 columns">
+	<div class="grid-x">
+		<div class="small-12 cell">
 			<?php
 			the_title( '<h1>', '</h1>', true );
 

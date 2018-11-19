@@ -26,8 +26,8 @@ do_action( 'truss_post_before' ); ?>
 		<div class="entry-content">
 
 			<?php if ( has_post_thumbnail() ) : ?>
-				<div class="row">
-					<div class="small-12 columns">
+				<div class="grid-x">
+					<div class="small-12 cell">
 						<?php the_post_thumbnail( '', array( 'class' => 'th' ) ); ?>
 					</div>
 				</div>

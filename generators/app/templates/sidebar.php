@@ -14,7 +14,7 @@
 
 <?php do_action( 'truss_sidebar_before' ); ?>
 
-<aside id="sidebar" class="small-12 large-4 columns">
+<aside id="sidebar" class="small-12 large-4 cell">
 
 	<?php do_action( 'truss_sidebar_inside_before' ); ?>
 

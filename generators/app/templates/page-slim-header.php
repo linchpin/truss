@@ -14,9 +14,9 @@
 
 <?php get_template_part( 'partials/pageheader' ); ?>
 
-	<div class="row container">
+	<div class="grid-x container">
 
-		<div class="small-12 columns" role="main">
+		<div class="small-12 cell" role="main">
 
 			<?php
 			/** This action is documented in includes/Linchpin/truss-hooks.php */

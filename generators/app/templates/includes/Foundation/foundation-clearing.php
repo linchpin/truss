@@ -199,7 +199,7 @@ class FoundationClearing {
 				break;
 		}
 
-		$gallery_container = "<div class='row'><div class='large-12 columns'><ul class='clearing-thumbs gallery galleryid-{$id} {$block_class}' data-clearing>";
+		$gallery_container = "<div class='grid-x'><div class='large-12 cell'><ul class='clearing-thumbs gallery galleryid-{$id} {$block_class}' data-clearing>";
 
 		$output = apply_filters( 'gallery_style', $gallery_container );
 
