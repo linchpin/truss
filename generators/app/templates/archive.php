@@ -14,8 +14,8 @@
 
 <?php get_header(); ?>
 
-<div class="row container">
-	<div class="small-12 medium-8 columns" role="main">
+<div class="grid-x container">
+	<div class="small-12 medium-8 cell" role="main">
 
 
 		<?php

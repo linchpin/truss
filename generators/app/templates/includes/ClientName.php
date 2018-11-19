@@ -136,7 +136,7 @@ class ClientName {
 			'id'            => 'home-widgets',
 			'description'   => 'Widgets that are displayed on the home page.',
 			'class'         => 'home-widgets',
-			'before_widget' => '<div id="%1$s" class="widget small-4 columns %2$s">',
+			'before_widget' => '<div id="%1$s" class="widget small-4 cell %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h3 class="widgettitle">',
 			'after_title'   => '</h3>',

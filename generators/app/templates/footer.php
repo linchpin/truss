@@ -24,8 +24,8 @@
 						/** This action is documented in includes/Linchpin/truss-hooks.php */
 						do_action( 'truss_main_footer_inner_before' ); ?>
 
-						<div class="row">
-							<div class="small-12 columns">
+						<div class="grid-x">
+							<div class="small-12 cell">
 
 								<?php dynamic_sidebar( 'footer-widgets' ); ?>
 
@@ -42,8 +42,8 @@
 						/** This action is documented in includes/Linchpin/truss-hooks.php */
 						do_action( 'truss_sub_footer_inner_before' ); ?>
 
-						<div class="row">
-							<div class="small-12 medium-6 columns">
+						<div class="grid-x">
+							<div class="small-12 medium-6 cell">
 								<?php
 									wp_nav_menu( array(
 										'container'       => false,
@@ -62,7 +62,7 @@
 								?>
 							</div>
 
-							<div class="small-12 medium-6 columns text-right">
+							<div class="small-12 medium-6 cell text-right">
 								<?php echo sprintf( '&copy; %s %s. All Rights Reserved.', date( 'Y' ), __( get_bloginfo( 'name' ), 'clientname' ) ); ?>
 							</div>
 						</div>

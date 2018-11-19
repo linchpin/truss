@@ -11,8 +11,8 @@
 ?>
 
 <?php get_header(); ?>
-<div class="row">
-	<div class="small-12 large-12 columns" role="main">
+<div class="grid-x">
+	<div class="small-12 large-12 cell" role="main">
 	<?php while ( have_posts() ) : the_post(); ?>
 		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 			<header>
@@ -65,14 +65,14 @@
 
 			<hr>
 			<h4 id="buttons">Buttons</h4>
-			<div class="row">
-				<div class="small-6 large-6 columns">
+			<div class="grid-x">
+				<div class="small-6 large-6 cell">
 					<a href="#" class="tiny button">.tiny.button</a><br>
 					<a href="#" class="small button">.small.button</a><br>
 					<a href="#" class="button">.button</a><br>
 					<a href="#" class="button expand">.expand</a><br>
 				</div>
-				<div class="small-6 large-6 columns">
+				<div class="small-6 large-6 cell">
 					<a href="#" class="tiny button secondary">.tiny.secondary</a><br>
 					<a href="#" class="small button success radius">.small.success.radius</a><br>
 					<a href="#" class="button alert round disabled">.round.disabled</a><br>
@@ -144,39 +144,39 @@
 				<fieldset>
 					<legend>Fieldset</legend>
 
-					<div class="row">
-						<div class="large-12 columns">
+					<div class="grid-x">
+						<div class="large-12 cell">
 							<label>Input Label</label>
-							<input type="text" placeholder="large-12.columns">
+							<input type="text" placeholder="large-12.cell">
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="large-4 columns">
+					<div class="grid-x">
+						<div class="large-4 cell">
 							<label>Input Label</label>
-							<input type="text" placeholder="large-4.columns">
+							<input type="text" placeholder="large-4.cell">
 						</div>
-						<div class="large-4 columns">
+						<div class="large-4 cell">
 							<label>Input Label</label>
-							<input type="text" placeholder="large-4.columns">
+							<input type="text" placeholder="large-4.cell">
 						</div>
-						<div class="large-4 columns">
-							<div class="row collapse">
+						<div class="large-4 cell">
+							<div class="grid-x collapse">
 								<label>Input Label</label>
-								<div class="small-9 columns">
-									<input type="text" placeholder="small-9.columns">
+								<div class="small-9 cell">
+									<input type="text" placeholder="small-9.cell">
 								</div>
-								<div class="small-3 columns">
+								<div class="small-3 cell">
 									<span class="postfix">.com</span>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="large-12 columns">
+					<div class="grid-x">
+						<div class="large-12 cell">
 							<label>Textarea Label</label>
-							<textarea placeholder="small-12.columns"></textarea>
+							<textarea placeholder="small-12.cell"></textarea>
 						</div>
 					</div>
 
@@ -273,8 +273,8 @@
 
 			<hr>
 			<h4 id="orbit">Orbit</h4>
-			<div class="row">
-				<div class="large-12 columns">
+			<div class="grid-x">
+				<div class="large-12 cell">
 					<ul id="featured1" data-orbit data-options="timer_speed:5000;">
 						<li>
 							<img src="http://foundation.zurb.com/docs/assets/img/examples/satelite-orbit.jpg" alt=""/>
@@ -314,14 +314,14 @@
 
 			<hr>
 			<h4 id="panels">Panels</h4>
-			<div class="row">
-				<div class="large-6 columns">
+			<div class="grid-x">
+				<div class="large-6 cell">
 					<div class="panel">
 						<h5>This is a regular panel.</h5>
 						<p>It has an easy to override visual style, and is appropriately subdued.</p>
 					</div>
 				</div>
-				<div class="large-6 columns">
+				<div class="large-6 cell">
 					<div class="panel callout radius">
 						<h5>This is a callout panel with radiused edges.</h5>
 						<p>It&#39;s a little ostentatious, but useful for important content.</p>
@@ -330,8 +330,8 @@
 			</div>
 
 			<h4 id="pricing-tables">Pricing Tables</h4>
-			<div class="row">
-				<div class="large-4 columns">
+			<div class="grid-x">
+				<div class="large-4 cell">
 					<ul class="pricing-table">
 						<li class="title">Standard</li>
 						<li class="price">$99.99</li>
@@ -494,8 +494,8 @@
 
 			<hr>
 			<h4 id="side-nav">Side Nav</h4>
-			<div class="row">
-				<div class="large-4 columns end">
+			<div class="grid-x">
+				<div class="large-4 cell end">
 					<ul class="side-nav">
 						<li class="active"><a href="#">Link 1</a></li>
 						<li><a href="#">Link 2</a></li>

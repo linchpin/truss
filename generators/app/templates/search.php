@@ -11,8 +11,8 @@
 ?>
 <?php get_header(); ?>
 
-	<div class="row container">
-	<div class="small-12 large-8 columns" role="main">
+	<div class="grid-x container">
+	<div class="small-12 large-8 cell" role="main">
 
 		<h2><?php esc_html_e( 'Search Results for', 'clientname' ); ?>
 			"<?php esc_html_e( get_search_query() ); ?>"</h2>

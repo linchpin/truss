@@ -13,8 +13,8 @@
 ?>
 <?php get_header(); ?>
 
-<div class="row container">
-	<div class="small-12 large-8 columns" role="main">
+<div class="grid-x container">
+	<div class="small-12 large-8 cell" role="main">
 
 		<?php
 		/** This action is documented in includes/Linchpin/truss-hooks.php */
