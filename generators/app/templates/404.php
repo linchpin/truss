@@ -6,7 +6,7 @@
  *
  * @since 1.0.0
  *
- * @package 
+ * @package    Truss
  * @subpackage Templates
  */
 
@@ -16,7 +16,7 @@
 
 <div id="primary" class="content-area">
 	<div class="grid-container">
-        <div class="grid-x">
+		<div class="grid-x">
             <main id="main" class="site-main small-12 large-8 cell" role="main">
 
                 <?php

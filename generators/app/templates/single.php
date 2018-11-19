@@ -6,7 +6,7 @@
  *
  * @since 1.0.0
  *
- * @package 
+ * @package    Truss
  * @subpackage Templates
  */
 
