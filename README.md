@@ -13,7 +13,7 @@ npm install --global yo
 
 #### Clone Generator Repo
 ```
-git clone git@github.com:linchpin/rebar-2.git ~/yeoman/generator-linchpin
+git clone git@github.com:linchpin/truss.git ~/yeoman/generator-linchpin
 ```
 
 #### Link Generator
