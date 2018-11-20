@@ -14,8 +14,8 @@ if ( ! defined( 'SCRIPT_DEBUG' ) ) {
 require_once 'includes/Linchpin/utilities/utilities.php'; // Useful Functions
 require_once 'includes/Linchpin/utilities/hooks.php';     // Custom Truss Hooks
 require_once 'includes/Linchpin/class-truss.php';         // Truss Classes
-require_once 'includes/Foundation/foundation.php';        // Foundation Classes
-require_once 'includes/<%= class_name %>.php';                   // Theme Class
+require_once 'includes/Foundation/class-foundation.php';  // Foundation Classes
+require_once 'includes/<%= class_name %>.php';            // Theme Class
 
 /**
  * Instantiate our classes, kick the theme in gear.

@@ -17,9 +17,9 @@
 do_action( 'truss_post_before' );
 ?>
 
-<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class(); ?> id="post-<?php the_ID(); ?>" itemscope itemtype="http://schema.org/Article">
 
-	<header>
+	<header itemprop="name">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		<?php truss_entry_meta(); ?>
 	</header>

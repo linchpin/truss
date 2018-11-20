@@ -4,19 +4,20 @@
  *
  * Where is all starts. Includes all of our Classes
  *
- * @package Truss
- * @subpackage Foundation
  * @since 1.0
+ *
+ * @package    Truss
+ * @subpackage Foundation
  */
 
-global $foundation_utilities;
+namespace Foundation;
 
 $foundation_classes_dir = get_stylesheet_directory() . '/includes/Foundation/';
 
-require_once $foundation_classes_dir . 'foundation-utilities.php';
-require_once $foundation_classes_dir . 'foundation-cleanup.php';
-require_once $foundation_classes_dir . 'foundation-shortcodes.php';
-require_once $foundation_classes_dir . 'foundation-clearing.php';
+require_once $foundation_classes_dir . 'class-utilities.php';
+require_once $foundation_classes_dir . 'class-cleanup.php';
+require_once $foundation_classes_dir . 'class-shortcodes.php';
+require_once $foundation_classes_dir . 'class-clearing.php';
 
 /**
  * Class Foundation
@@ -26,15 +27,15 @@ class Foundation {
 	/**
 	 * Construct.
 	 */
-	function __construct() {
+	public function __construct() {
 
-		$foundation_utilities = new FoundationUtilities();
-		$foundation_cleanup   = new FoundationCleanup();
-		$foundation_clearing  = new FoundationClearing();
+		$foundation_utilities = new Utilities();
+		$foundation_cleanup   = new Cleanup();
+		$foundation_clearing  = new Clearing();
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 
-		add_filter( 'wp_list_pages',      array( $this, 'wp_list_pages' ), 10, 2 );
+		add_filter( 'wp_list_pages', array( $this, 'wp_list_pages' ), 10, 2 );
 		add_filter( 'nav_menu_css_class', array( $this, 'add_active_nav_class' ), 10, 2 );
 
 		add_action( 'wp_default_scripts', array( $this, 'wp_enqueue_jquery_in_footer' ) );
@@ -70,7 +71,7 @@ class Foundation {
 	 * @param mixed $post_id If specifically needed.
 	 * @return array
 	 */
-	function post_class( $classes, $class, $post_id ) {
+	public function post_class( $classes, $class, $post_id ) {
 		global $wp_query;
 
 		if ( $wp_query->current_post + 1 === $wp_query->found_posts ) {
@@ -87,7 +88,7 @@ class Foundation {
 	 *
 	 * @param mixed $scripts Our scripts we are listing.
 	 */
-	function wp_enqueue_jquery_in_footer( $scripts ) {
+	public function wp_enqueue_jquery_in_footer( $scripts ) {
 		if ( ! is_admin() ) {
 			$scripts->add_data( 'jquery', 'group', 1 );
 		}
@@ -98,9 +99,9 @@ class Foundation {
 	 *
 	 * @since 1.0
 	 */
-	function wp_enqueue_scripts() {
+	public function wp_enqueue_scripts() {
 		if ( is_page_template( 'kitchen-sink.php' ) ) {
-			wp_enqueue_script( 'kitchen-sink', get_stylesheet_directory_uri() . '/js/kitchen-sink.js', array( 'jquery' ), '1.0.0', true );
+			wp_enqueue_script( 'kitchen-sink', get_stylesheet_directory_uri() . '/js/kitchen-sink.js', array( 'jquery' ), <%= prefix_caps %>VERSION, true );
 		}
 	}
 
@@ -111,11 +112,11 @@ class Foundation {
 	 * @param mixed $item The item we're setting to active.
 	 * @return string
 	 */
-	function add_active_nav_class( $classes, $item ) {
+	public function add_active_nav_class( $classes, $item ) {
 
-	    if ( $item->current === 1 || $item->current_item_ancestor === true ) {
-		    $classes[] = 'active';
-	    }
+		if ( 1 === $item->current || true === $item->current_item_ancestor ) {
+			$classes[] = 'active';
+		}
 
 	    return $classes;
 	}
