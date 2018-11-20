@@ -199,7 +199,7 @@ class <%= class_name %> {
 	 * @return void
 	 */
 	function wp_enqueue_scripts() {
-		wp_enqueue_script( 'app-js', get_stylesheet_directory_uri() . '/js/clientname.js', array( 'jquery' ), CLIENTNAME_VERSION, true );
+		wp_enqueue_script( '<%= text_domain %>-js', get_stylesheet_directory_uri() . '/js/<%= text_domain %>.js', array( 'jquery' ), <%= prefix_caps %>VERSION, true );
 	}
 
 	/**
@@ -209,7 +209,7 @@ class <%= class_name %> {
 	 * @return void
 	 */
 	function wp_enqueue_styles() {
-		wp_enqueue_style( 'app-css', get_stylesheet_directory_uri() . '/css/clientname.css' );
+		wp_enqueue_style( '<%= text_domain %>-css', get_stylesheet_directory_uri() . '/css/<%= text_domain %>.css' );
 	}
 
 	/*
