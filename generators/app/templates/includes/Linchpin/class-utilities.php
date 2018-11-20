@@ -1,26 +1,28 @@
 <?php
 /**
- * TrussUtilities
+ * Truss
  *
  * Houses various utility methods.
  *
  * @package Truss
- * @since 1.0
+ * @since   1.0
  */
 
+namespace Truss;
+
 /**
- * Class TrussUtilities
+ * Class Utilities
  */
-class TrussUtilities {
+class Utilities {
 
 	/**
 	 * __construct function.
 	 *
 	 * @access public
 	 */
-	function __construct() {
+	public function __construct() {
 		add_action( 'edit_category', array( $this, 'category_transient_flusher' ) );
-		add_action( 'save_post',     array( $this, 'category_transient_flusher' ) );
+		add_action( 'save_post', array( $this, 'category_transient_flusher' ) );
 
 		add_action( 'truss_before_content', array( 'TrussUtilities', 'breadcrumbs' ) );
 	}
@@ -33,7 +35,7 @@ class TrussUtilities {
 	 * @access public
 	 * @return bool
 	 */
-	static function categorized_blog() {
+	public static function categorized_blog() {
 		if ( false === ( $all_the_cool_cats = get_transient( 'truss_categories' ) ) ) {
 
 			// Create an array of all the categories that are attached to posts.
@@ -66,8 +68,8 @@ class TrussUtilities {
 	 * @access public
 	 * @return void
 	 */
-	function category_transient_flusher() {
-		delete_transient( 'truss_categories' ); // Like, beat it. Dig?
+	public function category_transient_flusher() {
+		delete_transient( 'truss_categories' );
 	}
 
 	/**
@@ -82,22 +84,24 @@ class TrussUtilities {
 	 * @access public
 	 * @return void
 	 */
-	static function breadcrumbs() {
+	public static function breadcrumbs() {
 
 		// If Yoast Breadcrumbs are installed and enabled.
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
 			yoast_breadcrumb();
-		} return; ?>
+			return;
+		}
 
-		<?php
 		// Use BreadCrumbNavXT is available.
 		if ( function_exists( 'bcn_display' ) ) : ?>
 			<ul class="breadcrumbs">
 				<?php bcn_display(); ?>
 			</ul>
-		<?php return;
+		<?php
+			return;
 
-		endif; // End bcn check. ?>
+		endif; // End bcn check.
+		?>
 
 		<?php global $post; ?>
 
@@ -105,13 +109,13 @@ class TrussUtilities {
 
 		<?php if ( ! is_home() ) { ?>
 
-			<li><a href="<?php esc_attr_e( get_option( 'home' ) ); ?>"><?php esc_html_e( 'Home', 'clientname' ); ?></a></li>
+			<li><a href="<?php echo esc_attr( get_option( 'home' ) ); ?>"><?php esc_html_e( 'Home', '<%= text_domain %>' ); ?></a></li>
 
 			<?php if ( is_category() || is_single() ) : ?>
 
 				<?php if ( $categories = get_the_category() ) : ?>
 					<li>
-						<a href="<?php esc_attr_e( get_term_link( current( $categories ), 'category' ) ); ?>"><?php esc_html_e( current( $categories )->name ); ?></a>
+						<a href="<?php echo esc_attr( get_term_link( current( $categories ), 'category' ) ); ?>"><?php echo esc_html( current( $categories )->name ); ?></a>
 					</li>
 				<?php endif; ?>
 
@@ -125,26 +129,23 @@ class TrussUtilities {
 					$anc = get_post_ancestors( $post->ID );
 
 					foreach ( $anc as $ancestor ) : ?>
-
-						<li><a href="<?php esc_attr_e( get_permalink( $ancestor ) ); ?>"
-							   title="<?php esc_attr_e( get_the_title( $ancestor ) ); ?>"><?php echo get_the_title( $ancestor ); ?></a>
+						<li><a href="<?php echo esc_attr( get_permalink( $ancestor ) ); ?>" title="<?php echo esc_attr( get_the_title( $ancestor ) ); ?>"><?php echo esc_html( get_the_title( $ancestor ) ); ?></a>
 						</li>
-
 					<?php endforeach; ?>
 
-					<li class="current"><?php esc_html_e( get_the_title() ); ?></li>
+					<li class="current"><?php echo esc_html( get_the_title() ); ?></li>
 
 				<?php else : ?>
 
-					<li class="current"><?php esc_html_e( get_the_title() ); ?></li>
+					<li class="current"><?php echo esc_html( get_the_title() ); ?></li>
 
 				<?php endif; ?>
 			<?php endif; ?>
-<?php
-} elseif ( is_tag() ) {
-	single_tag_title();
-} elseif ( is_day() ) {
-?>
+		<?php
+		} elseif ( is_tag() ) {
+			single_tag_title();
+		} elseif ( is_day() ) {
+		?>
 			<li>Archive for <?php the_time( 'F jS, Y' ); ?></li>
 		<?php } elseif ( is_month() ) { ?>
 			<li>Archive for <?php the_time( 'F, Y' ); ?></li>
@@ -173,47 +174,19 @@ class TrussUtilities {
 		// Are there comments to navigate through?
 		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 		<nav class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'clientname' ); ?></h2>
+			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', '<%= text_domain %>' ); ?></h2>
 			<div class="nav-links">
 				<?php
-					if ( $prev_link = get_previous_comments_link( __( 'Older Comments', 'clientname' ) ) ) :
+					if ( $prev_link = get_previous_comments_link( esc_html__( 'Older Comments', '<%= text_domain %>' ) ) ) :
 						printf( '<div class="nav-previous">%s</div>', $prev_link );
 					endif;
 
-					if ( $next_link = get_next_comments_link( __( 'Newer Comments', 'clientname' ) ) ) :
+					if ( $next_link = get_next_comments_link( esc_html__( 'Newer Comments', '<%= text_domain %>' ) ) ) :
 						printf( '<div class="nav-next">%s</div>', $next_link );
 					endif;
 				?>
-			</div><!-- .nav-links -->
-		</nav><!-- .comment-navigation -->
+			</div>
+		</nav>
 		<?php endif;
 	}
-
-}
-
-/**
- * Utility method for truss_breadcrumbs function.
- *
- * @access public
- */
-function truss_breadcrumbs() {
-	TrussUtilities::breadcrumbs();
-}
-
-/**
- * Utility method for truss_categorized_blog function.
- *
- * @access public
- */
-function truss_categorized_blog() {
-	TrussUtilities::categorized_blog();
-}
-
-/**
- * Utility method for truss_comment_nav function.
- *
- * @access public
- */
-function truss_comment_nav() {
-	TrussUtilities::comment_nav();
 }

@@ -6,7 +6,7 @@
  *
  * @since 1.0.0
  *
- * @package 
+ * @package
  * @subpackage Comments
  */
 
@@ -20,7 +20,7 @@ if ( post_password_required() ) : ?>
 
 <section id="comments">
 	<div class="notice">
-		<p class="bottom"><?php esc_html_e( 'This post is password protected. Enter the password to view comments.', 'clientname' ); ?></p>
+		<p class="bottom"><?php esc_html_e( 'This post is password protected. Enter the password to view comments.', '<%= text_domain %>' ); ?></p>
 	</div>
 </section>
 
@@ -35,7 +35,7 @@ do_action( 'truss_comments_before' ); ?>
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
-				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'clientname' ),
+				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', '<%= text_domain %>' ),
 					number_format_i18n( get_comments_number() ), get_the_title() );
 			?>
 		</h2>
@@ -60,7 +60,7 @@ do_action( 'truss_comments_before' ); ?>
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'clientname' ); ?></p>
+		<p class="no-comments"><?php _e( 'Comments are closed.', '<%= text_domain %>' ); ?></p>
 	<?php endif; ?>
 
 	<?php comment_form(); ?>

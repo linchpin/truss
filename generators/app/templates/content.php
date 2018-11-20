@@ -46,7 +46,7 @@ do_action( 'truss_post_before' ); ?>
 
 		<footer>
 			<?php wp_link_pages( array(
-				'before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'clientname' ),
+				'before' => '<nav id="page-nav"><p>' . __( 'Pages:', '<%= text_domain %>' ),
 				'after'  => '</p></nav>',
 			) ); ?>
 			<div class="tags"><?php the_tags(); ?></div>

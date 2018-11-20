@@ -1,21 +1,23 @@
 <?php
 /**
- * TrussMenu class.
+ * Add Truss related Menu items.
  *
  * @package Truss
  * @since 1.0.0
  */
 
+namespace Truss;
+
 /**
  * Class TrussMenu
  */
-class TrussMenu {
+class Menu {
 	/**
 	 * Construct.
 	 *
 	 * @access public
 	 */
-	function __construct() {
+	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 999 );
 		add_action( 'wp_before_admin_bar_render', array( $this, 'add_links' ) );
 	}
@@ -40,12 +42,12 @@ class TrussMenu {
 		global $wp_admin_bar;
 
 		if ( strpos( site_url(), 'staging' ) !== false ) {
-			$title  = __( 'Staging', 'launchpad' );
+			$title  = esc_html__( 'Staging', '<%= text_domain %>' );
 			$meta   = array(
 				'class'    => 'staging',
 			);
 		} else {
-			$title  = __( 'Production', 'launchpad' );
+			$title  = esc_html__( 'Production', '<%= text_domain %>' );
 			$meta   = array(
 				'class'    => 'production',
 			);
@@ -56,7 +58,7 @@ class TrussMenu {
 			'id'     => 'staging_flag',
 			'title'  => '',
 			'href'   => '#',
-			'meta'	 => $meta,
+			'meta'   => $meta,
 		);
 
 		$wp_admin_bar->add_menu( $args );

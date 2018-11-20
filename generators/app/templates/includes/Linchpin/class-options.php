@@ -10,19 +10,21 @@
  * @since 1.0
  */
 
+namespace Truss;
+
 /**
- * Class TrussOptions
+ * Class Options
  */
-class TrussOptions {
+class Options {
 
 	/**
 	 * Construct
 	 */
-	function __construct() {
-		add_action( 'admin_init',            array( $this, 'init' ) );
-		add_action( 'admin_menu',            array( $this, 'theme_options_add_page' ) );
+	public function __construct() {
+		add_action( 'admin_init', array( $this, 'init' ) );
+		add_action( 'admin_menu', array( $this, 'theme_options_add_page' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'admin_notices',         array( $this, 'validate_required_settings' ) );
+		add_action( 'admin_notices', array( $this, 'validate_required_settings' ) );
 
 		add_action( 'wp_head', array( $this, 'wp_head' ) );
 		add_action( 'wp_footer', array( $this, 'wp_footer' ) );

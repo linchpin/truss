@@ -6,8 +6,8 @@
  *
  * @since 1.0.0
  *
- * @package 
- * @subpackage Templates
+ * @package
+ * @subpackage TemplateParts
  */
 
 global $truss_templates_with_title;
@@ -29,14 +29,14 @@ do_action( 'truss_post_before' ); ?>
 	do_action( 'truss_post_entry_content_before' ); ?>
 
 	<div class="entry-content">
-		<?php the_content( __( 'Continue reading...', 'clientname' ) ); ?>
+		<?php the_content( esc_html__( 'Continue reading...', '<%= text_domain %>' ) ); ?>
 	</div>
 
 	<?php
 	/** This action is documented in includes/Linchpin/truss-hooks.php */
-	do_action( 'truss_post_entry_content_after' ); ?>
+	do_action( 'truss_post_entry_content_after' );
+	?>
 
-	<?php get_template_part( 'partials/edit-controls' ); ?>
 </article>
 
 <?php

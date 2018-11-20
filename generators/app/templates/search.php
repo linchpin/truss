@@ -14,7 +14,7 @@
 	<div class="grid-x container">
 	<div class="small-12 large-8 cell" role="main">
 
-		<h2><?php esc_html_e( 'Search Results for', 'clientname' ); ?>
+		<h2><?php esc_html_e( 'Search Results for', '<%= text_domain %>' ); ?>
 			"<?php esc_html_e( get_search_query() ); ?>"</h2>
 
 		<?php

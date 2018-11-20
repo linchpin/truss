@@ -1,12 +1,12 @@
 <?php
 /**
- * Loop Template
+ * Page Loop Template
  *
- * The default template for displaying looped content.
+ * The default template for displaying looped content within pages
  *
  * @since 1.0.0
  *
- * @package 
+ * @package
  * @subpackage Templates
  */
 
@@ -38,9 +38,6 @@ do_action( 'truss_post_before' ); ?>
 			do_action( 'truss_post_entry_content_before' ); ?>
 
 			<?php the_excerpt(); ?>
-
-			<?php get_template_part( 'partials/edit-controls' ); ?>
-
 			<?php
 			/** This action is documented in includes/Linchpin/truss-hooks.php */
 			do_action( 'truss_post_entry_content_after' ); ?>

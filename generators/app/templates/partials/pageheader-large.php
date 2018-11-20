@@ -1,11 +1,11 @@
 <?php
 /**
- * Beefy Header
+ * Large Header
  *
  * @since 1.0.0
  *
- * @package 
- * @subpackage Partials
+ * @package
+ * @subpackage TemplateParts
  */
 ?>
 

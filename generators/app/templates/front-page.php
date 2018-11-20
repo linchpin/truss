@@ -7,7 +7,7 @@
  *
  * @since 1.0.0
  *
- * @package 
+ * @package    <%= client_name %>
  * @subpackage Templates
  */
 
@@ -15,7 +15,7 @@
 
 <?php get_header(); ?>
 
-	<?php get_template_part( 'hero' ); ?>
+	<?php get_template_part( 'partials/hero' ); ?>
 
 	<div class="grid-container">
         <div class="grid-x">

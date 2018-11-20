@@ -63,7 +63,7 @@
 							</div>
 
 							<div class="small-12 medium-6 cell text-right">
-								<?php echo sprintf( '&copy; %s %s. All Rights Reserved.', date( 'Y' ), __( get_bloginfo( 'name' ), 'clientname' ) ); ?>
+								<?php echo sprintf( '&copy; %s %s. All Rights Reserved.', date( 'Y' ), __( get_bloginfo( 'name' ), '<%= text_domain %>' ) ); ?>
 							</div>
 						</div>
 

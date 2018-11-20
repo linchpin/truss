@@ -3,7 +3,7 @@
  * ClientName
  *
  * @author Linchpin
- * @package ClientName
+ * @package <%= class_name %>
  *
  */
 
@@ -34,24 +34,22 @@ class ClientName {
 	 * @access public
 	 * @return void
 	 */
-	function __construct() {
+	public function __construct() {
 
 		$foundation = new Foundation();
-		$truss  = new Truss();
+		$truss      = new Truss();
 
-		add_filter( 'upload_mimes',			array( $this, 'upload_mimes' ) );
-		add_filter( 'admin_footer_text', 	array( $this, 'admin_footer_text' ) );
+		add_filter( 'upload_mimes', array( $this, 'upload_mimes' ) );
+		add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ) );
 		add_filter( 'site_icon_image_sizes', array( $this, 'site_icon_image_sizes' ) );
-		add_filter( 'site_icon_meta_tags',   array( $this, 'site_icon_meta_tags' ) );
-
-		add_action( 'wp_enqueue_scripts', 	array( $this, 'wp_enqueue_scripts') );
-		add_action( 'wp_enqueue_scripts', 	array( $this, 'wp_enqueue_styles') );
-		add_action( 'init', 			  	array( $this, 'init' ) );
-		add_action( 'widgets_init', 	  	array( $this, 'widgets_init' ) );
-		add_action( 'customize_register',	array( $this, 'customize_register' ) );
-
-		add_action( 'after_setup_theme', 	array( $this, 'after_setup_theme' ) );
-		add_action( 'after_setup_theme',	array( $this, 'add_editor_styles' ) );
+		add_filter( 'site_icon_meta_tags', array( $this, 'site_icon_meta_tags' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_styles' ) );
+		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
+		add_action( 'customize_register', array( $this, 'customize_register' ) );
+		add_action( 'after_setup_theme', array( $this, 'after_setup_theme' ) );
+		add_action( 'after_setup_theme', array( $this, 'add_editor_styles' ) );
 	}
 
 	/**
@@ -60,13 +58,15 @@ class ClientName {
 	 * @access public
 	 * @return void
 	 */
-	function init() {
-		register_nav_menus( array(
-		    'top-bar' 			=> 'Top Bar', // registers the menu in the WordPress admin menu editor
-		    'footer' 			=> 'Footer',
-		    'mobile-off-canvas' => 'Mobile (Off Canvas)',
-		    'social'            => 'Social Links',
-		));
+	public function init() {
+		register_nav_menus(
+			array(
+				'top-bar'           => esc_html__( 'Top Bar', '<%= text_domain %>' ), // registers the menu in the WordPress admin menu editor
+				'footer'            => esc_html__( 'Footer', '<%= text_domain %>' ),
+				'mobile-off-canvas' => esc_html__( 'Mobile (Off Canvas)', '<%= text_domain %>' ),
+				'social'            => esc_html__( 'Social Links', '<%= text_domain %>' ),
+			)
+		);
 	}
 
 	/**
@@ -77,15 +77,15 @@ class ClientName {
 	 * @return void
 	 */
 	function admin_footer_text() {
-		echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Created by <a href="http://linchpin.agency/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Brian Fischer</a> and augmented by the <a href="http://github.com/linchpin/truss/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Truss</a>';
+		echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Created by <a href="http://linchpin.com/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Linchpin</a> and augmented by the <a href="http://github.com/linchpin/truss/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Truss</a>';
 	}
 
 	/**
 	 * Save custom favicon sizes from customizer upload
 	 *
 	 * @access public
-	 * @param $sizes Array of image sizes to save.
-	 * @return Merged array containing custom favicon sizes.
+	 * @param  $sizes /Array of image sizes to save.
+	 * @return $sizes /Array Merged array containing custom favicon sizes.
 	 */
 	function site_icon_image_sizes( $sizes ) {
 		foreach ( $this->apple_favicon_sizes as $apple_favicon_size  ) {
@@ -143,9 +143,9 @@ class ClientName {
 		) );
 
 		register_sidebar( array(
-			'name'          => 'Page Widgets',
+			'name'          => esc_html__( 'Page Widgets', '<%= text_domain %?>' ),
 			'id'            => 'page-widgets',
-			'description'   => 'Widgets that are displayed on interior pages.',
+			'description'   => esc_html__( 'Widgets that are displayed on interior pages.', '<%= text_domain %?>' ),
 			'class'         => 'page-widgets',
 			'before_widget' => '<div id="%1$s" class="%2$s">',
 			'after_widget'  => '</div>',
@@ -154,9 +154,9 @@ class ClientName {
 		) );
 
 		register_sidebar( array(
-			'name'          => 'Footer Widgets',
+			'name'          => esc_html__( 'Footer Widgets', '<%= text_domain %?>' ),
 			'id'            => 'footer-widgets',
-			'description'   => 'Widgets that are displayed in the footer.',
+			'description'   => esc_html__( 'Widgets that are displayed in the footer.', '<%= text_domain %?>' ),
 			'class'         => 'footer-widgets',
 			'before_widget' => '<div id="%1$s" class="right %2$s">',
 			'after_widget'  => '</div>',
@@ -228,7 +228,7 @@ class ClientName {
 
 		$wp_customize->add_section (
 			'clientname_logo', array(
-				'title' 	=> __('Site Logo', 'ClientName' ),
+				'title' 	=> esc_html__( 'Site Logo', '<%= text_domain %?>' ),
 				'priority' 	=> 80,
 			)
 		);
@@ -243,7 +243,7 @@ class ClientName {
 
 		$wp_customize->add_control (
 			new WP_Customize_Image_Control( $wp_customize, 'logo_upload', array (
-				'label'		=> __('Site Logo', 'ClientName' ),
+				'label'		=> esc_html__( 'Site Logo', '<%= text_domain %?>' ),
 				'section' 	=> 'clientname_logo',
 				'settings' 	=> 'clientname_theme_options[logo_upload]',
 				'extensions'	=> array( 'jpg', 'jpeg', 'png', 'gif', 'svg' ),

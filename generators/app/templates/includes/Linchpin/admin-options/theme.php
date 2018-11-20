@@ -36,7 +36,7 @@
 			<th scope="row"><?php esc_html_e( 'Terms & Conditions', 'truss' ); ?></th>
 			<td>
 				<div>
-					<label class="screen-reader-text" for="footer_info"><span><?php esc_html_e( 'Terms & Conditions', 'clientname' ); ?></span></label>
+					<label class="screen-reader-text" for="footer_info"><span><?php esc_html_e( 'Terms & Conditions', '<%= text_domain %>' ); ?></span></label>
 
 					<?php $terms = '';
 

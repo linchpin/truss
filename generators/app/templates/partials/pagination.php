@@ -6,8 +6,8 @@
  *
  * @since 1.0.0
  *
- * @package 
- * @subpackage Partials
+ * @package
+ * @subpackage TemplateParts
  */
 
 ?>
@@ -18,8 +18,8 @@
 	truss_pagination( '&laquo;', '&raquo;' );
 elseif ( is_paged() ) : ?>
 	<nav id="post-nav">
-		<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'clientname' ) ); ?></div>
-		<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'clientname' ) ); ?></div>
+		<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', '<%= text_domain %>' ) ); ?></div>
+		<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', '<%= text_domain %>' ) ); ?></div>
 	</nav>
 <?php endif; ?>
 

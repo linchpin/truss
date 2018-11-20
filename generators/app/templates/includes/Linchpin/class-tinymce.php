@@ -3,13 +3,15 @@
  * Modifications to the TinyMCE editor.
  *
  * @package Truss
- * @since 1.2.0
+ * @since   1.2.0
  */
+
+namespace Truss;
 
 /**
  * Class truss_TinyMCE
  */
-class truss_TinyMCE {
+class TinyMCE {
 
 	/**
 	 * Construct.
@@ -18,7 +20,7 @@ class truss_TinyMCE {
 	 *
 	 * @access public
 	 */
-	function __construct() {
+	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 	}
 
@@ -33,5 +35,3 @@ class truss_TinyMCE {
 		add_editor_style( 'css/admin-editor.css' );
 	}
 }
-
-$truss_tinymce = new truss_TinyMCE();

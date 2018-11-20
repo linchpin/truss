@@ -4,9 +4,9 @@
  *
  * Template for display all default archive pages.
  *
- * @since 1.0.0
+ * @since      <%= theme_version %>
  *
- * @package 
+ * @package    <%= class_name %>
  * @subpackage Templates
  */
 
@@ -17,16 +17,17 @@
 <div class="grid-x container">
 	<div class="small-12 medium-8 cell" role="main">
 
-
 		<?php
 		/** This action is documented in includes/Linchpin/truss-hooks.php */
-		do_action( 'truss_content_before' ); ?>
+		do_action( 'truss_content_before' );
+		?>
 
 		<?php if ( have_posts() ) : ?>
 
 			<?php
 			/** This action is documented in includes/Linchpin/truss-hooks.php */
-			do_action( 'truss_loop_before' ); ?>
+			do_action( 'truss_loop_before' );
+			?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
@@ -36,7 +37,8 @@
 
 			<?php
 			/** This action is documented in includes/Linchpin/truss-hooks.php */
-			do_action( 'truss_loop_after' ); ?>
+			do_action( 'truss_loop_after' );
+			?>
 
 		<?php else : ?>
 
@@ -46,9 +48,10 @@
 
 		<?php
 		/** This action is documented in includes/Linchpin/truss-hooks.php */
-		do_action( 'truss_content_after' ); ?>
+		do_action( 'truss_content_after' );
+		?>
 
-		<?php get_template_part( 'includes/partials/pagination' ); ?>
+		<?php get_template_part( 'partials/pagination' ); ?>
 	</div>
 	<?php get_sidebar(); ?>
 </div>

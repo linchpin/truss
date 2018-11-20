@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Beefy Header
+ * Template Name: Large Header
  *
  * @since 1.0.0
  *
@@ -12,7 +12,7 @@
 
 <?php get_header(); ?>
 
-	<?php get_template_part( 'partials/pageheader', 'beefy' ); ?>
+	<?php get_template_part( 'partials/pageheader', 'large' ); ?>
 
 	<div class="grid-x container">
 

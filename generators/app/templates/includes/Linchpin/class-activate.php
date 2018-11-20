@@ -8,15 +8,17 @@
  * @since 1.0
  */
 
+namespace Truss;
+
 /**
  * Class TrussActivate
  */
-class TrussActivate {
+class Activate {
 
 	/**
 	 *  Construct
 	 */
-	function __construct() {
+	public function __construct() {
 		add_filter( 'option_page_capability_truss_activation_options', array( $this, 'activation_options_page_capability' ) );
 	}
 
@@ -27,7 +29,7 @@ class TrussActivate {
 	 * @param mixed $capability The capability needed to see this page.
 	 * @return string
 	 */
-	function activation_options_page_capability( $capability ) {
+	public function activation_options_page_capability( $capability ) {
 		return 'edit_theme_options';
 	}
 }
@@ -45,7 +47,7 @@ function truss_add_help_tabs_to_theme_page() {
 	$screen = get_current_screen();
 	$screen->add_help_tab( array(
 		'id' => 'truss-activation-help', // This should be unique for the screen.
-		'title' => 'Prepare for Launch',
-		'content' => '<p>Within this page contains the basic setup options for your theme.</p>',
+		'title' => esc_html__( 'Prepare for Launch', '<%= text_domain %>' ),
+		'content' => printf( '<p>%s</p>', esc_html__( 'Within this page contains the basic setup options for your theme.', '<%= text_domain %>' ) )
 	) );
 }

@@ -4,7 +4,7 @@
  *
  * @since 1.0.0
  *
- * @package 
+ * @package    <%= class_name %>
  * @subpackage Templates
  */
 
@@ -52,16 +52,19 @@
 
 		<?php
 		/** This action is documented in includes/Linchpin/truss-hooks.php */
-		do_action( 'truss_layout_start' ); ?>
+		do_action( 'truss_layout_start' );
+		?>
 
 		<?php
 		/** This action is documented in includes/Linchpin/truss-hooks.php */
-		do_action( 'truss_header_before' ); ?>
+		do_action( 'truss_header_before' );
+		?>
 
 		<?php get_template_part( 'partials/navigation' ); ?>
 
 		<?php
 		/** This action is documented in includes/Linchpin/truss-hooks.php */
-		do_action( 'truss_header_after' ); ?>
+		do_action( 'truss_header_after' );
+		?>
 
 		<section role="document">

@@ -25,11 +25,11 @@
 
                 <section class="error-404 not-found">
                     <header class="page-header">
-                        <h1 class="page-title"><?php esc_html_e( 'Oops! That page cannot be found.', 'clientname' ); ?></h1>
+                        <h1 class="page-title"><?php esc_html_e( 'Oops! That page cannot be found.', '<%= text_domain %>' ); ?></h1>
                     </header>
 
                     <div class="page-content">
-                        <p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'clientname' ); ?></p>
+                        <p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', '<%= text_domain %>' ); ?></p>
 
                         <?php get_search_form(); ?>
 
@@ -39,7 +39,7 @@
 
                             <?php if ( truss_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
                                 <div class="widget widget_categories">
-                                    <h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'clientname' ); ?></h2>
+                                    <h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', '<%= text_domain %>' ); ?></h2>
                                     <ul>
                                     <?php
                                         wp_list_categories( array(
@@ -62,13 +62,13 @@
                             do_action( 'truss_content_before' ); ?>
 
                             <div class="error">
-                                <p class="bottom"><?php esc_html_e( 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'clientname' ); ?></p>
+                                <p class="bottom"><?php esc_html_e( 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', '<%= text_domain %>' ); ?></p>
                             </div>
-                            <p><?php esc_html_e( 'Please try the following:', 'clientname' ); ?></p>
+                            <p><?php esc_html_e( 'Please try the following:', '<%= text_domain %>' ); ?></p>
                             <ul>
-                                <li><?php esc_html_e( 'Check your spelling', 'clientname' ); ?></li>
-                                <li><?php printf( wp_kses( __( 'Return to the <a href="%s">home page</a>', 'clientname' ), array( 'a' => array( 'href' ) ) ), esc_url( home_url() ) ); ?></li>
-                                <li><?php printf( wp_kses( __( 'Click the <a href="%s">Back</a> button', 'clientname' ), array( 'a' => array( 'href' ) ) ), esc_attr( 'javascript:history.back();' ) ); ?></li>
+                                <li><?php esc_html_e( 'Check your spelling', '<%= text_domain %>' ); ?></li>
+                                <li><?php printf( wp_kses( __( 'Return to the <a href="%s">home page</a>', '<%= text_domain %>' ), array( 'a' => array( 'href' ) ) ), esc_url( home_url() ) ); ?></li>
+                                <li><?php printf( wp_kses( __( 'Click the <a href="%s">Back</a> button', '<%= text_domain %>' ), array( 'a' => array( 'href' ) ) ), esc_attr( 'javascript:history.back();' ) ); ?></li>
                             </ul>
                         </div>
 

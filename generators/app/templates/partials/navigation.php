@@ -6,8 +6,8 @@
  *
  * @since 1.0.0
  *
- * @package 
- * @subpackage Partials
+ * @package    Truss
+ * @subpackage TemplateParts
  */
 
 ?>
@@ -20,10 +20,10 @@ if ( isset( $options['logo_upload'] ) ) {
 ?>
 <nav class="top-bar show-for-small-only">
 	<section class="top-bar-title">
-		<a href="<?php esc_attr_e( home_url() ); ?>">
+		<a href="<?php echo esc_attr( home_url() ); ?>">
 			<?php if ( ! empty( $logo ) ) : ?>
-				<img src="<?php esc_attr_e( $options['logo_upload'] ); ?>"
-				     alt="<?php esc_attr_e( bloginfo( 'name' ) ); ?>"/>
+				<img src="<?php echo esc_attr( $options['logo_upload'] ); ?>"
+				     alt="<?php echo esc_attr( bloginfo( 'name' ) ); ?>"/>
 			<?php else : ?>
 				<?php bloginfo( 'name' ); ?>
 			<?php endif; ?>
@@ -35,13 +35,13 @@ if ( isset( $options['logo_upload'] ) ) {
 	</section>
 </nav>
 
-<div id="main-menu" class="show-for-medium" data-parent="<?php esc_attr_e( $post->post_type ); ?>">
+<div id="main-menu" class="show-for-medium" data-parent="<?php echo esc_attr( $post->post_type ); ?>">
 	<div class="top-bar" data-topbar="">
 		<div class="top-bar-title">
-			<a href="<?php esc_attr_e( home_url() ); ?>">
+			<a href="<?php echo esc_attr( home_url() ); ?>">
 				<?php if ( ! empty( $logo ) ) : ?>
-					<img src="<?php esc_attr_e( $options['logo_upload'] ); ?>"
-					     alt="<?php esc_attr_e( get_bloginfo( 'name' ) ); ?>" />
+					<img src="<?php echo esc_attr( $options['logo_upload'] ); ?>"
+					     alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
 				<?php else : ?>
 					<?php bloginfo( 'name' ); ?>
 				<?php endif; ?>
