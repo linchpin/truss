@@ -13,13 +13,13 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'theme_name',
         message: 'Theme name',
-        default: 'Linchpin Rebar'
+        default: 'Linchpin Truss'
       },
       {
         type: 'input',
         name: 'theme_description',
         message: 'Theme description',
-        default: 'WordPress theme built on Linchpin Rebar Yeoman scaffold'
+        default: 'WordPress theme built on Linchpin Truss Yeoman scaffold'
       },
       {
         type: 'input',
@@ -82,7 +82,8 @@ module.exports = class extends Generator {
       theme_author_uri: this.answers.theme_author_uri,
       class_name: this.class_name.class_name,
       text_domain: this.domainprefix.text_domain,
-      prefix: this.domainprefix.prefix
+      prefix: this.domainprefix.prefix,
+      prefix_caps: this.domainprefix.prefix.toUpperCase()
     });
   }
 

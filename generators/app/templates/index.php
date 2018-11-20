@@ -4,9 +4,9 @@
  *
  * Catch all template file within the Template Hierarchy.
  *
- * @since 1.0
+ * @since <%= theme_version %>
  *
- * @package 
+ * @package <%= class_name %>
  * @subpackage Templates
  */
 

@@ -2,9 +2,9 @@
 /**
  * Header Template
  *
- * @since 1.0.0
+ * @since <%= theme_version %>
  *
- * @package    <%= class_name %>
+ * @package <%= class_name %>
  * @subpackage Templates
  */
 

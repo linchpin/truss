@@ -4,9 +4,9 @@
  *
  * Template for display all default archive pages.
  *
- * @since      <%= theme_version %>
+ * @since <%= theme_version %>
  *
- * @package    <%= class_name %>
+ * @package <%= class_name %>
  * @subpackage Templates
  */
 

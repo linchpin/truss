@@ -4,9 +4,9 @@
  *
  * Based sidebar template
  *
- * @since 1.0.0
+ * @since <%= theme_version %>
  *
- * @package
+ * @package <%= class_name %>
  * @subpackage Sidebars
  */
 
@@ -24,5 +24,4 @@
 
 </aside>
 
-<?php
-do_action( 'truss_after_sidebar' );
+<?php do_action( 'truss_after_sidebar' );

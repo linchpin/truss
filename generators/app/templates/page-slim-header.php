@@ -4,9 +4,9 @@
  *
  * Template for pages with a smaller header
  *
- * @since 1.0.0
+ * @since <%= theme_version %>
  *
- * @package
+ * @package <%= class_name %>
  * @subpackage Templates
  */
 

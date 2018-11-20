@@ -1,2 +1,4 @@
 coverage
 **/templates
+generators/app/index.js
+generators/app/includes/codemirror

@@ -1,13 +1,13 @@
 <?php
 /**
- * ClientName
+ * <%= theme_name %>
  *
- * @author Linchpin
+ * @author <%= theme_author %>
  * @package <%= class_name %>
  *
  */
 
-class ClientName {
+class <%= class_name %> {
 
 	public $apple_favicon_sizes = array(
 		57,
