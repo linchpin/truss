@@ -6,7 +6,7 @@
  *
  * @since 1.0.0
  *
- * @package 
+ * @package
  * @subpackage Sidebars
  */
 
@@ -24,4 +24,5 @@
 
 </aside>
 
-<?php do_action( 'truss_after_sidebar' );
+<?php
+do_action( 'truss_after_sidebar' );

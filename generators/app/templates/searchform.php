@@ -6,7 +6,7 @@
  *
  * @since 1.0.0
  *
- * @package 
+ * @package
  * @subpackage Search
  */
 
@@ -35,4 +35,5 @@
 	</div>
 </form>
 
-<?php do_action( 'truss_searchform_after' );
+<?php
+do_action( 'truss_searchform_after' );
