@@ -38,7 +38,8 @@
 				<div>
 					<label class="screen-reader-text" for="footer_info"><span><?php esc_html_e( 'Terms & Conditions', '<%= text_domain %>' ); ?></span></label>
 
-					<?php $terms = '';
+					<?php
+					$terms = '';
 
 					if ( ! empty( $truss_options['terms_conditions'] ) ) {
 						$terms = $truss_options['terms_conditions'];

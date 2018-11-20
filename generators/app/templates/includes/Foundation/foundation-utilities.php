@@ -50,8 +50,8 @@ class FoundationUtilities {
 			'prev_next' => false,
 			'type'      => 'array',
 			'prev_next' => true,
-			'prev_text' => __( $prev_text ),
-			'next_text' => __( $next_text ),
+			'prev_text' => esc_html__( $prev_text ),
+			'next_text' => esc_html__( $next_text ),
 		) );
 
 		if ( is_array( $pages ) ) {

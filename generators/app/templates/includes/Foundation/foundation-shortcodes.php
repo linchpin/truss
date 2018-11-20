@@ -29,7 +29,7 @@ class FoundationShortcodes {
 	function fixed_img_caption_shortcode( $attr, $content = null ) {
 	    if ( ! isset( $attr['caption'] ) ) {
 	        if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
-	            $content = $matches[1];
+	            $content         = $matches[1];
 	            $attr['caption'] = trim( $matches[2] );
 	        }
 	    }
@@ -40,9 +40,9 @@ class FoundationShortcodes {
 	    }
 
 	    shortcode_atts( array(
-	        'id'    => '',
-	        'align' => 'alignnone',
-	        'width' => '',
+	        'id'      => '',
+	        'align'   => 'alignnone',
+	        'width'   => '',
 	        'caption' => '',
 	    ), $attr );
 

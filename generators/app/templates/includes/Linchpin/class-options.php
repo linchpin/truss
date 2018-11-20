@@ -51,7 +51,7 @@ class Options {
 	function wp_head() {
 		$truss_options = truss_get_theme_options();
 
-		if( ! empty ( $truss_options['additional_header_scripts'] ) ) {
+		if  ( ! empty ( $truss_options['additional_header_scripts'] ) ) {
 			echo wp_kses( $truss_options['additional_header_scripts'], array(
 				'script' => array(
 					'src' => array(),
@@ -78,24 +78,26 @@ class Options {
 	function wp_footer() {
 		$truss_options = truss_get_theme_options();
 
-		if( ! empty ( $truss_options['additional_footer_scripts'] ) ) {
-			echo wp_kses( $truss_options['additional_footer_scripts'], array(
-				'script' => array(
-					'src' => array(),
-					'async'=> array(),
-			        'type' => array()
-			    ),
-			    'img'    => array(
-			    	'src' => array(),
-                    'height' => array(),
-                    'width' => array(),
-                    'style' => array(),
-                    'alt' => array()
-                ),
-				'div' => array(
-					'style' => array()
+		if ( ! empty( $truss_options['additional_footer_scripts'] ) ) {
+			echo wp_kses( $truss_options['additional_footer_scripts'],
+				array(
+					'script' => array(
+						'src'   => array(),
+						'async' => array(),
+						'type'  => array(),
+					),
+					'img'    => array(
+						'src'    => array(),
+						'height' => array(),
+						'width'  => array(),
+						'style'  => array(),
+						'alt'    => array(),
+					),
+					'div'    => array(
+						'style' => array(),
+					),
 				)
-			) );
+			);
 		}
 	}
 
@@ -119,7 +121,6 @@ class Options {
 		$default_theme_options = array(
 			'additional_footer_scripts' => '',
 			'additional_header_scripts' => '',
-			'typekit_async'             => false,
 		);
 
 		return apply_filters( 'truss_default_theme_options', $default_theme_options );
@@ -132,8 +133,8 @@ class Options {
 	function theme_options_add_page() {
 
 		$theme_page = add_theme_page(
-			__( 'Additional Options', 'truss' ),
-			__( 'Additional Options', 'truss' ),
+			esc_html__( 'Additional Options', '<%= text_domain %>' ),
+			esc_html__( 'Additional Options', '<%= text_domain %>' ),
 			'edit_theme_options',
 			'theme_options',
 			array( &$this, 'theme_options_render_page' )
@@ -145,182 +146,180 @@ class Options {
 
 	/**
 	 * Render our theme options page. Trying to match as many of the common structures
-	 * and styles within the wordpress admin. The more we stay inline with the admin
+	 * and styles within the WordPress admin. The more we stay inline with the admin
 	 * the more likely we are to not confuse the client.
 	 *
 	 * @since 1.0
 	 */
-function theme_options_render_page() {
-	global $truss_options, $linchpin_classes_dir;
-	?>
-	<div class="wrap">
-		<div id="truss-wrap">
-
-		<?php
-
-		$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'display_options';
-
-		$current_theme = wp_get_theme();
-
+	function theme_options_render_page() {
+		global $truss_options, $linchpin_classes_dir;
 		?>
+		<div class="wrap">
+			<div id="truss-wrap">
 
-		<h2 class="nav-tab-wrapper">
-			<a href="?page=theme_options&tab=display_options"
-			   class="nav-tab <?php echo ( 'display_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Footer Content', 'truss' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
-			<a href="?page=theme_options&tab=script_options"
-			   class="nav-tab <?php echo ( 'script_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Scripts', 'truss' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
-		</h2>
+			<?php
 
-		<?php settings_errors(); ?>
+			$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'display_options';
 
-		<form method="post" action="options.php">
+			$current_theme = wp_get_theme();
 
-			<?php settings_fields( 'truss_options' );
-			$truss_options         = truss_get_theme_options();
-			$truss_default_options = self::get_default_theme_options();
+			?>
 
-			if ( 'display_options' === $active_tab ) {
-				include_once( 'truss-options/theme-options.php' );
-			} elseif ( 'script_options' === $active_tab ) {
-				include_once( 'truss-options/integration-options.php' );
-			} ?>
-			<input type="hidden" value="1" name="truss_theme_options[first_run]"/>
-			<?php submit_button(); ?>
-		</form>
-	</div>
-<?php
-}
+			<h2 class="nav-tab-wrapper">
+				<a href="?page=theme_options&tab=display_options"
+				class="nav-tab <?php echo ( 'display_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Footer Content', 'truss' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
+				<a href="?page=theme_options&tab=script_options" class="nav-tab <?php echo ( 'script_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Scripts', 'truss' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
+			</h2>
 
-/**
- * Enqueue all of our scripts and styles needed for our theme admin. These scripts will
- * be used in conjunction with the custom code utilized within core.js
- *
- * @todo We should add in wp-pointer settings to guide users through the setup process
- * @since 1.0
- *
- * @param string $hook Page we are currently viewing.
- */
-function admin_enqueue_scripts( $hook ) {
+			<?php settings_errors(); ?>
 
-	$scripts = array();
-	$styles  = array();
+			<form method="post" action="options.php">
 
-	if ( 'widgets.php' === $hook ) {
-		$scripts = array(
-			'admin-controls' => array( '/js/admin.js' ),
-		);
-	} else if ( 'appearance_page_theme_options' === $hook ) {
+				<?php settings_fields( 'truss_options' );
+				$truss_options         = truss_get_theme_options();
+				$truss_default_options = self::get_default_theme_options();
 
-		// Enqueue our javascript files.
-		$scripts = array(
-			'jquery-cookie'        => array( '/js/jquery.cookie/jquery.cookie.js', array( 'jquery' ) ),
-			'codemirror'           => array( '/includes/codemirror/lib/codemirror.js' ),
-			'codemirror-xml'       => array( '/includes/codemirror/mode/xml/xml.js' ),
-			'codemirror-css'       => array( '/includes/codemirror/mode/css/css.js' ),
-			'codemirror-js'        => array( '/includes/codemirror/mode/javascript/javascript.js' ),
-			'codemirror-htmlmixed' => array( '/includes/codemirror/mode/htmlmixed/htmlmixed.js' ),
-			'admin-controls'       => array( '/js/admin.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-tabs' ) ),
-		);
-
-		// Enqueue our styles
-		$styles = array(
-			'codemirror_css'         => array( '/includes/codemirror/lib/codemirror.css' ),
-			'launchpad_wp_admin_css' => array( '/css/admin.css' ),
-		);
-	}
-
-	wp_enqueue_script( array( 'jquery', 'editor', 'jquery-ui-core', 'jquery-ui-tabs', ) );
-
-	if ( ! empty( $scripts ) ) {
-		foreach ( $scripts as $key => $script ) {
-			if ( ! empty( $script[0] ) ) {
-
-				$dependencies = array();
-
-				if ( ! empty( $script[1] ) ) {
-					$dependencies = $script[1];
+				if ( 'display_options' === $active_tab ) {
+					include 'admin-options/theme.php';
+				} elseif ( 'script_options' === $active_tab ) {
+					include 'admin-options/integrations.php';
 				}
-
-				wp_register_script( $key, get_stylesheet_directory_uri() . $script[0], $dependencies );
-				wp_enqueue_script( $key );
-			}
-		}
-	}
-
-	if ( ! empty( $styles ) ) {
-		foreach ( $styles as $key => $style ) {
-			if ( ! empty( $style[0] ) ) {
-				wp_register_style( $key, get_stylesheet_directory_uri() . $style[0] );
-				wp_enqueue_style( $key );
-			}
-		}
-	}
-
-	$wp_sidebars = wp_get_sidebars_widgets(); // Get an array of ALL registered widgets.
-
-	$sidebars = array();
-
-	foreach ( $wp_sidebars as $key => $sidebar ) {
-		$sidebars[ 'sidebar_layout_' . $key ] = get_option( 'truss_sidebar_layout_' . $key, '' );
-	}
-
-	$sidebar_options = array(
-		'sidebars'          => $sidebars,
-		'save_layout_nonce' => wp_create_nonce( 'save_layout' ),
-	);
-
-	wp_localize_script( 'admin-controls', 'sidebars', $sidebar_options );
-
-} // END Admin Scripts.
-
-/**
- * Embed our javascript and styles needed for our theme
- * options page. This includes custom styling for our tabbed navigation
- *
- * @author aware
- */
-function admin_head() {
-global $truss_options;
-?>
-	<script type="text/javascript">
-		//<![CDATA[
-		var truss = {
-			ajaxurl: "<?php echo admin_url( 'admin-ajax.php' ); ?>",
-			nonce: "<?php echo wp_create_nonce( 'truss-nonce' ) ?>"
-		};
-		//]]>
-	</script>
-<?php
-}
-
-/**
- * admin_footer function.
- *
- * @author aware
- * @access public
- * @return void
- */
-function admin_footer() {
-?>
-	<script>
-		//<![CDATA[
-		var footer_editor = CodeMirror.fromTextArea(document.getElementById("additional_footer_scripts"), {
-			lineNumbers: true,
-			matchBrackets: true,
-			mode: "text/html",
-			tabMode: "indent"
-		});
-
-		var head_editor = CodeMirror.fromTextArea(document.getElementById("additional_header_scripts"), {
-			lineNumbers: true,
-			matchBrackets: true,
-			mode: "text/html",
-			tabMode: "indent"
-		});
-		//]]>
-	</script>
+				?>
+				<input type="hidden" value="1" name="truss_theme_options[first_run]"/>
+				<?php submit_button(); ?>
+			</form>
+		</div>
 	<?php
-}
+	}
+
+	/**
+	 * Enqueue all of our scripts and styles needed for our theme admin. These scripts will
+	 * be used in conjunction with the custom code utilized within core.js
+	 *
+	 * @todo We should add in wp-pointer settings to guide users through the setup process
+	 * @since 1.0
+	 *
+	 * @param string $hook Page we are currently viewing.
+	 */
+	public function admin_enqueue_scripts( $hook ) {
+
+		$scripts = array();
+		$styles  = array();
+
+		if ( 'widgets.php' === $hook ) {
+			$scripts = array(
+				'admin-controls' => array( '/js/admin.js' ),
+			);
+		} elseif ( 'appearance_page_theme_options' === $hook ) {
+
+			// Enqueue our javascript files.
+			$scripts = array(
+				'jquery-cookie'        => array( '/js/jquery.cookie/jquery.cookie.js', array( 'jquery' ) ),
+				'codemirror'           => array( '/includes/codemirror/lib/codemirror.js' ),
+				'codemirror-xml'       => array( '/includes/codemirror/mode/xml/xml.js' ),
+				'codemirror-css'       => array( '/includes/codemirror/mode/css/css.js' ),
+				'codemirror-js'        => array( '/includes/codemirror/mode/javascript/javascript.js' ),
+				'codemirror-htmlmixed' => array( '/includes/codemirror/mode/htmlmixed/htmlmixed.js' ),
+				'admin-controls'       => array( '/js/admin.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-tabs' ) ),
+			);
+
+			// Enqueue our styles
+			$styles = array(
+				'codemirror_css'         => array( '/includes/codemirror/lib/codemirror.css' ),
+				'launchpad_wp_admin_css' => array( '/css/admin.css' ),
+			);
+		}
+
+		wp_enqueue_script( array( 'jquery', 'editor', 'jquery-ui-core', 'jquery-ui-tabs', ) );
+
+		if ( ! empty( $scripts ) ) {
+			foreach ( $scripts as $key => $script ) {
+				if ( ! empty( $script[0] ) ) {
+
+					$dependencies = array();
+
+					if ( ! empty( $script[1] ) ) {
+						$dependencies = $script[1];
+					}
+
+					wp_register_script( $key, get_stylesheet_directory_uri() . $script[0], $dependencies );
+					wp_enqueue_script( $key );
+				}
+			}
+		}
+
+		if ( ! empty( $styles ) ) {
+			foreach ( $styles as $key => $style ) {
+				if ( ! empty( $style[0] ) ) {
+					wp_register_style( $key, get_stylesheet_directory_uri() . $style[0] );
+					wp_enqueue_style( $key );
+				}
+			}
+		}
+
+		$wp_sidebars = wp_get_sidebars_widgets(); // Get an array of ALL registered widgets.
+
+		$sidebars = array();
+
+		foreach ( $wp_sidebars as $key => $sidebar ) {
+			$sidebars[ 'sidebar_layout_' . $key ] = get_option( 'truss_sidebar_layout_' . $key, '' );
+		}
+
+		$sidebar_options = array(
+			'sidebars'          => $sidebars,
+			'save_layout_nonce' => wp_create_nonce( 'save_layout' ),
+		);
+
+		wp_localize_script( 'admin-controls', 'sidebars', $sidebar_options );
+
+	} // END Admin Scripts.
+
+	/**
+	 * Embed our javascript and styles needed for our theme
+	 * options page. This includes custom styling for our tabbed navigation
+	 *
+	 */
+	function admin_head() {
+	global $truss_options;
+	?>
+		<script type="text/javascript">
+			//<![CDATA[
+			var truss = {
+				ajaxurl: "<?php echo admin_url( 'admin-ajax.php' ); ?>",
+				nonce: "<?php echo wp_create_nonce( 'truss-nonce' ) ?>"
+			};
+			//]]>
+		</script>
+	<?php
+	}
+
+	/**
+	 * admin_footer function.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	function admin_footer() {
+	?>
+		<script>
+			//<![CDATA[
+			var footer_editor = CodeMirror.fromTextArea(document.getElementById("additional_footer_scripts"), {
+				lineNumbers: true,
+				matchBrackets: true,
+				mode: "text/html",
+				tabMode: "indent"
+			});
+
+			var head_editor = CodeMirror.fromTextArea(document.getElementById("additional_header_scripts"), {
+				lineNumbers: true,
+				matchBrackets: true,
+				mode: "text/html",
+				tabMode: "indent"
+			});
+			//]]>
+		</script>
+		<?php
+	}
 
 	/**
 	 * Validate our theme options.
@@ -336,25 +335,17 @@ function admin_footer() {
 	function validate_theme_option( $input = array(), $key = '', $required = '' ) {
 
 		if ( isset( $required ) && '' !== $required ) {
-			if ( 'google_analytics_id' === $key && isset( $input[ $key ] ) ) {
-				if ( preg_match( '/^ua-\d{4,9}-\d{1,4}$/i', $input[ $key ] ) ) {
-					$output[ $key ] = $input[ $key ];
-				} else {
-					return null;
+			if ( isset( $input[ $key ] ) ) {
+
+				// do some extra checks for backwards compatibilty with yes/no answers
+
+				if ( 'yes' === $input[ $key ] || 'true' === $input[ $key ] ) {
+					$input[ $key ] = true;
+				} elseif ( 'no' === $input[ $key ] || 'false' === $input[ $key ] ) {
+					$input[ $key ] = false;
 				}
 			} else {
-				if ( isset( $input[ $key ] ) ) {
-
-					// do some extra checks for backwards compatibilty with yes/no answers
-
-					if ( 'yes' === $input[ $key ] || 'true' === $input[ $key ] ) {
-						$input[ $key ] = true;
-					} elseif ( 'no' === $input[ $key ] || 'false' === $input[ $key ] ) {
-						$input[ $key ] = false;
-					}
-				} else {
-					return null;
-				}
+				return null;
 			}
 		} else {
 			if ( isset( $input[ $key ] ) && '' !== $key ) {
@@ -387,7 +378,6 @@ function admin_footer() {
 	function theme_options_validate( $input ) {
 
 		$options = array(
-			'typekit_id'                => '',
 			'additional_footer_scripts' => '',
 			'additional_header_scripts' => '',
 			'terms_conditions'          => '',
@@ -425,5 +415,5 @@ function admin_footer() {
  * @return array of theme options
  */
 function truss_get_theme_options() {
-	return get_option( 'truss_theme_options', TrussOptions::get_default_theme_options() );
+	return get_option( 'truss_theme_options', \Truss\Options::get_default_theme_options() );
 }

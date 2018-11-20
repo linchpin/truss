@@ -40,11 +40,11 @@ class Utilities {
 
 			// Create an array of all the categories that are attached to posts.
 			$all_the_cool_cats = get_categories( array(
-				'fields' => 'ids',
+				'fields'     => 'ids',
 				'hide_empty' => 1,
 
 				// We only need to know if there is more than one category.
-				'number' => 2,
+				'number'     => 2,
 			) );
 
 			// Count the number of categories that are attached to the posts.
@@ -170,7 +170,7 @@ class Utilities {
 	 * @access public
 	 * @return void
 	 */
-	static function comment_nav() {
+	public static function comment_nav() {
 		// Are there comments to navigate through?
 		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 		<nav class="navigation comment-navigation" role="navigation">
@@ -187,6 +187,24 @@ class Utilities {
 				?>
 			</div>
 		</nav>
-		<?php endif;
+		<?php
+		endif;
+	}
+
+	/**
+	 * Determine if we should show the header in the content or not
+	 *
+	 * @return bool
+	 */
+	public static function show_header_in_content() {
+
+		$templates_with_title = array(
+			'page-large-header.php',
+			'page-slim-header.php',
+		);
+
+		$templates_with_title = apply_filters( 'truss_templates_with_title', $templates_with_title );
+
+		return ! in_array( basename( get_page_template() ), $templates_with_title, true );
 	}
 }

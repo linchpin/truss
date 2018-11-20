@@ -18,14 +18,14 @@
 			"<?php echo esc_html( get_search_query() ); ?>"</h2>
 
 		<?php
-		/** This action is documented in includes/Linchpin/truss-hooks.php */
+		/** This action is documented in includes/Linchpin/utilities/hooks.php */
 		do_action( 'truss_content_before' );
 		?>
 
 		<?php if ( have_posts() ) : ?>
 
 			<?php
-			/** This action is documented in includes/Linchpin/truss-hooks.php */
+			/** This action is documented in includes/Linchpin/utilities/hooks.php */
 			do_action( 'truss_loop_before' );
 			?>
 
@@ -34,7 +34,7 @@
 			<?php endwhile; ?>
 
 			<?php
-			/** This action is documented in includes/Linchpin/truss-hooks.php */
+			/** This action is documented in includes/Linchpin/utilities/hooks.php */
 			do_action( 'truss_loop_after' );
 			?>
 
@@ -45,7 +45,7 @@
 		<?php endif; ?>
 
 		<?php
-		/** This action is documented in includes/Linchpin/truss-hooks.php */
+		/** This action is documented in includes/Linchpin/utilities/hooks.php */
 		do_action( 'truss_content_after' );
 		?>
 

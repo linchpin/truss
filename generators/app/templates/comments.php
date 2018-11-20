@@ -27,7 +27,7 @@ if ( post_password_required() ) : ?>
 <?php else: ?>
 
 <?php
-/** This action is documented in includes/Linchpin/truss-hooks.php */
+/** This action is documented in includes/Linchpin/utilities/hooks.php */
 do_action( 'truss_comments_before' ); ?>
 
 <div id="comments" class="comments-area">
@@ -68,7 +68,7 @@ do_action( 'truss_comments_before' ); ?>
 </div><!-- .comments-area -->
 
 <?php
-/** This action is documented in includes/Linchpin/truss-hooks.php */
+/** This action is documented in includes/Linchpin/utilities/hooks.php */
 do_action( 'truss_comments_after' );
 
 endif;

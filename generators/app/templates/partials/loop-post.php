@@ -13,7 +13,7 @@
 ?>
 
 <?php
-/** This action is documented in includes/Linchpin/truss-hooks.php */
+/** This action is documented in includes/Linchpin/utilities/hooks.php */
 do_action( 'truss_post_before' );
 ?>
 
@@ -35,18 +35,18 @@ do_action( 'truss_post_before' );
 		<?php endif; ?>
 
 		<?php
-		/** This action is documented in includes/Linchpin/truss-hooks.php */
+		/** This action is documented in includes/Linchpin/utilities/hooks.php */
 		do_action( 'truss_post_entry_content_before' );
 		?>
 
 		<?php the_excerpt(); ?>
 		<?php
-		/** This action is documented in includes/Linchpin/truss-hooks.php */
+		/** This action is documented in includes/Linchpin/utilities/hooks.php */
 		do_action( 'truss_post_entry_content_after' );
 		?>
 	</div>
 
 </article>
 <?php
-/** This action is documented in includes/Linchpin/truss-hooks.php */
+/** This action is documented in includes/Linchpin/utilities/hooks.php */
 do_action( 'truss_post_after' );

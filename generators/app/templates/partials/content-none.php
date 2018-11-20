@@ -13,7 +13,7 @@
 ?>
 
 <?php
-/** This action is documented in includes/Linchpin/truss-hooks.php */
+/** This action is documented in includes/Linchpin/utilities/hooks.php */
 do_action( 'truss_post_before' ); ?>
 
 <header class="page-header">
@@ -23,7 +23,18 @@ do_action( 'truss_post_before' ); ?>
 <div class="page-content">
 	<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
-		<p><?php printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', '<%= text_domain %>' ), array( 'a' => array( 'href' ) ) ), admin_url( 'post-new.php' ) ); ?></p>
+		<p>
+			<?php
+			printf(
+				wp_kses(
+					/* translators: %1$s: Url to add new post  */
+					__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', '<%= text_domain %>' ),
+					array( 'a' => array( 'href' ) )
+				),
+				esc_url_raw( admin_url( 'post-new.php' ) )
+			);
+			?>
+		</p>
 
 	<?php elseif ( is_search() ) : ?>
 
@@ -39,5 +50,5 @@ do_action( 'truss_post_before' ); ?>
 </div>
 
 <?php
-/** This action is documented in includes/Linchpin/truss-hooks.php */
+/** This action is documented in includes/Linchpin/utilities/hooks.php */
 do_action( 'truss_post_after' );

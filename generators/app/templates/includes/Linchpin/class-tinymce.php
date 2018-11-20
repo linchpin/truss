@@ -31,7 +31,7 @@ class TinyMCE {
 	 *
 	 * @access public
 	 */
-	function admin_init() {
+	public function admin_init() {
 		add_editor_style( 'css/admin-editor.css' );
 	}
 }

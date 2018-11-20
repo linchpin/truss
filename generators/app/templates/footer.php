@@ -15,13 +15,13 @@
 				</section>
 
 				<?php
-				/** This action is documented in includes/Linchpin/truss-hooks.php */
+				/** This action is documented in includes/Linchpin/utilities/hooks.php */
 				do_action( 'truss_footer_before' ); ?>
 
 				<footer id="footer">
 					<div class="main-footer container small">
 						<?php
-						/** This action is documented in includes/Linchpin/truss-hooks.php */
+						/** This action is documented in includes/Linchpin/utilities/hooks.php */
 						do_action( 'truss_main_footer_inner_before' ); ?>
 
 						<div class="grid-x">
@@ -33,13 +33,13 @@
 						</div>
 
 						<?php
-						/** This action is documented in includes/Linchpin/truss-hooks.php */
+						/** This action is documented in includes/Linchpin/utilities/hooks.php */
 						do_action( 'truss_main_footer_inner_after' ); ?>
 					</div>
 
 					<div class="sub-footer container small">
 						<?php
-						/** This action is documented in includes/Linchpin/truss-hooks.php */
+						/** This action is documented in includes/Linchpin/utilities/hooks.php */
 						do_action( 'truss_sub_footer_inner_before' ); ?>
 
 						<div class="grid-x">
@@ -68,19 +68,19 @@
 						</div>
 
 						<?php
-						/** This action is documented in includes/Linchpin/truss-hooks.php */
+						/** This action is documented in includes/Linchpin/utilities/hooks.php */
 						do_action( 'truss_sub_footer_inner_after' ); ?>
 					</div>
 				</footer>
 
 				<?php
-				/** This action is documented in includes/Linchpin/truss-hooks.php */
+				/** This action is documented in includes/Linchpin/utilities/hooks.php */
 				do_action( 'truss_footer_after' ); ?>
 
 				<a class="exit-off-canvas"></a>
 
 				<?php
-				/** This action is documented in includes/Linchpin/truss-hooks.php */
+				/** This action is documented in includes/Linchpin/utilities/hooks.php */
 				do_action( 'truss_layout_end' ); ?>
 
 			</div>
@@ -97,7 +97,7 @@
 		 *
 		 *
 		 */
-		/** This action is documented in includes/Linchpin/truss-hooks.php */
+		/** This action is documented in includes/Linchpin/utilities/hooks.php */
 		do_action( 'truss_body_before_close' ); ?>
 	</body>
 </html>

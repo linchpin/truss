@@ -20,7 +20,7 @@
             <main id="main" class="site-main small-12 large-8 cell" role="main">
 
                 <?php
-                /** This action is documented in includes/Linchpin/truss-hooks.php */
+                /** This action is documented in includes/Linchpin/utilities/hooks.php */
                 do_action( 'truss_post_entry_content_before' ); ?>
 
                 <section class="error-404 not-found">
@@ -58,7 +58,7 @@
                         <div class="entry-content">
 
                             <?php
-                            /** This action is documented in includes/Linchpin/truss-hooks.php */
+                            /** This action is documented in includes/Linchpin/utilities/hooks.php */
                             do_action( 'truss_content_before' ); ?>
 
                             <div class="error">
@@ -73,14 +73,14 @@
                         </div>
 
                         <?php
-                        /** This action is documented in includes/Linchpin/truss-hooks.php */
+                        /** This action is documented in includes/Linchpin/utilities/hooks.php */
                         do_action( 'truss_content_after' ); ?>
 
                     </div>
                 </section>
 
                 <?php
-                /** This action is documented in includes/Linchpin/truss-hooks.php */
+                /** This action is documented in includes/Linchpin/utilities/hooks.php */
                 do_action( 'truss_post_entry_content_after' ); ?>
 
             </main>

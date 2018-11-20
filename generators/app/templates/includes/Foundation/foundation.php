@@ -13,10 +13,10 @@ global $foundation_utilities;
 
 $foundation_classes_dir = get_stylesheet_directory() . '/includes/Foundation/';
 
-include_once( $foundation_classes_dir . 'foundation-utilities.php' );
-include_once( $foundation_classes_dir . 'foundation-cleanup.php' );
-include_once( $foundation_classes_dir . 'foundation-shortcodes.php' );
-include_once( $foundation_classes_dir . 'foundation-clearing.php' );
+require_once $foundation_classes_dir . 'foundation-utilities.php';
+require_once $foundation_classes_dir . 'foundation-cleanup.php';
+require_once $foundation_classes_dir . 'foundation-shortcodes.php';
+require_once $foundation_classes_dir . 'foundation-clearing.php';
 
 /**
  * Class Foundation

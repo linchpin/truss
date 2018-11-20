@@ -14,7 +14,7 @@
 
 <?php do_action( 'truss_searchform_before' ); ?>
 
-<form role="search" method="get" id="searchform" action="<?php esc_html_e( home_url( '/' ) ); ?>">
+<form role="search" method="get" id="searchform" action="<?php echo esc_html( home_url( '/' ) ); ?>">
 	<div class="grid-x collapse">
 		<?php do_action( 'truss_searchform_inner_before' ); ?>
 

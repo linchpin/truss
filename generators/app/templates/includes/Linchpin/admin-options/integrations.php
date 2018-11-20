@@ -13,30 +13,6 @@
     <table class="form-table">
         <tbody>
             <tr valign="top">
-                <th scope="row"><?php esc_html_e( 'Typekit ID', 'truss' ); ?></th>
-                <td>
-                    <div>
-						<?php
-						$typekit_id = '';
-
-						if ( isset( $truss_options['typekit_id'] ) ) {
-							$typekit_id = esc_attr( $typekit_id );
-						}
-						?>
-						<label class="screen-reader-text" for="typekit_id"><span><?php esc_html_e( 'Typekit ID', 'truss' ); ?></span></label> <input type="text" name="truss_theme_options[typekit_id]" class="regular-text" id="typekit_id" value="<?php esc_attr_e( $typekit_id ); ?>"> <label class="screen-reader-text" for="typekit_async"><span><?php esc_html_e( 'Load TypeKit Asyncronously', 'truss' ); ?></span></label> <select name="truss_theme_options[typekit_async]" id="truss_theme_options[typekit_async]">
-                            <option value="true" <?php selected( $truss_options['typekit_async'], true ); ?>>
-                                <?php esc_html_e( 'Yes', 'truss' ); ?>
-                            </option>
-                            <option value="false" <?php selected( $truss_options['typekit_async'], false ); ?>>
-                                <?php esc_html_e( 'No', 'truss' ); ?>
-                            </option>
-                        </select>
-                        <p class="description"><?php printf( esc_html( __( 'Enter your Typekit ID. You can get the Kit ID from the "Embed Options" of your kit within typekit.com. If you would like to load typekit asyncronously you can select that as well. There are some additional styles that need to be applied manually if you select asyncronously load the font' ), 'truss' ) ); ?></p>
-                    </div>
-                </td>
-            </tr>
-
-            <tr valign="top">
                 <td colspan="2">
                     <div id="additional-scripts">
 
