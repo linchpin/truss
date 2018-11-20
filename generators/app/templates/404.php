@@ -4,9 +4,9 @@
  *
  * Basic template when a 404 happens.
  *
- * @since 1.0.0
+ * @since <%= theme_version %>
  *
- * @package    Truss
+ * @package <%= class_name %>
  * @subpackage Templates
  */
 

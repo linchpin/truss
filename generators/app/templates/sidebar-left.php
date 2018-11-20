@@ -4,9 +4,9 @@
  *
  * Template used when the sidebar is shown on the left
  *
- * @since 1.0.0
+ * @since <%= theme_version %>
  *
- * @package 
+ * @package <%= class_name %>
  * @subpackage Sidebars
  */
 

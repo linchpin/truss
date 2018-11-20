@@ -1,13 +1,13 @@
 /**
- * Theme Name:         ClientName Zurb
+ * Theme Name:         <%= theme_name %>
  * Theme URI:          http://linchpin.agency
- * Github Theme URI:   https://github.com/linchpinagency/clientname
- * Description:        A brief description about the theme or client.
- * Version:            1.0.0
+ * Github Theme URI:   https://github.com/linchpinagency/truss
+ * Description:        <%= theme_description %>
+ * Version:            <%= theme_version %>
  * Author:             Linchpin
  * Author URI:         http://linchpin.agency
  *
- * Text Domain:        clientname
+ * Text Domain:        <%= text_domain %>
  *
  * License:            GPLv3 License
  * License URI:        http://opensource.org/licenses/GPL-3.0

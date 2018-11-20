@@ -4,9 +4,9 @@
  *
  * Typically used in headers or Top Bars
  *
- * @since 1.0.0
+ * @since <%= theme_version %>
  *
- * @package 
+ * @package <%= class_name %>
  * @subpackage Search
  */
 

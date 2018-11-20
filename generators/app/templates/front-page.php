@@ -5,9 +5,9 @@
  * Default template utilized when your theme has a define "Front Page"
  * within Setting->Reading within the WordPress admin
  *
- * @since 1.0.0
+ * @since <%= theme_version %>
  *
- * @package    <%= client_name %>
+ * @package <%= class_name %>
  * @subpackage Templates
  */
 
