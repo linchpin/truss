@@ -18,7 +18,7 @@ require_once 'class-tinymce.php';
 /**
  * Class Truss
  */
-class Truss {
+class Core {
 
 	/**
 	 * Construct

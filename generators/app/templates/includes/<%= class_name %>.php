@@ -37,7 +37,7 @@ class <%= class_name %> {
 	public function __construct() {
 
 		$foundation = new Foundation();
-		$truss      = new Truss();
+		$truss      = new \Truss\Core();
 
 		add_filter( 'upload_mimes', array( $this, 'upload_mimes' ) );
 		add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ) );
