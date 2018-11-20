@@ -5,7 +5,7 @@
  */
 
 // Useful global constants
-define( '<%= previx_caps %>VERSION', '<%= theme_version %>' );
+define( '<%= prefix_caps %>VERSION', '<%= theme_version %>' );
 
 if ( ! defined( 'SCRIPT_DEBUG' ) ) {
 	define( 'SCRIPT_DEBUG', true ); // enable script debug by default
