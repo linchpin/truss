@@ -1,20 +1,23 @@
 <?php
 /**
- * FoundationClearing
+ * Clearing
  *
- * @package Foundation
- * @since 1.0
+ * @package    Truss
+ * @subpackage Foundation
+ * @since      1.0
  */
+
+namespace Foundation;
 
 /**
  * Class FoundationClearing
  */
-class FoundationClearing {
+class Clearing {
 
 	/**
 	 * Construct.
 	 */
-	function __construct() {
+	public function __construct() {
 		add_action( 'after_setup_theme', array( $this, 'setup_gallery_shortcode' ) );
 	}
 
@@ -28,12 +31,12 @@ class FoundationClearing {
 	 *
 	 * @return mixed
 	 */
-	function add_link_class( $markup, $id, $size, $permalink ) {
+	public function add_link_class( $markup, $id, $size, $permalink ) {
 		if ( ! $permalink ) {
-		    $markup = str_replace( '<a href', '<a class="th" href', $markup );
-	    }
+			$markup = str_replace( '<a href', '<a class="th" href', $markup );
+		}
 
-	    return $markup;
+		return $markup;
 	}
 
 	/**
@@ -52,8 +55,8 @@ class FoundationClearing {
 	 * Called by add_shortcode( 'gallery' )
 	 * Heavily derived from the zurb-foundation-5-clearing-gallery plugin from the WordPress repo
 	 *
-	 * Replaced Wordpress default gallery action with Zurb Foundation Clearing Feature.
-	 * This is essentially a copy of the wordpress gallery function with some adjustments to
+	 * Replaced WordPress default gallery action with Zurb Foundation Clearing Feature.
+	 * This is essentially a copy of the WordPress gallery function with some adjustments to
 	 * add in the foundation clearing feature.
 	 *
 	 * You can add a gallery just as you normally would including setting up the number of columns.

@@ -5,15 +5,19 @@
  * This is a custom nav walker that will add in custom styles based on
  * the foundation structure and the items found in FoundationPress
  *
- * @package Foundation
- * @author olfredrik, aware
  * @since 1.0
+ *
+ * @package    Truss
+ * @subpackage Foundation
+ * @author olfredrik, aware, linchpin
  */
+
+namespace Foundation;
 
 /**
  * Class Foundation_Walker_Nav_Menu
  */
-class Foundation_Walker_Nav_Menu extends Walker_Nav_Menu {
+class Walker_Nav_Menu extends \Walker_Nav_Menu {
 
 	/**
 	 * Display our menu element
@@ -26,10 +30,8 @@ class Foundation_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param int    $depth Current Depth.
 	 * @param array  $args Extra args for control.
 	 * @param string $output HTML output.
-	 *
-	 * @return mixed
 	 */
-	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
+	public function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 		$element->has_children = ! empty( $children_elements[ $element->ID ] );
 		$element->classes[]    = ( $element->current || $element->current_item_ancestor ) ? 'active' : '';
 		$element->classes[]    = ( $element->has_children ) ? 'has-dropdown' : '';
@@ -48,7 +50,7 @@ class Foundation_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param array  $args More args for control.
 	 * @param int    $current_object_id Our current object.
 	 */
-	function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 ) {
+	public function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 ) {
 
 		$item_html = '';
 
@@ -56,11 +58,11 @@ class Foundation_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 		$classes = empty( $object->classes ) ? array() : (array) $object->classes;
 
-		if ( in_array( 'label', $classes ) ) {
+		if ( in_array( 'label', $classes, true ) ) {
 			$item_html = preg_replace( '/<a[^>]*>(.*)<\/a>/iU', '<label>$1</label>', $item_html );
 		}
 
-		if ( in_array( 'divider', $classes ) ) {
+		if ( in_array( 'divider', $classes, true ) ) {
 			$item_html = preg_replace( '/<a[^>]*>( .* )<\/a>/iU', '', $item_html );
 		}
 
@@ -76,7 +78,7 @@ class Foundation_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param int    $depth Our current depth.
 	 * @param array  $args More output customization.
 	 */
-	function start_lvl( &$output, $depth = 0, $args = array() ) {
+	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$output .= "\n<ul class=\"sub-menu dropdown\">\n";
 	}
 }

@@ -14,10 +14,10 @@ namespace Foundation;
 
 $foundation_classes_dir = get_stylesheet_directory() . '/includes/Foundation/';
 
-require_once $foundation_classes_dir . 'class-utilities.php';
 require_once $foundation_classes_dir . 'class-cleanup.php';
-require_once $foundation_classes_dir . 'class-shortcodes.php';
 require_once $foundation_classes_dir . 'class-clearing.php';
+require_once $foundation_classes_dir . 'class-shortcodes.php';
+require_once $foundation_classes_dir . 'class-utilities.php';
 
 /**
  * Class Foundation

@@ -87,8 +87,8 @@ class Cleanup {
 	 * @param mixed $title Title of our image.
 	 * @return mixed
 	 */
-	function image_editor( $html, $id, $alt, $title ) {
-	    return preg_replace( array( '/\s+width="\d+"/i', '/\s+height="\d+"/i', '/alt=""/i' ), array( '', '', '', 'alt="' . $title . '"' ), $html );
+	public function image_editor( $html, $id, $alt, $title ) {
+		return preg_replace( array( '/\s+width="\d+"/i', '/\s+height="\d+"/i', '/alt=""/i' ), array( '', '', '', 'alt="' . $title . '"' ), $html );
 	}
 
 	/**
@@ -97,7 +97,7 @@ class Cleanup {
 	 * @access public
 	 * @return void
 	 */
-	function remove_recent_comments_style() {
+	public function remove_recent_comments_style() {
 		global $wp_widget_factory;
 
 		if ( isset( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'] ) ) {
@@ -126,7 +126,7 @@ class Cleanup {
 	 * @return string
 	 */
 	public function image_tag_class( $class, $id, $align, $size ) {
-	    $align = 'align' . esc_attr( $align );
-	    return $align;
+		$align = 'align' . esc_attr( $align );
+		return $align;
 	}
 }

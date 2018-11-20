@@ -1,15 +1,16 @@
 <?php
 /**
- * FoundationShortcodes
+ * Shortcodes
  *
- * @package Foundation
+ * @package    Truss
+ * @subpackage Foundation
  * @since 1.0
  */
 
 namespace Foundation;
 
 /**
- * Class FoundationShortcodes
+ * Class hortcodes
  */
 class Shortcodes {
 
