@@ -140,7 +140,6 @@ class Options {
 			array( &$this, 'theme_options_render_page' )
 		);
 
-		add_action( 'admin_footer-' . $theme_page, array( &$this, 'admin_footer' ) );
 		add_action( 'admin_head-' . $theme_page, array( &$this, 'admin_head' ) );
 	}
 
@@ -215,17 +214,11 @@ class Options {
 			// Enqueue our javascript files.
 			$scripts = array(
 				'jquery-cookie'        => array( '/js/jquery.cookie/jquery.cookie.js', array( 'jquery' ) ),
-				'codemirror'           => array( '/includes/codemirror/lib/codemirror.js' ),
-				'codemirror-xml'       => array( '/includes/codemirror/mode/xml/xml.js' ),
-				'codemirror-css'       => array( '/includes/codemirror/mode/css/css.js' ),
-				'codemirror-js'        => array( '/includes/codemirror/mode/javascript/javascript.js' ),
-				'codemirror-htmlmixed' => array( '/includes/codemirror/mode/htmlmixed/htmlmixed.js' ),
 				'admin-controls'       => array( '/js/admin.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-tabs' ) ),
 			);
 
 			// Enqueue our styles
 			$styles = array(
-				'codemirror_css'         => array( '/includes/codemirror/lib/codemirror.css' ),
 				'launchpad_wp_admin_css' => array( '/css/admin.css' ),
 			);
 		}

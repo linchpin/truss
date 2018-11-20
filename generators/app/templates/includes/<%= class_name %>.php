@@ -143,9 +143,9 @@ class <%= class_name %> {
 		) );
 
 		register_sidebar( array(
-			'name'          => esc_html__( 'Page Widgets', '<%= text_domain %?>' ),
+			'name'          => esc_html__( 'Page Widgets', '<%= text_domain %>' ),
 			'id'            => 'page-widgets',
-			'description'   => esc_html__( 'Widgets that are displayed on interior pages.', '<%= text_domain %?>' ),
+			'description'   => esc_html__( 'Widgets that are displayed on interior pages.', '<%= text_domain %>' ),
 			'class'         => 'page-widgets',
 			'before_widget' => '<div id="%1$s" class="%2$s">',
 			'after_widget'  => '</div>',
@@ -154,9 +154,9 @@ class <%= class_name %> {
 		) );
 
 		register_sidebar( array(
-			'name'          => esc_html__( 'Footer Widgets', '<%= text_domain %?>' ),
+			'name'          => esc_html__( 'Footer Widgets', '<%= text_domain %>' ),
 			'id'            => 'footer-widgets',
-			'description'   => esc_html__( 'Widgets that are displayed in the footer.', '<%= text_domain %?>' ),
+			'description'   => esc_html__( 'Widgets that are displayed in the footer.', '<%= text_domain %>' ),
 			'class'         => 'footer-widgets',
 			'before_widget' => '<div id="%1$s" class="right %2$s">',
 			'after_widget'  => '</div>',
@@ -228,7 +228,7 @@ class <%= class_name %> {
 
 		$wp_customize->add_section (
 			'clientname_logo', array(
-				'title' 	=> esc_html__( 'Site Logo', '<%= text_domain %?>' ),
+				'title' 	=> esc_html__( 'Site Logo', '<%= text_domain %>' ),
 				'priority' 	=> 80,
 			)
 		);
@@ -243,7 +243,7 @@ class <%= class_name %> {
 
 		$wp_customize->add_control (
 			new WP_Customize_Image_Control( $wp_customize, 'logo_upload', array (
-				'label'		=> esc_html__( 'Site Logo', '<%= text_domain %?>' ),
+				'label'		=> esc_html__( 'Site Logo', '<%= text_domain %>' ),
 				'section' 	=> 'clientname_logo',
 				'settings' 	=> 'clientname_theme_options[logo_upload]',
 				'extensions'	=> array( 'jpg', 'jpeg', 'png', 'gif', 'svg' ),
