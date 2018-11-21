@@ -45,8 +45,8 @@ class Clearing {
 	 * @since 1.0
 	 */
 	public function setup_gallery_shortcode() {
-		remove_shortcode( 'gallery', array( $this, 'gallery_shortcode' ) ); 		    // First remove the standard wordpress gallery shortcode action.
-		add_shortcode( 'gallery', array( $this, 'foundation_gallery_shortcode' ) );     // Add our foundation clearing gallery shortcode action here.
+		remove_shortcode( 'gallery', array( $this, 'gallery_shortcode' ) );         // First remove the standard WordPress gallery shortcode action.
+		add_shortcode( 'gallery', array( $this, 'foundation_gallery_shortcode' ) ); // Add our foundation clearing gallery shortcode action here.
 	}
 
 	/**
@@ -64,15 +64,15 @@ class Clearing {
 	 * invalid values.
 	 *
 	 * MOBILE: Note that the foundation mobile classes have already been added for each gallery size.
-	 *			That said you can use the filters below to alter any foundation classes applied to the
-	 *			block grid.
+	 *         That said you can use the filters below to alter any foundation classes applied to the
+	 *         block grid.
 	 *
 	 * FILTERS:
-	 *			foundation_gallery_large_class 		->	Foundation large class for grid block
-	 *			foundation_gallery_small_class 		->	Foundation small class for grid block
-	 *			foundation_gallery_image_caption 	->	Filter caption for each image in gallery
-	 *			foundation_gallery_li_class 		->	Filter class applied to each <li> item in block grid
-	 *			foundation_gallery_output 			->	Filter overall html output for gallery
+	 *          foundation_gallery_large_class    -> Foundation large class for grid block
+	 *          foundation_gallery_small_class    -> Foundation small class for grid block
+	 *          foundation_gallery_image_caption  -> Filter caption for each image in gallery
+	 *          foundation_gallery_li_class       -> Filter class applied to each <li> item in block grid
+	 *          foundation_gallery_output         -> Filter overall html output for gallery
 	 *
 	 * @param string $attr Our shortcode attributes.
 	 * @return string
@@ -233,8 +233,8 @@ class Clearing {
 
 			ob_start();
 			?>
-			<li class="<?php esc_attr_e( apply_filters( 'foundation_gallery_li_class', $columns, $attachment ) ); ?>">
-				<?php esc_html_e( $image_output ); ?>
+			<li class="<?php echo esc_attr( apply_filters( 'foundation_gallery_li_class', $columns, $attachment ) ); ?>">
+				<?php echo esc_html( $image_output ); ?>
 			</li>
 			<?php
 			$output .= ob_get_contents();
