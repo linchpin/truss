@@ -89,9 +89,9 @@ class Utilities {
 
 		$html .= sprintf(
 			// translators: 1. Menu Link 2. Customize Links
-			esc_html( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.' ), 'truss' ),
-			self::sanitize_menu_fallback( 'nav-menus.php', __( 'Menu', 'truss' ) ),
-			sprintf( wp_kses( __( '<a href="%s">Customize</a>', 'truss' ), array( 'a' => array( 'href' ) ) ), get_admin_url( get_current_blog_id(), 'customize.php' ) )
+			esc_html( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.' ), '<%= text_domain %>' ),
+			self::sanitize_menu_fallback( 'nav-menus.php', __( 'Menu', '<%= text_domain %>' ) ),
+			self::sanitize_menu_fallback( 'customize.php', __( 'Customize', '<%= text_domain %>' ) )
 		);
 		$html .= '</div>';
 
@@ -112,7 +112,7 @@ class Utilities {
 		$menu_item = sprintf(
 			wp_kses(
 				// translators: 1. Menu Link 2. Customize Links
-				__( '<a href="%1$s">%2$s</a>', 'truss' ),
+				__( '<a href="%1$s">%2$s</a>', '<%= text_domain %>' ),
 				$allowed_html
 			),
 			get_admin_url( get_current_blog_id(), $target_page ),

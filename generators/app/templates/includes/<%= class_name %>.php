@@ -36,7 +36,7 @@ class <%= class_name %> {
 	 */
 	public function __construct() {
 
-		$foundation = new Foundation();
+		$foundation = new \Foundation\Foundation();
 		$truss      = new \Truss\Core();
 
 		add_filter( 'upload_mimes', array( $this, 'upload_mimes' ) );

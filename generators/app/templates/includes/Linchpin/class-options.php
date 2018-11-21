@@ -166,8 +166,8 @@ class Options {
 
 			<h2 class="nav-tab-wrapper">
 				<a href="?page=theme_options&tab=display_options"
-				class="nav-tab <?php echo ( 'display_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Footer Content', 'truss' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
-				<a href="?page=theme_options&tab=script_options" class="nav-tab <?php echo ( 'script_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Scripts', 'truss' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
+				class="nav-tab <?php echo ( 'display_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Footer Content', '<%= text_domain %>' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
+				<a href="?page=theme_options&tab=script_options" class="nav-tab <?php echo ( 'script_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Scripts', '<%= text_domain %>' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
 			</h2>
 
 			<?php settings_errors(); ?>
