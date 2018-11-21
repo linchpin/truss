@@ -60,7 +60,7 @@
 											'link_after'      => '',
 											'depth'           => 5,
 											'fallback_cb'     => false,
-											'walker'          => new Foundation_Walker_Nav_Menu(),
+											'walker'          => new \Foundation\Walker_Nav_Menu(),
 										)
 									);
 								?>

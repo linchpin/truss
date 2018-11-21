@@ -50,21 +50,23 @@ if ( isset( $options['logo_upload'] ) ) {
 
 		<div class="top-bar-right">
 			<?php
-			wp_nav_menu( array(
-				'container'       => false,
-				'container_class' => '',
-				'menu'            => '',
-				'menu_id'         => 'primary-menu',
-				'menu_class'      => 'dropdown menu',
-				'theme_location'  => 'top-bar',
-				'before'          => '',
-				'after'           => '',
-				'link_before'     => '',
-				'link_after'      => '',
-				'depth'           => 5,
-				'fallback_cb'     => false,
-				'walker'          => new Foundation_Walker_Nav_Menu(),
-			) );
+			wp_nav_menu(
+				array(
+					'container'       => false,
+					'container_class' => '',
+					'menu'            => '',
+					'menu_id'         => 'primary-menu',
+					'menu_class'      => 'dropdown menu',
+					'theme_location'  => 'top-bar',
+					'before'          => '',
+					'after'           => '',
+					'link_before'     => '',
+					'link_after'      => '',
+					'depth'           => 5,
+					'fallback_cb'     => false,
+					'walker'          => new \Foundation\Walker_Nav_Menu(),
+				)
+			);
 			?>
 		</div>
 	</div>

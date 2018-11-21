@@ -81,6 +81,10 @@ class Clearing {
 
 		$post = get_post();
 
+		if ( ! $post ) {
+			global $post;
+		}
+
 		static $instance = 0;
 		$instance++;
 
@@ -124,7 +128,7 @@ class Clearing {
 		// Filter gallery deafults.
 		$gallery_defaults = apply_filters( 'foundation_gallery_shortcode_args', $gallery_defaults );
 
-		shortcode_atts( $gallery_defaults, $attr, 'gallery' );
+		$attr = shortcode_atts( $gallery_defaults, $attr, 'gallery' );
 
 		$id = intval( $attr['id'] );
 
@@ -181,25 +185,25 @@ class Clearing {
 		switch ( $columns ) {
 			case 1 :
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-1', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-				break;
+			break;
 			case 2 :
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-2', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-				break;
+			break;
 			case 3 :
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-3', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-				break;
+			break;
 			case 4 :
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-4', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-				break;
+			break;
 			case 5 :
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-5', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-				break;
+			break;
 			case 6 :
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-6', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-				break;
+			break;
 			default :
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-4', 'default' ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', 'default' );
-				break;
+			break;
 		}
 
 		$gallery_container = "<div class='grid-x'><div class='large-12 cell'><ul class='clearing-thumbs gallery galleryid-{$id} {$block_class}' data-clearing>";
@@ -234,12 +238,11 @@ class Clearing {
 			ob_start();
 			?>
 			<li class="<?php echo esc_attr( apply_filters( 'foundation_gallery_li_class', $columns, $attachment ) ); ?>">
-				<?php echo esc_html( $image_output ); ?>
+				<?php echo $image_output; // WPCS xss ok. ?>
 			</li>
 			<?php
 			$output .= ob_get_contents();
 			ob_end_clean();
-
 		}
 
 		$output .= '</ul></div></div>';

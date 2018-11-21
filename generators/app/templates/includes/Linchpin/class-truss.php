@@ -14,6 +14,7 @@ require_once 'class-activate.php';
 require_once 'class-menu.php';
 require_once 'class-options.php';
 require_once 'class-tinymce.php';
+require_once 'class-utilities.php';
 
 /**
  * Class Truss
