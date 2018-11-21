@@ -103,7 +103,7 @@ function truss_top_bar_l() {
 			'link_after'      => '',
 			'depth'           => 5,
 			'fallback_cb'     => false,
-			'walker'          => new Foundation_Walker_Nav_Menu(),
+			'walker'          => new \Foundation\Walker_Nav_Menu(),
 		)
 	);
 }
@@ -126,7 +126,7 @@ function truss_top_bar_r() {
 			'link_after'      => '',
 			'depth'           => 5,
 			'fallback_cb'     => false,
-			'walker'          => new Foundation_Walker_Nav_Menu(),
+			'walker'          => new \Foundation\Walker_Nav_Menu(),
 		)
 	);
 }
@@ -169,7 +169,7 @@ function truss_mobile_off_canvas() {
 			'link_after'      => '',
 			'depth'           => 5,
 			'fallback_cb'     => false,
-			'walker'          => new Foundation_Walker_Nav_Menu(),
+			'walker'          => new \Foundation\Walker_Nav_Menu(),
 		)
 	);
 }
