@@ -10,20 +10,20 @@
  * @subpackage TemplateParts
  */
 ?>
-<time class="updated" datetime="<?php echo get_the_time( 'c' ); ?>" pubdate>
+<time class="updated" itemprop="datePublished" datetime="<?php echo get_the_time( 'c' ); ?>" pubdate>
 	<?php
 	printf(
-		esc_html(
+		wp_kses(
 			// translators: 1. date of post 2. time of post
-			__( 'Posted on %1$s at %2$s.', '<%= text_domain %>' )
+			__( 'Posted on <span itemprop="datePublished">%1$s</span> at %2$s.', '<%= text_domain %>' )
 		), get_the_time( 'l, F jS, Y' ),
 		get_the_time()
 	);
 	?>
 </time>
-<p class="byline author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-	<?php esc_html_e( 'Written by ', 'truss' ); ?>
+<p class="byline author">
+	<?php esc_html_e( 'Written by ', '<%= text_domain %>' ); ?>
 	<a href="<?php echo esc_attr( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author" class="fn">
-		<span itemprop="name">><?php echo get_the_author(); ?></span
+		<span itemprop="author"><?php echo get_the_author(); ?></span>
 	</a>
 </p>
