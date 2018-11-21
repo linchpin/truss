@@ -11,7 +11,7 @@
 namespace Foundation;
 
 /**
- * Class FoundationUtilities
+ * Class Utilities
  */
 class Utilities {
 
@@ -23,7 +23,7 @@ class Utilities {
 	 * @access public
 	 */
 	public function __construct() {
-		include_once 'foundation-walkernavmenu.php';
+		include_once 'class-walkernavmenu.php';
 	}
 
 	/**
