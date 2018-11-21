@@ -88,6 +88,6 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.log(`Run ${chalk.red('npm')} or ${chalk.red('yarn')} install`);
+    this.log(`Run ${chalk.hex('#3fc1d0').bold('yarn install')}`);
   }
 };
