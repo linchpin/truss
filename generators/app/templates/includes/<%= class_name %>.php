@@ -2,14 +2,18 @@
 /**
  * <%= theme_name %>
  *
- * @since   <%= %>
  * @author  <%= theme_author %>
  * @package <%= class_name %>
- *
  */
 
+/**
+ * Class <%= class_name %>
+ */
 class <%= class_name %> {
 
+	/**
+	 * Apple favicon sizes.
+	 */
 	public $apple_favicon_sizes = array(
 		57,
 		60,
@@ -22,6 +26,9 @@ class <%= class_name %> {
 		180,
 	);
 
+	/**
+	 * Generic favicon sizes.
+	 */
 	public $favicon_sizes = array(
 		16,
 		32,
@@ -31,9 +38,6 @@ class <%= class_name %> {
 
 	/**
 	 * __construct function.
-	 *
-	 * @access public
-	 * @return void
 	 */
 	public function __construct() {
 
@@ -75,20 +79,20 @@ class <%= class_name %> {
 	 * admin_footer_text function.
 	 *
 	 * @access public
-	 * @return void
 	 */
-	function admin_footer_text() {
-		echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Created by <a href="http://linchpin.com/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Linchpin</a> and augmented by the <a href="http://github.com/linchpin/truss/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Truss</a>';
+	public function admin_footer_text() {
+		echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Created by <a href="https://linchpin.com/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Linchpin</a> and <a href="http://github.com/linchpin/truss/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Truss</a> on top';
 	}
 
 	/**
-	 * Save custom favicon sizes from customizer upload
+	 * Save custom favicon sizes from customizer upload.
 	 *
-	 * @access public
-	 * @param  $sizes /Array of image sizes to save.
-	 * @return $sizes /Array Merged array containing custom favicon sizes.
+	 * @since 1.0
+	 *
+	 * @param  array $sizes Array of image sizes to save.
+	 * @return array $sizes Array Merged array containing custom favicon sizes.
 	 */
-	function site_icon_image_sizes( $sizes ) {
+	public function site_icon_image_sizes( $sizes = array() ) {
 		foreach ( $this->apple_favicon_sizes as $apple_favicon_size  ) {
 			$sizes[] = $apple_favicon_size;
 		}
@@ -180,7 +184,7 @@ class <%= class_name %> {
 	}
 
 	/**
-	 * after_setup_theme function.
+	 * Hook into after_setup_theme
 	 *
 	 * @access public
 	 * @return void
@@ -194,7 +198,7 @@ class <%= class_name %> {
 	}
 
 	/**
-	 * wp_enqueue_scripts function.
+	 * Add wp_enqueue_scripts.
 	 *
 	 * @access public
 	 * @return void
@@ -214,7 +218,7 @@ class <%= class_name %> {
 	}
 
 	/*
-	 * customize_register function.
+	 * Customize_register function.
 	 *
 	 * Allows header logo to be set-up from
 	 * the customize panel under Appearance within the WordPress Admin
