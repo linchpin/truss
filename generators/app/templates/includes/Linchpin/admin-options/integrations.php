@@ -2,12 +2,15 @@
 /**
  * Template used for all of our theme integration/javascript options
  *
- * @package Truss
- * @since   1.0
+ * @package    Truss
+ * @subpackage Options
+ * @since      1.0
  */
 
+$truss_options         = \Truss\Options::get_theme_options();
+$truss_default_options = \Truss\Options::get_default_theme_options();
+
 ?>
-<?php global $truss_options; ?>
 <div id="integration-options">
 	<h3><?php esc_html_e( 'Integration Options', '<%= text_domain %>' ); ?></h3>
 	<table class="form-table">
@@ -26,11 +29,15 @@
 							<td>
 								<div>
 									<label class="screen-reader-text"
-										   for="additional_header_scripts"><span><?php esc_html_e( 'Additional Head Scripts', '<%= text_domain %>' ); ?></span></label>
+									for="additional_header_scripts">
+										<span><?php esc_html_e( 'Additional Head Scripts', '<%= text_domain %>' ); ?></span>
+									</label>
 									<textarea name="truss_theme_options[additional_header_scripts]"
-											  class="html-textarea"
-											  id="additional_header_scripts"><?php esc_attr_e( $truss_options[ 'additional_header_scripts' ] ); ?></textarea>
-									<p class="description"><?php echo esc_html( __( 'This area will include scripts within the <strong>&lt;HEAD&gt;</strong> tag of your website. In most cases you can use the footer scripts below. Through some scripts require being loaded within the <strong>&lt;HEAD&gt;</strong> tag.' ), '<%= text_domain %>' ); ?></p>
+									class="html-textarea"
+									id="additional_header_scripts">
+										<?php echo esc_attr( $truss_options['additional_header_scripts'] ); ?>
+									</textarea>
+									<p class="description"><?php echo wp_kses( __( 'This area will include scripts within the <strong>&lt;HEAD&gt;</strong> tag of your website. In most cases you can use the footer scripts below. Through some scripts require being loaded within the <strong>&lt;HEAD&gt;</strong> tag.', '<%= text_domain %>' ), array( 'strong' => array() ) ); ?></p>
 								</div>
 							</td>
 						</tr>
@@ -45,10 +52,14 @@
 							<td>
 								<div>
 									<label class="screen-reader-text"
-										   for="additional_footer_scripts"><span><?php esc_html_e( 'Additional Footer Scripts', '<%= text_domain %>' ); ?></span></label>
+									for="additional_footer_scripts">
+										<span><?php esc_html_e( 'Additional Footer Scripts', '<%= text_domain %>' ); ?></span>
+									</label>
 									<textarea name="truss_theme_options[additional_footer_scripts]"
-											  class="html-textarea"
-											  id="additional_footer_scripts"><?php echo esc_attr( $truss_options[ 'additional_footer_scripts' ] ); ?></textarea>
+									class="html-textarea"
+									id="additional_footer_scripts">
+										<?php echo esc_attr( $truss_options['additional_footer_scripts'] ); ?>
+									</textarea>
 									<p class="description"><?php esc_html_e( 'Within this area you can include any additional 3rd party scripts. Examples would include javascript needed for Twitter, HubSpot and other features not included by default within your theme', '<%= text_domain %>' ); ?></p>
 								</div>
 							</td>

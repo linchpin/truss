@@ -89,7 +89,7 @@ class Utilities {
 
 		$html .= sprintf(
 			// translators: 1. Menu Link 2. Customize Links
-			esc_html( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.' ), '<%= text_domain %>' ),
+			wp_kses( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.' ), '<%= text_domain %>', array( 'a' => array( 'href' ) ) ),
 			self::sanitize_menu_fallback( 'nav-menus.php', __( 'Menu', '<%= text_domain %>' ) ),
 			self::sanitize_menu_fallback( 'customize.php', __( 'Customize', '<%= text_domain %>' ) )
 		);

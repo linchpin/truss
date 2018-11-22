@@ -39,13 +39,13 @@ class Utilities {
 		if ( false === ( $all_the_cool_cats = get_transient( 'truss_categories' ) ) ) {
 
 			// Create an array of all the categories that are attached to posts.
-			$all_the_cool_cats = get_categories( array(
-				'fields'     => 'ids',
-				'hide_empty' => 1,
-
-				// We only need to know if there is more than one category.
-				'number'     => 2,
-			) );
+			$all_the_cool_cats = get_categories(
+				array(
+					'fields'     => 'ids',
+					'hide_empty' => 1,
+					'number'     => 2, // We only need to know if there is more than one category.
+				)
+			);
 
 			// Count the number of categories that are attached to the posts.
 			$all_the_cool_cats = count( $all_the_cool_cats );
@@ -103,13 +103,20 @@ class Utilities {
 		endif; // End bcn check.
 		?>
 
-		<?php global $post; ?>
-
 		<ul class="breadcrumbs">
 
-		<?php if ( ! is_home() ) { ?>
+		<?php
 
-			<li><a href="<?php echo esc_attr( get_option( 'home' ) ); ?>"><?php esc_html_e( 'Home', '<%= text_domain %>' ); ?></a></li>
+		global $post;
+
+		if ( ! is_home() ) {
+		?>
+
+			<li>
+				<a href="<?php echo esc_attr( get_option( 'home' ) ); ?>">
+					<?php esc_html_e( 'Home', '<%= text_domain %>' ); ?>
+				</a>
+			</li>
 
 			<?php if ( is_category() || is_single() ) : ?>
 
@@ -125,11 +132,15 @@ class Utilities {
 
 			<?php elseif ( is_page() ) : ?>
 
-				<?php if ( $post->post_parent ) :
+				<?php
+
+				if ( $post->post_parent ) :
 					$anc = get_post_ancestors( $post->ID );
 
-					foreach ( $anc as $ancestor ) : ?>
-						<li><a href="<?php echo esc_attr( get_permalink( $ancestor ) ); ?>" title="<?php echo esc_attr( get_the_title( $ancestor ) ); ?>"><?php echo esc_html( get_the_title( $ancestor ) ); ?></a>
+					foreach ( $anc as $ancestor ) :
+					?>
+						<li>
+							<a href="<?php echo esc_attr( get_permalink( $ancestor ) ); ?>" title="<?php echo esc_attr( get_the_title( $ancestor ) ); ?>"><?php echo esc_html( get_the_title( $ancestor ) ); ?></a>
 						</li>
 					<?php endforeach; ?>
 
@@ -146,17 +157,31 @@ class Utilities {
 			single_tag_title();
 		} elseif ( is_day() ) {
 		?>
-			<li>Archive for <?php the_time( 'F jS, Y' ); ?></li>
+			<li>
+				<?php
+				// translators: %s Archive Day
+				sprintf( esc_html__( 'Archive for %s', '<%= text_domain %>' ), the_time( 'F jS, Y' ) );
+				?>
+			</li>
 		<?php } elseif ( is_month() ) { ?>
-			<li>Archive for <?php the_time( 'F, Y' ); ?></li>
+			<li>
+			<?php
+			// translators: %s Archive Month
+			sprintf( esc_html__( 'Archive for %s', '<%= text_domain %>' ), the_time( 'F, Y' ) );
+			?>
+			</li>
 		<?php } elseif ( is_year() ) { ?>
-			<li>Archive for <?php the_time( 'Y' ); ?></li>
+			<li>
+			<?php
+			// translators: %s Year Month
+			sprintf( esc_html__( 'Archive for %s', '<%= text_domain %>' ), the_time( 'Y' ) );
+			?>
 		<?php } elseif ( is_author() ) { ?>
-			<li>Author Archive</li>
-		<?php } elseif ( isset( $_GET['paged'] ) && ! empty( $_GET['paged'] ) ) { ?>
-			<li>Blog Archives</li>
+			<li><?php esc_html__( 'Author Archive', '<%= text_domain %>' ); ?></li>
+		<?php } elseif ( isset( $_GET['paged'] ) && ! empty( $_GET['paged'] ) ) { // WPCS ignore. ?>
+			<li><?php esc_html__( 'Blog Archives', '<%= text_domain %>' ); ?></li>
 		<?php } elseif ( is_search() ) { ?>
-			<li>Search Results</li>
+			<li><?php esc_html__( 'Search Results', '<%= text_domain %>' ); ?></li>
 		<?php } ?>
 		</ul>
 	<?php
@@ -172,18 +197,24 @@ class Utilities {
 	 */
 	public static function comment_nav() {
 		// Are there comments to navigate through?
-		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
+		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
+		?>
 		<nav class="navigation comment-navigation" role="navigation">
 			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', '<%= text_domain %>' ); ?></h2>
 			<div class="nav-links">
 				<?php
-					if ( $prev_link = get_previous_comments_link( esc_html__( 'Older Comments', '<%= text_domain %>' ) ) ) :
-						printf( '<div class="nav-previous">%s</div>', $prev_link );
-					endif;
 
-					if ( $next_link = get_next_comments_link( esc_html__( 'Newer Comments', '<%= text_domain %>' ) ) ) :
-						printf( '<div class="nav-next">%s</div>', $next_link );
-					endif;
+				$prev_link = get_previous_comments_link( esc_html__( 'Older Comments', '<%= text_domain %>' ) );
+
+				if ( $prev_link ) {
+					printf( '<div class="nav-previous">%s</div>', $prev_link ); // WPCS xss ok.
+				}
+
+				$next_link = get_next_comments_link( esc_html__( 'Newer Comments', '<%= text_domain %>' ) );
+
+				if ( $next_link ) {
+					printf( '<div class="nav-next">%s</div>', $next_link ); // WPCS xss ok.
+				}
 				?>
 			</div>
 		</nav>

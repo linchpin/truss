@@ -6,7 +6,7 @@
  *
  * @since 1.0.0
  *
- * @package
+ * @package    Truss
  * @subpackage Templates
  */
 
@@ -17,7 +17,7 @@
 do_action( 'truss_post_before' );
 ?>
 
-<article <?php post_class( 'small-12 medium-6 large-4 cell' ) ?> id="post-<?php the_ID(); ?>" data-equalizer-watch>
+<article <?php post_class( 'small-12 medium-6 large-4 cell' ); ?> id="post-<?php the_ID(); ?>" data-equalizer-watch>
 
 	<header>
 		<?php the_title( '<h3 class="entry-title" itemprop="name"><a href="' . get_the_permalink() . '" itemprop="url">', '</a></h3>' ); ?>

@@ -1,11 +1,12 @@
 <?php
 /**
- * TrussActivate
+ * Activate
  *
  * Handles all of our activation hooks. Handle compatibility.
  *
+ * @since   1.0
+ *
  * @package Truss
- * @since 1.0
  */
 
 namespace Truss;
@@ -32,22 +33,25 @@ class Activate {
 	public function activation_options_page_capability( $capability ) {
 		return 'edit_theme_options';
 	}
-}
 
-/**
- * Add some help to our theme.
- * Use 'callback' instead of 'content' for a function callback that renders the tab content.
- *
- * @todo add more help as time goes on.
- *
- * @access public
- * @return void
- */
-function truss_add_help_tabs_to_theme_page() {
-	$screen = get_current_screen();
-	$screen->add_help_tab( array(
-		'id' => 'truss-activation-help', // This should be unique for the screen.
-		'title' => esc_html__( 'Prepare for Launch', '<%= text_domain %>' ),
-		'content' => printf( '<p>%s</p>', esc_html__( 'Within this page contains the basic setup options for your theme.', '<%= text_domain %>' ) )
-	) );
+	/**
+	 * Add some help to our theme.
+	 *
+	 * Use 'callback' instead of 'content' for a function callback that renders the tab content.
+	 *
+	 * @todo add more help as time goes on.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function truss_add_help_tabs_to_theme_page() {
+		$screen = get_current_screen();
+		$screen->add_help_tab(
+			array(
+				'id'      => 'truss-activation-help', // This should be unique for the screen.
+				'title'   => esc_html__( 'Prepare for Launch', '<%= text_domain %>' ),
+				'content' => printf( '<p>%s</p>', esc_html__( 'Within this page contains the basic setup options for your theme.', '<%= text_domain %>' ) ),
+			)
+		);
+	}
 }

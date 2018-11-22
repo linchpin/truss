@@ -48,38 +48,42 @@ class Options {
 	/**
 	 * Display additional header scripts entered in the admin
 	 */
-	function wp_head() {
+	public function wp_head() {
 		$truss_options = truss_get_theme_options();
 
-		if  ( ! empty ( $truss_options['additional_header_scripts'] ) ) {
-			echo wp_kses( $truss_options['additional_header_scripts'], array(
-				'script' => array(
-					'src' => array(),
-					'async'=> array(),
-			        'type' => array()
-			    ),
-			    'img'    => array(
-			    	'src' => array(),
-                    'height' => array(),
-                    'width' => array(),
-                    'style' => array(),
-                    'alt' => array()
-                ),
-				'div' => array(
-					'style' => array()
+		if ( ! empty( $truss_options['additional_header_scripts'] ) ) {
+			echo wp_kses(
+				$truss_options['additional_header_scripts'],
+				array(
+					'script' => array(
+						'src'   => array(),
+						'async' => array(),
+						'type'  => array(),
+					),
+					'img'    => array(
+						'src'    => array(),
+						'height' => array(),
+						'width'  => array(),
+						'style'  => array(),
+						'alt'    => array(),
+					),
+					'div'    => array(
+						'style' => array(),
+					),
 				)
-			) );
+			);
 		}
 	}
 
 	/**
 	 * Display additional footer scripts entered in the admin
 	 */
-	function wp_footer() {
+	public function wp_footer() {
 		$truss_options = truss_get_theme_options();
 
 		if ( ! empty( $truss_options['additional_footer_scripts'] ) ) {
-			echo wp_kses( $truss_options['additional_footer_scripts'],
+			echo wp_kses(
+				$truss_options['additional_footer_scripts'],
 				array(
 					'script' => array(
 						'src'   => array(),
@@ -106,7 +110,7 @@ class Options {
 	 *
 	 * @todo we need to validate the settings better
 	 */
-	function validate_required_settings() {
+	public function validate_required_settings() {
 		global $truss_options;
 	}
 
@@ -114,10 +118,10 @@ class Options {
 	 * Define our default theme options.
 	 *
 	 * @access public
-	 * @static
-	 * @return mixed|void
+	 *
+	 * @return mixed
 	 */
-	static function get_default_theme_options() {
+	public static function get_default_theme_options() {
 		$default_theme_options = array(
 			'additional_footer_scripts' => '',
 			'additional_header_scripts' => '',
@@ -130,7 +134,7 @@ class Options {
 	 * Add in our options pages. This includes a specific display for activation as well
 	 * as our regular theme options.
 	 */
-	function theme_options_add_page() {
+	public function theme_options_add_page() {
 
 		$theme_page = add_theme_page(
 			esc_html__( 'Additional Options', '<%= text_domain %>' ),
@@ -150,23 +154,23 @@ class Options {
 	 *
 	 * @since 1.0
 	 */
-	function theme_options_render_page() {
-		global $truss_options, $linchpin_classes_dir;
+	public function theme_options_render_page() {
 		?>
 		<div class="wrap">
 			<div id="truss-wrap">
 
 			<?php
-
-			$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'display_options';
-
-			$current_theme = wp_get_theme();
-
+			$active_tab       = sanitize_text_field( $_GET['tab'] );
+			$active_tab       = isset( $active_tab ) ? $active_tab : 'display_options';
+			$active_tab_class = ( 'display_options' === $active_tab ) ? 'nav-tab-active' : '';
+			$current_theme    = wp_get_theme();
 			?>
 
 			<h2 class="nav-tab-wrapper">
 				<a href="?page=theme_options&tab=display_options"
-				class="nav-tab <?php echo ( 'display_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Footer Content', '<%= text_domain %>' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
+				class="nav-tab <?php echo esc_attr( $active_tab_class ); ?>">
+					<?php printf( esc_html( __( '%s Additional Footer Content', '<%= text_domain %>' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?>
+				</a>
 				<a href="?page=theme_options&tab=script_options" class="nav-tab <?php echo ( 'script_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Scripts', '<%= text_domain %>' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
 			</h2>
 
@@ -175,9 +179,6 @@ class Options {
 			<form method="post" action="options.php">
 
 				<?php settings_fields( 'truss_options' );
-				$truss_options         = truss_get_theme_options();
-				$truss_default_options = self::get_default_theme_options();
-
 				if ( 'display_options' === $active_tab ) {
 					include 'admin-options/theme.php';
 				} elseif ( 'script_options' === $active_tab ) {
@@ -213,8 +214,8 @@ class Options {
 
 			// Enqueue our javascript files.
 			$scripts = array(
-				'jquery-cookie'        => array( '/js/jquery.cookie/jquery.cookie.js', array( 'jquery' ) ),
-				'admin-controls'       => array( '/js/admin.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-tabs' ) ),
+				'jquery-cookie'  => array( '/js/jquery.cookie/jquery.cookie.js', array( 'jquery' ) ),
+				'admin-controls' => array( '/js/admin.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-tabs' ) ),
 			);
 
 			// Enqueue our styles
@@ -223,7 +224,14 @@ class Options {
 			);
 		}
 
-		wp_enqueue_script( array( 'jquery', 'editor', 'jquery-ui-core', 'jquery-ui-tabs', ) );
+		wp_enqueue_scripts(
+			array(
+				'jquery',
+				'editor',
+				'jquery-ui-core',
+				'jquery-ui-tabs',
+			)
+		);
 
 		if ( ! empty( $scripts ) ) {
 			foreach ( $scripts as $key => $script ) {
@@ -235,7 +243,7 @@ class Options {
 						$dependencies = $script[1];
 					}
 
-					wp_register_script( $key, get_stylesheet_directory_uri() . $script[0], $dependencies );
+					wp_register_script( $key, get_stylesheet_directory_uri() . $script[0], $dependencies, <%= prefix_caps %>VERSION, true );
 					wp_enqueue_script( $key );
 				}
 			}
@@ -244,7 +252,7 @@ class Options {
 		if ( ! empty( $styles ) ) {
 			foreach ( $styles as $key => $style ) {
 				if ( ! empty( $style[0] ) ) {
-					wp_register_style( $key, get_stylesheet_directory_uri() . $style[0] );
+					wp_register_style( $key, get_stylesheet_directory_uri() . $style[0], array(), <%= prefix_caps %>VERSION );
 					wp_enqueue_style( $key );
 				}
 			}
@@ -397,16 +405,14 @@ class Options {
 
 		return apply_filters( 'truss_theme_options_validate', $output, $input, $defaults );
 	}
-}
 
-?>
-<?php
-/**
- * truss_get_theme_options function.
- *
- * @access public
- * @return array of theme options
- */
-function truss_get_theme_options() {
-	return get_option( 'truss_theme_options', \Truss\Options::get_default_theme_options() );
+	/**
+	 * truss_get_theme_options function.
+	 *
+	 * @access public
+	 * @return array of theme options
+	 */
+	public static function get_theme_options() {
+		return get_option( 'truss_theme_options', self::get_default_theme_options() );
+	}
 }

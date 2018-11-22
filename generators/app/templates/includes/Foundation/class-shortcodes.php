@@ -10,7 +10,7 @@
 namespace Foundation;
 
 /**
- * Class hortcodes
+ * Class Shortcodes
  */
 class Shortcodes {
 
@@ -60,10 +60,12 @@ class Shortcodes {
 			return $content;
 		}
 
+		$img_id = '';
+
 		if ( isset( $id ) ) {
-			$id = 'id="' . esc_attr( $attr['id'] ) . '" '; // @todo ID isn't used here is it needed? -aware
+			$img_id = 'id="' . esc_attr( $attr['id'] ) . '" '; // @todo ID isn't used here is it needed? -aware
 		}
 
-		return '<figure>' . do_shortcode( $content ) . '<figcaption>' . $attr['caption'] . '</figcaption></figure>';
+		return '<figure ' . $img_id . '>' . do_shortcode( $content ) . '<figcaption>' . esc_html( $attr['caption'] ) . '</figcaption></figure>';
 	}
 }

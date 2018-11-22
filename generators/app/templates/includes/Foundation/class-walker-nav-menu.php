@@ -44,11 +44,11 @@ class Walker_Nav_Menu extends \Walker_Nav_Menu {
 	 *
 	 * @since 1.0
 	 *
-	 * @param string $output HTML output.
-	 * @param object $object Our current object.
-	 * @param int    $depth Out current depth.
-	 * @param array  $args More args for control.
-	 * @param int    $current_object_id Our current object.
+	 * @param string   $output HTML output.
+	 * @param \WP_Post $object Our current object.
+	 * @param int      $depth Out current depth.
+	 * @param array    $args More args for control.
+	 * @param int      $current_object_id Our current object.
 	 */
 	public function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 ) {
 

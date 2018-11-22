@@ -25,13 +25,13 @@ class Clearing {
 	 * Add class to links for Foundation Clearing of "th"
 	 *
 	 * @param string $markup Markup of the anchor.
-	 * @param int    $id ID of our anchor.
+	 * @param int    $image_id ID of our anchor.
 	 * @param int    $size Size of the image.
 	 * @param string $permalink Permalink of our image.
 	 *
 	 * @return mixed
 	 */
-	public function add_link_class( $markup, $id, $size, $permalink ) {
+	public function add_link_class( $markup, $image_id, $size, $permalink ) {
 		if ( ! $permalink ) {
 			$markup = str_replace( '<a href', '<a class="th" href', $markup );
 		}
