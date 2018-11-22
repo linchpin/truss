@@ -111,7 +111,7 @@ class <%= class_name %> {
 	 *
 	 * @return array
 	 */
-	function site_icon_meta_tags( $meta_tags = array() ) {
+	public function site_icon_meta_tags( $meta_tags = array() ) {
 		foreach ( $this->apple_favicon_sizes as $apple_favicon_size  ) {
 			$meta_tags[] = sprintf( '<link rel="apple-touch-icon" sizes="%s" href="%s" />', $apple_favicon_size . 'x' . $apple_favicon_size, esc_url( get_site_icon_url( $apple_favicon_size ) ) );
 		}
@@ -135,7 +135,7 @@ class <%= class_name %> {
 	 * @access public
 	 * @return void
 	 */
-	function widgets_init() {
+	public function widgets_init() {
 		register_sidebar( array(
 			'name'          => esc_html__( 'Home Widgets', '<%= text_domain %>' ),
 			'id'            => 'home-widgets',
@@ -178,7 +178,7 @@ class <%= class_name %> {
 	 * @param array &$scripts
 	 * @return void
 	 */
-	function print_jquery_in_footer( &$scripts) {
+	public function print_jquery_in_footer( &$scripts) {
 		if ( ! is_admin() )
 			$scripts->add_data( 'jquery', 'group', 1 );
 	}
@@ -189,7 +189,7 @@ class <%= class_name %> {
 	 * @access public
 	 * @return void
 	 */
-	function after_setup_theme() {
+	public function after_setup_theme() {
 	    add_theme_support( 'menus' );
 	    add_theme_support( 'title-tag' );
 	    add_theme_support( 'post-thumbnails' );
@@ -203,7 +203,7 @@ class <%= class_name %> {
 	 * @access public
 	 * @return void
 	 */
-	function wp_enqueue_scripts() {
+	public function wp_enqueue_scripts() {
 		wp_enqueue_script( '<%= text_domain %>-js', get_stylesheet_directory_uri() . '/js/<%= text_domain %>.js', array( 'jquery' ), <%= prefix_caps %>VERSION, true );
 	}
 
@@ -213,7 +213,7 @@ class <%= class_name %> {
 	 * @access public
 	 * @return void
 	 */
-	function wp_enqueue_styles() {
+	public function wp_enqueue_styles() {
 		wp_enqueue_style( '<%= text_domain %>-css', get_stylesheet_directory_uri() . '/css/<%= text_domain %>.css' );
 	}
 
@@ -229,7 +229,7 @@ class <%= class_name %> {
 	 *
 	 * @param $wp_customize
 	 */
-	function customize_register ( $wp_customize ) {
+	public function customize_register( $wp_customize ) {
 
 		$wp_customize->add_section (
 			'clientname_logo', array(
@@ -263,7 +263,7 @@ class <%= class_name %> {
 	 * @param array $mimes (default: array())
 	 * @return array
 	 */
-	function upload_mimes( $mimes = array() ) {
+	public function upload_mimes( $mimes = array() ) {
 	    $mimes['svg'] = 'image/svg+xml';
 	    return $mimes;
 	}
@@ -271,7 +271,7 @@ class <%= class_name %> {
 	/**
 	 * Add customized styles to the WordPress admin to match frontend editing.
 	 */
-	function add_editor_styles() {
+	public function add_editor_styles() {
 		$admin_style = get_stylesheet_directory_uri() . '/css/admin-editor.css';
 
 	    add_editor_style( $admin_style );
