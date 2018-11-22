@@ -36,7 +36,10 @@ class Utilities {
 	 * @return bool
 	 */
 	public static function categorized_blog() {
-		if ( false === ( $all_the_cool_cats = get_transient( 'truss_categories' ) ) ) {
+
+		$all_the_cool_cats = get_transient( 'truss_categories' );
+
+		if ( false === $all_the_cool_cats ) {
 
 			// Create an array of all the categories that are attached to posts.
 			$all_the_cool_cats = get_categories(
@@ -99,28 +102,26 @@ class Utilities {
 			</ul>
 		<?php
 			return;
-
 		endif; // End bcn check.
 		?>
 
 		<ul class="breadcrumbs">
-
 		<?php
 
 		global $post;
 
 		if ( ! is_home() ) {
 		?>
-
 			<li>
 				<a href="<?php echo esc_attr( get_option( 'home' ) ); ?>">
 					<?php esc_html_e( 'Home', '<%= text_domain %>' ); ?>
 				</a>
 			</li>
-
-			<?php if ( is_category() || is_single() ) : ?>
-
-				<?php if ( $categories = get_the_category() ) : ?>
+			<?php
+			if ( is_category() || is_single() ) :
+				$categories = get_the_category()
+			?>
+				<?php if ( ! empty( $categories ) ) : ?>
 					<li>
 						<a href="<?php echo esc_attr( get_term_link( current( $categories ), 'category' ) ); ?>"><?php echo esc_html( current( $categories )->name ); ?></a>
 					</li>
@@ -158,22 +159,22 @@ class Utilities {
 		} elseif ( is_day() ) {
 		?>
 			<li>
-				<?php
-				// translators: %s Archive Day
-				sprintf( esc_html__( 'Archive for %s', '<%= text_domain %>' ), the_time( 'F jS, Y' ) );
-				?>
+			<?php
+			// translators: %s Archive Day.
+			sprintf( esc_html__( 'Archive for %s', '<%= text_domain %>' ), the_time( 'F jS, Y' ) );
+			?>
 			</li>
 		<?php } elseif ( is_month() ) { ?>
 			<li>
 			<?php
-			// translators: %s Archive Month
+			// translators: %s Archive Month.
 			sprintf( esc_html__( 'Archive for %s', '<%= text_domain %>' ), the_time( 'F, Y' ) );
 			?>
 			</li>
 		<?php } elseif ( is_year() ) { ?>
 			<li>
 			<?php
-			// translators: %s Year Month
+			// translators: %s Year Month.
 			sprintf( esc_html__( 'Archive for %s', '<%= text_domain %>' ), the_time( 'Y' ) );
 			?>
 		<?php } elseif ( is_author() ) { ?>

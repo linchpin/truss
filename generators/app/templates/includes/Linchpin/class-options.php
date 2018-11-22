@@ -37,7 +37,7 @@ class Options {
 	 * @access public
 	 * @return void
 	 */
-	function init() {
+	public function init() {
 		if ( false === truss_get_theme_options() ) {
 			add_option( 'truss_theme_options', self::get_default_theme_options() );
 		}
@@ -280,8 +280,7 @@ class Options {
 	 * options page. This includes custom styling for our tabbed navigation
 	 *
 	 */
-	function admin_head() {
-	global $truss_options;
+	public function admin_head() {
 	?>
 		<script type="text/javascript">
 			//<![CDATA[
