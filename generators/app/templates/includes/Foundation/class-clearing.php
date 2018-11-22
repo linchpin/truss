@@ -137,7 +137,16 @@ class Clearing {
 		}
 
 		if ( ! empty( $include ) ) {
-			$_attachments = get_posts( array( 'include' => $attr['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $attr['order'], 'orderby' => $attr['orderby'] ) );
+			$_attachments = get_posts(
+				array(
+					'include'        => $attr['include'],
+					'post_status'    => 'inherit',
+					'post_type'      => 'attachment',
+					'post_mime_type' => 'image',
+					'order'          => $attr['order'],
+					'orderby'        => $attr['orderby'],
+				)
+			);
 
 			$attachments = array();
 
@@ -145,9 +154,28 @@ class Clearing {
 				$attachments[ $val->ID ] = $_attachments[ $key ];
 			}
 		} elseif ( ! empty( $exclude ) ) {
-			$attachments = get_children( array( 'post_parent' => $attr['id'], 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $attr['order'], 'orderby' => $attr['orderby'] ) );
+			$attachments = get_children(
+				array(
+					'post_parent'    => $attr['id'],
+					'exclude'        => $exclude,
+					'post_status'    => 'inherit',
+					'post_type'      => 'attachment',
+					'post_mime_type' => 'image',
+					'order'          => $attr['order'],
+					'orderby'        => $attr['orderby'],
+				)
+			);
 		} else {
-			$attachments = get_children( array( 'post_parent' => $attr['id'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $attr['order'], 'orderby' => $attr['orderby'] ) );
+			$attachments = get_children(
+				array(
+					'post_parent'    => $attr['id'],
+					'post_status'    => 'inherit',
+					'post_type'      => 'attachment',
+					'post_mime_type' => 'image',
+					'order'          => $attr['order'],
+					'orderby'        => $attr['orderby'],
+				)
+			);
 		}
 
 		if ( empty( $attachments ) ) {
@@ -162,9 +190,9 @@ class Clearing {
 			return $output;
 		}
 
-		$itemtag = tag_escape( $attr['itemtag'] );
+		$itemtag    = tag_escape( $attr['itemtag'] );
 		$captiontag = tag_escape( $attr['captiontag'] );
-		$icontag = tag_escape( $attr['icontag'] );
+		$icontag    = tag_escape( $attr['icontag'] );
 		$valid_tags = wp_kses_allowed_html( 'post' );
 
 		if ( ! isset( $valid_tags[ $attr['itemtag'] ] ) ) {
@@ -183,34 +211,32 @@ class Clearing {
 
 		// Set bloch grid class based on columns.
 		switch ( $columns ) {
-			case 1 :
+			case 1:
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-1', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-			break;
-			case 2 :
+				break;
+			case 2:
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-2', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-			break;
-			case 3 :
+				break;
+			case 3:
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-3', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-			break;
-			case 4 :
+				break;
+			case 4:
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-4', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-			break;
-			case 5 :
+				break;
+			case 5:
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-5', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-			break;
-			case 6 :
+				break;
+			case 6:
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-6', $columns ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', $columns );
-			break;
-			default :
+				break;
+			default:
 				$block_class = apply_filters( 'foundation_gallery_large_class', 'large-block-grid-4', 'default' ) . ' ' . apply_filters( 'foundation_gallery_small_class', 'small-block-grid-3', 'default' );
-			break;
+				break;
 		}
 
 		$gallery_container = "<div class='grid-x'><div class='large-12 cell'><ul class='clearing-thumbs gallery galleryid-{$id} {$block_class}' data-clearing>";
 
 		$output = apply_filters( 'gallery_style', $gallery_container );
-
-		$i = 0;
 
 		foreach ( $attachments as $id => $attachment ) {
 			if ( ! empty( $attr['link'] ) && 'file' === $attr['link'] ) {
@@ -221,10 +247,7 @@ class Clearing {
 				$image_output = wp_get_attachment_link( $id, $attr['size'], true, false );
 			}
 
-			$image_output = wp_get_attachment_link( $id, $attr['size'], false, false );
-
-			$image_meta  = wp_get_attachment_metadata( $id );
-
+			$image_meta   = wp_get_attachment_metadata( $id );
 			$caption_text = null; // Cache image caption.
 
 			if ( trim( $attachment->post_excerpt ) ) {
