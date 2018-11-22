@@ -2,7 +2,8 @@
 /**
  * <%= theme_name %>
  *
- * @author <%= theme_author %>
+ * @since   <%= %>
+ * @author  <%= theme_author %>
  * @package <%= class_name %>
  *
  */
@@ -53,7 +54,7 @@ class <%= class_name %> {
 	}
 
 	/**
-	 * Init hook function.
+	 * Registers the menu in the WordPress admin menu editor.
 	 *
 	 * @access public
 	 * @return void
@@ -61,7 +62,7 @@ class <%= class_name %> {
 	public function init() {
 		register_nav_menus(
 			array(
-				'top-bar'           => esc_html__( 'Top Bar', '<%= text_domain %>' ), // registers the menu in the WordPress admin menu editor
+				'top-bar'           => esc_html__( 'Top Bar', '<%= text_domain %>' ),
 				'footer'            => esc_html__( 'Footer', '<%= text_domain %>' ),
 				'mobile-off-canvas' => esc_html__( 'Mobile (Off Canvas)', '<%= text_domain %>' ),
 				'social'            => esc_html__( 'Social Links', '<%= text_domain %>' ),
@@ -102,11 +103,11 @@ class <%= class_name %> {
 	/**
 	 * Insert favicon meta tags to the head of the site.
 	 *
-	 * @access public
-	 * @param $meta_tags Array of meta tags returned to output.
-	 @ return Merged array containing custom meta tags.
+	 * @param array $meta_tags Array of meta tags returned to output.
+	 *
+	 * @return array
 	 */
-	function site_icon_meta_tags( $meta_tags ) {
+	function site_icon_meta_tags( $meta_tags = array() ) {
 		foreach ( $this->apple_favicon_sizes as $apple_favicon_size  ) {
 			$meta_tags[] = sprintf( '<link rel="apple-touch-icon" sizes="%s" href="%s" />', $apple_favicon_size . 'x' . $apple_favicon_size, esc_url( get_site_icon_url( $apple_favicon_size ) ) );
 		}
@@ -132,9 +133,9 @@ class <%= class_name %> {
 	 */
 	function widgets_init() {
 		register_sidebar( array(
-			'name'          => 'Home Widgets',
+			'name'          => esc_html__( 'Home Widgets', '<%= text_domain %>' ),
 			'id'            => 'home-widgets',
-			'description'   => 'Widgets that are displayed on the home page.',
+			'description'   => esc_html__( 'Widgets that are displayed on the home page.', '<%= text_domain %>' ),
 			'class'         => 'home-widgets',
 			'before_widget' => '<div id="%1$s" class="widget small-4 cell %2$s">',
 			'after_widget'  => '</div>',
@@ -264,7 +265,7 @@ class <%= class_name %> {
 	}
 
 	/**
-	 * add customized styles to the WordPress admin to match frontend editing
+	 * Add customized styles to the WordPress admin to match frontend editing.
 	 */
 	function add_editor_styles() {
 		$admin_style = get_stylesheet_directory_uri() . '/css/admin-editor.css';

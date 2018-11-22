@@ -44,7 +44,7 @@ class Activate {
 	 * @access public
 	 * @return void
 	 */
-	public function truss_add_help_tabs_to_theme_page() {
+	public function add_help_tabs_to_theme_page() {
 		$screen = get_current_screen();
 		$screen->add_help_tab(
 			array(

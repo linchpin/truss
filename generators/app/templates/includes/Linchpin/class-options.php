@@ -7,7 +7,7 @@
  * Blank, _s, and Roots etc.
  *
  * @package Truss
- * @since 1.0
+ * @since   1.0
  */
 
 namespace Truss;

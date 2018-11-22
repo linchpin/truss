@@ -32,24 +32,23 @@ class Menu {
 	/**
 	 * Add a link to display if you are on staging or prod.
 	 *
-	 * @todo this should be a plugin
 	 * @since 1.0
 	 *
 	 * @access public
 	 * @return void
 	 */
-	function add_links() {
+	public function add_links() {
 		global $wp_admin_bar;
 
 		if ( strpos( site_url(), 'staging' ) !== false ) {
-			$title  = esc_html__( 'Staging', '<%= text_domain %>' );
-			$meta   = array(
-				'class'    => 'staging',
+			$title = esc_html__( 'Staging', '<%= text_domain %>' );
+			$meta  = array(
+				'class' => 'staging',
 			);
 		} else {
-			$title  = esc_html__( 'Production', '<%= text_domain %>' );
-			$meta   = array(
-				'class'    => 'production',
+			$title = esc_html__( 'Production', '<%= text_domain %>' );
+			$meta  = array(
+				'class' => 'production',
 			);
 		}
 

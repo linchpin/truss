@@ -34,12 +34,10 @@ class Foundation {
 		$foundation_clearing  = new Clearing();
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
+		add_action( 'wp_default_scripts', array( $this, 'wp_enqueue_jquery_in_footer' ) );
 
 		add_filter( 'wp_list_pages', array( $this, 'wp_list_pages' ), 10, 2 );
 		add_filter( 'nav_menu_css_class', array( $this, 'add_active_nav_class' ), 10, 2 );
-
-		add_action( 'wp_default_scripts', array( $this, 'wp_enqueue_jquery_in_footer' ) );
-
 		add_filter( 'post_class', array( $this, 'post_class' ), 10, 3 );
 	}
 

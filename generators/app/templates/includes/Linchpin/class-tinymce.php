@@ -3,7 +3,7 @@
  * Modifications to the TinyMCE editor.
  *
  * @package Truss
- * @since   1.2.0
+ * @since   1.0
  */
 
 namespace Truss;
