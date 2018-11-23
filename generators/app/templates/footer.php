@@ -47,27 +47,34 @@
 						<div class="grid-x">
 							<div class="small-12 medium-6 cell">
 								<?php
-									wp_nav_menu(
-										array(
-											'container'       => false,
-											'container_class' => '',
-											'menu'            => '',
-											'menu_class'      => 'social menu',
-											'theme_location'  => 'social',
-											'before'          => '',
-											'after'           => '',
-											'link_before'     => '',
-											'link_after'      => '',
-											'depth'           => 5,
-											'fallback_cb'     => false,
-											'walker'          => new \Foundation\Walker_Nav_Menu(),
-										)
-									);
+								wp_nav_menu(
+									array(
+										'container'       => false,
+										'container_class' => '',
+										'menu'            => '',
+										'menu_class'      => 'social menu',
+										'theme_location'  => 'social',
+										'before'          => '',
+										'after'           => '',
+										'link_before'     => '',
+										'link_after'      => '',
+										'depth'           => 5,
+										'fallback_cb'     => false,
+										'walker'          => new \Foundation\Walker_Nav_Menu(),
+									)
+								);
 								?>
 							</div>
 
 							<div class="small-12 medium-6 cell text-right">
-								<?php echo sprintf( '&copy; %s %s. All Rights Reserved.', date( 'Y' ), __( get_bloginfo( 'name' ), '<%= text_domain %>' ) ); ?>
+								<?php
+								printf(
+									// translators: 1. Year, 2. Blog Name.
+									esc_html__( '&copy; %1$s %2$s. All Rights Reserved.', '<%= text_domain %>' ),
+									esc_html( date( 'Y' ) ),
+									esc_html( get_bloginfo( 'name' ) )
+								);
+								?>
 							</div>
 						</div>
 

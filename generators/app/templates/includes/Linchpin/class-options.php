@@ -111,7 +111,6 @@ class Options {
 	 * @todo we need to validate the settings better
 	 */
 	public function validate_required_settings() {
-		global $truss_options;
 	}
 
 	/**
@@ -160,7 +159,7 @@ class Options {
 			<div id="truss-wrap">
 
 			<?php
-			$active_tab       = sanitize_text_field( $_GET['tab'] );
+			$active_tab       = wp_unslash( sanitize_text_field( $_GET['tab'] ) );
 			$active_tab       = isset( $active_tab ) ? $active_tab : 'display_options';
 			$active_tab_class = ( 'display_options' === $active_tab ) ? 'nav-tab-active' : '';
 			$current_theme    = wp_get_theme();
@@ -169,9 +168,28 @@ class Options {
 			<h2 class="nav-tab-wrapper">
 				<a href="?page=theme_options&tab=display_options"
 				class="nav-tab <?php echo esc_attr( $active_tab_class ); ?>">
-					<?php printf( esc_html( __( '%s Additional Footer Content', '<%= text_domain %>' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?>
+					<?php
+					printf(
+						esc_html(
+							// translators: 1. blog Name
+							__( '%s Additional Footer Content', '<%= text_domain %>' )
+						),
+						$current_theme->get( 'Name' )
+					);
+					?>
 				</a>
-				<a href="?page=theme_options&tab=script_options" class="nav-tab <?php echo ( 'script_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s Additional Scripts', '<%= text_domain %>' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
+				<a href="?page=theme_options&tab=script_options"
+				class="nav-tab <?php echo ( 'script_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>">
+					<?php
+					printf(
+						esc_html(
+							// translators: 1. blog Name
+							__( '%s Additional Scripts', '<%= text_domain %>' )
+						),
+						$current_theme->get( 'Name' )
+					);
+					?>
+				</a>
 			</h2>
 
 			<?php settings_errors(); ?>
@@ -273,11 +291,12 @@ class Options {
 
 		wp_localize_script( 'admin-controls', 'sidebars', $sidebar_options );
 
-	} // END Admin Scripts.
+	}
 
 	/**
-	 * Embed our javascript and styles needed for our theme
-	 * options page. This includes custom styling for our tabbed navigation
+	 * Embed our javascript and styles needed for our theme.
+ 	 *
+	 * This includes custom styling for our tabbed navigation.
 	 *
 	 */
 	public function admin_head() {
@@ -294,7 +313,8 @@ class Options {
 	}
 
 	/**
-	 * admin_footer function.
+	 * Scripts being added to the footer of the admin.
+	 *
 	 *
 	 * @access public
 	 * @return void
