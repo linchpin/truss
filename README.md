@@ -1,8 +1,10 @@
 # Linchpin Yeoman Build
 
-A Yeoman generator for Linchpin's starter theme, **[theme_name]**.
+A Yeoman generator for Linchpin's starter theme, AKA **Truss**.
 
-Built on Foundation 6.4.x, [theme_name] is a responsive WordPress theme engineered to streamline the build process in a few easy steps. 
+Built on Foundation 6.4.x, This generator will create a responsive WordPress theme engineered to streamline the build process in a few easy steps. 
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/d5b43e36881d97168721/maintainability)](https://codeclimate.com/github/linchpin/truss/maintainability)
 
 ## Requirements
 ```
@@ -30,4 +32,4 @@ npm link
 yo linchpin
 ```
 
-`yo linchpin` will launch a Yeoman scaffold build of [theme_name]
+`yo linchpin` will launch a Yeoman scaffold with a bunch of prompts to get you started
