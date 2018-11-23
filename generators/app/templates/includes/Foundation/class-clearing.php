@@ -130,7 +130,7 @@ class Clearing {
 
 		$attr = shortcode_atts( $gallery_defaults, $attr, 'gallery' );
 
-		$id = intval( $attr['id'] );
+		$img_id = intval( $attr['id'] );
 
 		if ( 'RAND' === $attr['order'] ) {
 			$attr['orderby'] = 'none';
@@ -234,20 +234,20 @@ class Clearing {
 				break;
 		}
 
-		$gallery_container = "<div class='grid-x'><div class='large-12 cell'><ul class='clearing-thumbs gallery galleryid-{$id} {$block_class}' data-clearing>";
+		$gallery_container = "<div class='grid-x'><div class='large-12 cell'><ul class='clearing-thumbs gallery galleryid-{$img_id} {$block_class}' data-clearing>";
 
 		$output = apply_filters( 'gallery_style', $gallery_container );
 
-		foreach ( $attachments as $id => $attachment ) {
+		foreach ( $attachments as $img_id => $attachment ) {
 			if ( ! empty( $attr['link'] ) && 'file' === $attr['link'] ) {
-				$image_output = wp_get_attachment_link( $id, $attr['size'], false, false );
+				$image_output = wp_get_attachment_link( $img_id, $attr['size'], false, false );
 			} elseif ( ! empty( $attr['link'] ) && 'none' === $attr['link'] ) {
-				$image_output = wp_get_attachment_image( $id, $attr['size'], false );
+				$image_output = wp_get_attachment_image( $img_id, $attr['size'], false );
 			} else {
-				$image_output = wp_get_attachment_link( $id, $attr['size'], true, false );
+				$image_output = wp_get_attachment_link( $img_id, $attr['size'], true, false );
 			}
 
-			$image_meta   = wp_get_attachment_metadata( $id );
+			$image_meta   = wp_get_attachment_metadata( $img_id );
 			$caption_text = null; // Cache image caption.
 
 			if ( trim( $attachment->post_excerpt ) ) {

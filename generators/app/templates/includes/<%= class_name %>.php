@@ -90,14 +90,15 @@ class <%= class_name %> {
 	 * @since 1.0
 	 *
 	 * @param  array $sizes Array of image sizes to save.
+	 *
 	 * @return array $sizes Array Merged array containing custom favicon sizes.
 	 */
 	public function site_icon_image_sizes( $sizes = array() ) {
-		foreach ( $this->apple_favicon_sizes as $apple_favicon_size  ) {
+		foreach ( $this->apple_favicon_sizes as $apple_favicon_size ) {
 			$sizes[] = $apple_favicon_size;
 		}
 
-		foreach ( $this->favicon_sizes as $favicon_size  ) {
+		foreach ( $this->favicon_sizes as $favicon_size ) {
 			$sizes[] = $apple_favicon_size;
 		}
 
@@ -112,11 +113,11 @@ class <%= class_name %> {
 	 * @return array
 	 */
 	public function site_icon_meta_tags( $meta_tags = array() ) {
-		foreach ( $this->apple_favicon_sizes as $apple_favicon_size  ) {
+		foreach ( $this->apple_favicon_sizes as $apple_favicon_size ) {
 			$meta_tags[] = sprintf( '<link rel="apple-touch-icon" sizes="%s" href="%s" />', $apple_favicon_size . 'x' . $apple_favicon_size, esc_url( get_site_icon_url( $apple_favicon_size ) ) );
 		}
 
-		foreach ( $this->favicon_sizes as $favicon_size  ) {
+		foreach ( $this->favicon_sizes as $favicon_size ) {
 			$meta_tags[] = sprintf( '<link rel="icon" type="image/png" sizes="%s" href="%s" />', $favicon_size . 'x' . $favicon_size, esc_url( get_site_icon_url( $favicon_size ) ) );
 		}
 
@@ -135,7 +136,8 @@ class <%= class_name %> {
 	 * @access public
 	 * @return void
 	 */
-	public function widgets_init() {
+	public
+	function widgets_init() {
 		register_sidebar( array(
 			'name'          => esc_html__( 'Home Widgets', '<%= text_domain %>' ),
 			'id'            => 'home-widgets',
@@ -175,12 +177,15 @@ class <%= class_name %> {
 	 * Removes the jquery library from the header and prints it in the footer
 	 *
 	 * @access public
+	 *
 	 * @param array &$scripts
+	 *
 	 * @return void
 	 */
-	public function print_jquery_in_footer( &$scripts) {
-		if ( ! is_admin() )
+	public function print_jquery_in_footer( &$scripts ) {
+		if ( ! is_admin() ) {
 			$scripts->add_data( 'jquery', 'group', 1 );
+		}
 	}
 
 	/**
@@ -190,11 +195,11 @@ class <%= class_name %> {
 	 * @return void
 	 */
 	public function after_setup_theme() {
-	    add_theme_support( 'menus' );
-	    add_theme_support( 'title-tag' );
-	    add_theme_support( 'post-thumbnails' );
-	    add_theme_support( 'automatic-feed-links' );
-	    update_option( 'image_default_link_type', 'none' );
+		add_theme_support( 'menus' );
+		add_theme_support( 'title-tag' );
+		add_theme_support( 'post-thumbnails' );
+		add_theme_support( 'automatic-feed-links' );
+		update_option( 'image_default_link_type', 'none' );
 	}
 
 	/**
@@ -214,7 +219,7 @@ class <%= class_name %> {
 	 * @return void
 	 */
 	public function wp_enqueue_styles() {
-		wp_enqueue_style( '<%= text_domain %>-css', get_stylesheet_directory_uri() . '/css/<%= text_domain %>.css' );
+		wp_enqueue_style( '<%= text_domain %>-css', get_stylesheet_directory_uri() . '/css/<%= text_domain %>.css', array( ), <%= prefix_caps %>VERSION );
 	}
 
 	/*
@@ -231,27 +236,27 @@ class <%= class_name %> {
 	 */
 	public function customize_register( $wp_customize ) {
 
-		$wp_customize->add_section (
+		$wp_customize->add_section(
 			'clientname_logo', array(
-				'title' 	=> esc_html__( 'Site Logo', '<%= text_domain %>' ),
-				'priority' 	=> 80,
+				'title'    => esc_html__( 'Site Logo', '<%= text_domain %>' ),
+				'priority' => 80,
 			)
 		);
 
-		$wp_customize->add_setting (
+		$wp_customize->add_setting(
 			'clientname_theme_options[logo_upload]', array(
-				'default'		=> get_stylesheet_directory_uri() . '/assets/images/linchpin-icon-white.svg',
-				'capability' 	=> 'edit_theme_options',
-				'type'			=> 'option',
+				'default'    => get_stylesheet_directory_uri() . '/assets/images/linchpin-icon-white.svg',
+				'capability' => 'edit_theme_options',
+				'type'       => 'option',
 			)
 		);
 
-		$wp_customize->add_control (
-			new WP_Customize_Image_Control( $wp_customize, 'logo_upload', array (
-				'label'		=> esc_html__( 'Site Logo', '<%= text_domain %>' ),
-				'section' 	=> 'clientname_logo',
-				'settings' 	=> 'clientname_theme_options[logo_upload]',
-				'extensions'	=> array( 'jpg', 'jpeg', 'png', 'gif', 'svg' ),
+		$wp_customize->add_control(
+			new WP_Customize_Image_Control( $wp_customize, 'logo_upload', array(
+				'label'      => esc_html__( 'Site Logo', '<%= text_domain %>' ),
+				'section'    => 'clientname_logo',
+				'settings'   => 'clientname_theme_options[logo_upload]',
+				'extensions' => array( 'jpg', 'jpeg', 'png', 'gif', 'svg' ),
 			) )
 		);
 	}
@@ -260,12 +265,15 @@ class <%= class_name %> {
 	 * linchpin_upload_mimes function.
 	 *
 	 * @access public
+	 *
 	 * @param array $mimes (default: array())
+	 *
 	 * @return array
 	 */
 	public function upload_mimes( $mimes = array() ) {
-	    $mimes['svg'] = 'image/svg+xml';
-	    return $mimes;
+		$mimes[ 'svg' ] = 'image/svg+xml';
+
+		return $mimes;
 	}
 
 	/**
@@ -274,6 +282,6 @@ class <%= class_name %> {
 	public function add_editor_styles() {
 		$admin_style = get_stylesheet_directory_uri() . '/css/admin-editor.css';
 
-	    add_editor_style( $admin_style );
+		add_editor_style( $admin_style );
 	}
 }

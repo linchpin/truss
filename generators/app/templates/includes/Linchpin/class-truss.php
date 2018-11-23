@@ -25,9 +25,9 @@ class Core {
 	 * Construct
 	 */
 	public function __construct() {
-		$truss_activate        = new Activate();
-		$truss_option_controls = new Options();
-		$truss_menu            = new Menu();
-		$truss_tinymce         = new TinyMCE();
+		$truss_activate = new Activate();
+		$truss_option   = new Options();
+		$truss_menu     = new Menu();
+		$truss_tinymce  = new TinyMCE();
 	}
 }

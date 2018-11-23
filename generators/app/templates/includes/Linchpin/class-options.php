@@ -122,12 +122,12 @@ class Options {
 	 * @return mixed
 	 */
 	public static function get_default_theme_options() {
-		$default_theme_options = array(
+		$default_options = array(
 			'additional_footer_scripts' => '',
 			'additional_header_scripts' => '',
 		);
 
-		return apply_filters( 'truss_default_theme_options', $default_theme_options );
+		return apply_filters( 'truss_default_theme_options', $default_options );
 	}
 
 	/**
