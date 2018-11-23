@@ -22,7 +22,7 @@ function truss_breadcrumbs() {
  * @access public
  */
 function truss_categorized_blog() {
-	\Truss\Utilities::categorized_blog();
+	return \Truss\Utilities::categorized_blog();
 }
 
 /**
