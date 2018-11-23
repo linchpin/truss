@@ -14,13 +14,15 @@
 
 <?php
 /** This action is documented in includes/Linchpin/utilities/hooks.php */
-do_action( 'truss_content_before' ); ?>
+do_action( 'truss_content_before' );
+?>
 
 <?php if ( have_posts() ) : ?>
 
 	<?php
 	/** This action is documented in includes/Linchpin/utilities/hooks.php */
-	do_action( 'truss_loop_before' ); ?>
+	do_action( 'truss_loop_before' );
+	?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
 		<?php get_template_part( 'partials/content', 'page' ); ?>
@@ -40,4 +42,3 @@ do_action( 'truss_content_before' ); ?>
 <?php
 /** This action is documented in includes/Linchpin/utilities/hooks.php */
 do_action( 'truss_content_after' );
-
