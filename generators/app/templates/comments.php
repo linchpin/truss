@@ -10,7 +10,6 @@
  * @subpackage Comments
  */
 
-
 /*
  * If the current post is protected by a password and
  * the visitor has not yet entered the password we will
@@ -24,19 +23,30 @@ if ( post_password_required() ) : ?>
 	</div>
 </section>
 
-<?php else: ?>
+<?php else : ?>
 
 <?php
 /** This action is documented in includes/Linchpin/utilities/hooks.php */
-do_action( 'truss_comments_before' ); ?>
+do_action( 'truss_comments_before' );
+?>
 
 <div id="comments" class="comments-area">
 
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
-				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', '<%= text_domain %>' ),
-					number_format_i18n( get_comments_number() ), get_the_title() );
+				printf(
+					// Translators: 1. Number of comments, 2. Title of post.
+					_nx(
+						'One thought on &ldquo; %2$s &rdquo;',
+						'%1$s thoughts on &ldquo; %2$s &rdquo;',
+						get_comments_number(),
+						'comments title',
+						'<%= text_domain %>'
+					),
+					esc_html( number_format_i18n( get_comments_number() ) ),
+					get_the_title()
+				);
 			?>
 		</h2>
 
@@ -44,28 +54,30 @@ do_action( 'truss_comments_before' ); ?>
 
 		<ol class="comment-list">
 			<?php
-				wp_list_comments( array(
-					'style'       => 'ol',
-					'short_ping'  => true,
-					'avatar_size' => 56,
-				) );
+				wp_list_comments(
+					array(
+						'style'       => 'ol',
+						'short_ping'  => true,
+						'avatar_size' => 56,
+					)
+				);
 			?>
-		</ol><!-- .comment-list -->
+		</ol>
 
 		<?php truss_comment_nav(); ?>
 
-	<?php endif; // have_comments() ?>
+	<?php endif; // End Comments. ?>
 
 	<?php
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+	// If comments are closed and there are comments, let's leave a little note, shall we?
+	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', '<%= text_domain %>' ); ?></p>
+		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', '<%= text_domain %>' ); ?></p>
 	<?php endif; ?>
 
 	<?php comment_form(); ?>
 
-</div><!-- .comments-area -->
+</div>
 
 <?php
 /** This action is documented in includes/Linchpin/utilities/hooks.php */
