@@ -219,7 +219,9 @@ class <%= class_name %> {
 	 * @return void
 	 */
 	public function wp_enqueue_styles() {
-		wp_enqueue_style( '<%= text_domain %>-css', get_stylesheet_directory_uri() . '/css/<%= text_domain %>.css', array( ), <%= prefix_caps %>VERSION );
+		if ( ! is_admin() ) {
+			wp_enqueue_style('<%= text_domain %>-css', get_stylesheet_directory_uri() . '/css/<%= text_domain %>.css', array(), <%= prefix_caps %>VERSION );
+		}
 	}
 
 	/*

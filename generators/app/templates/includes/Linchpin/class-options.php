@@ -38,7 +38,7 @@ class Options {
 	 * @return void
 	 */
 	public function init() {
-		if ( false === truss_get_theme_options() ) {
+		if ( false === self::get_theme_options() ) {
 			add_option( 'truss_theme_options', self::get_default_theme_options() );
 		}
 
@@ -49,7 +49,7 @@ class Options {
 	 * Display additional header scripts entered in the admin
 	 */
 	public function wp_head() {
-		$truss_options = truss_get_theme_options();
+		$truss_options = self::get_theme_options();
 
 		if ( ! empty( $truss_options['additional_header_scripts'] ) ) {
 			echo wp_kses(
@@ -79,7 +79,7 @@ class Options {
 	 * Display additional footer scripts entered in the admin
 	 */
 	public function wp_footer() {
-		$truss_options = truss_get_theme_options();
+		$truss_options = self::get_theme_options();
 
 		if ( ! empty( $truss_options['additional_footer_scripts'] ) ) {
 			echo wp_kses(
@@ -426,7 +426,7 @@ class Options {
 	}
 
 	/**
-	 * truss_get_theme_options function.
+	 * get_theme_options function.
 	 *
 	 * @access public
 	 * @return array of theme options
