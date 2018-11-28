@@ -28,12 +28,12 @@ function loadConfig() {
 
 // Build the "dist" folder by running all of the below tasks
 // Sass must be run later so UnCSS can search for used classes in the others assets.
-gulp.task('build',
- gulp.series(clean, gulp.parallel(javascript, images), sass)); // removed copy from (javascript, images, copy)
+gulp.task('build:production',
+    gulp.series(clean, javascript, images, sass)); // removed copy from (javascript, images, copy)
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
-  gulp.series('build', gulp.parallel(watch, server))); // removed server from middle
+    gulp.series(clean, javascript, images, sass, gulp.parallel(watch, server))); // removed server from middle
 
 // This happens every time a build starts
 function clean(done) {

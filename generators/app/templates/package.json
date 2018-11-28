@@ -51,7 +51,7 @@
     "email": "truss@linchpin.com"
   },
   "engines": {
-    "node": "6.9.5"
+    "node": "10.13.0"
   },
   "private": true
 }
