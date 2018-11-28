@@ -1,16 +1,16 @@
 'use strict';
 
-import plugins       from 'gulp-load-plugins';
-import yargs         from 'yargs';
-import browser       from 'browser-sync';
-import gulp          from 'gulp';
-import rimraf        from 'rimraf';
-import yaml          from 'js-yaml';
-import fs            from 'fs';
-import webpackStream from 'webpack-stream';
-import webpack2      from 'webpack';
-import named         from 'vinyl-named';
-import autoprefixer  from 'autoprefixer';
+var plugins       = require('gulp-load-plugins');
+var yargs         = require('yargs');
+var browser       = require('browser-sync');
+var gulp          = require('gulp');
+var rimraf        = require('rimraf');
+var yaml          = require('js-yaml');
+var fs            = require('fs');
+var webpackStream = require('webpack-stream');
+var webpack2      = require('webpack');
+var named         = require('vinyl-named');
+var autoprefixer  = require('autoprefixer');
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -61,7 +61,7 @@ function sass() {
     // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
   ].filter(Boolean);
 
-  return gulp.src('assets/scss/clientname.scss')
+  return gulp.src('assets/scss/<%= text_domain %>.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       includePaths: PATHS.sass
@@ -119,7 +119,7 @@ function images() {
 // Start a server with BrowserSync to preview the site in
 function server(done) {
     browser.init({
-        proxy : 'http://truss.test'
+        proxy : 'http://<%= text_domain %>.test'
     });
 }
 

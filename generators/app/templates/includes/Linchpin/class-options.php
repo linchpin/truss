@@ -304,8 +304,8 @@ class Options {
 		<script type="text/javascript">
 			//<![CDATA[
 			var truss = {
-				ajaxurl: "<?php echo admin_url( 'admin-ajax.php' ); ?>",
-				nonce: "<?php echo wp_create_nonce( 'truss-nonce' ) ?>"
+				ajaxurl: "<?php echo wp_json_encode( admin_url( 'admin-ajax.php' ) ); ?>",
+				nonce: "<?php echo wp_create_nonce( 'truss-nonce' ); ?>"
 			};
 			//]]>
 		</script>

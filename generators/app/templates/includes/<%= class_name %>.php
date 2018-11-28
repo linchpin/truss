@@ -239,14 +239,14 @@ class <%= class_name %> {
 	public function customize_register( $wp_customize ) {
 
 		$wp_customize->add_section(
-			'clientname_logo', array(
+			'<%= text_domain %>_logo', array(
 				'title'    => esc_html__( 'Site Logo', '<%= text_domain %>' ),
 				'priority' => 80,
 			)
 		);
 
 		$wp_customize->add_setting(
-			'clientname_theme_options[logo_upload]', array(
+			'<%= text_domain %>_theme_options[logo_upload]', array(
 				'default'    => get_stylesheet_directory_uri() . '/assets/images/linchpin-icon-white.svg',
 				'capability' => 'edit_theme_options',
 				'type'       => 'option',
@@ -256,8 +256,8 @@ class <%= class_name %> {
 		$wp_customize->add_control(
 			new WP_Customize_Image_Control( $wp_customize, 'logo_upload', array(
 				'label'      => esc_html__( 'Site Logo', '<%= text_domain %>' ),
-				'section'    => 'clientname_logo',
-				'settings'   => 'clientname_theme_options[logo_upload]',
+				'section'    => '<%= text_domain %>_logo',
+				'settings'   => '<%= text_domain %>_theme_options[logo_upload]',
 				'extensions' => array( 'jpg', 'jpeg', 'png', 'gif', 'svg' ),
 			) )
 		);
