@@ -6,6 +6,7 @@
 
 // Useful global constants
 define( '<%= prefix_caps %>VERSION', '<%= theme_version %>' );
+define( 'USE_TYPEKIT', true ); // Define if we are using typekit, this determines if typekit is used in the editor
 
 if ( ! defined( 'SCRIPT_DEBUG' ) ) {
 	define( 'SCRIPT_DEBUG', true ); // enable script debug by default
