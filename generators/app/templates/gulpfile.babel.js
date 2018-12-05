@@ -33,7 +33,7 @@ gulp.task('build:production',
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
-    gulp.series(clean, javascript, images, sass, gulp.parallel(watch, server))); // removed server from middle
+    gulp.series(clean, javascript, sass, gulp.parallel(watch, server))); // removed server from middle
 
 // This happens every time a build starts
 function clean(done) {
@@ -48,7 +48,6 @@ function copy() {
   return gulp.src(PATHS.assets)
     .pipe(gulp.dest('other/assets'));
 }
-
 
 // In production, the CSS is compressed
 function sass() {
@@ -68,7 +67,7 @@ function sass() {
     })
       .on('error', $.sass.logError))
     .pipe($.postcss(postCssPlugins))
-    .pipe($.if(PRODUCTION, $.cleanCss({ compatibility: 'ie9' })))
+    .pipe($.if(PRODUCTION, $.cleanCss({ compatibility: 'ie10' })))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
     .pipe(gulp.dest('css'))
     .pipe(browser.reload({ stream: true }));
