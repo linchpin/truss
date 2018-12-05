@@ -38,7 +38,9 @@
 
 							<?php if ( function_exists( 'truss_categorized_blog' ) ) : ?>
 
-								<?php if ( truss_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
+								<?php
+								if ( truss_categorized_blog() ) : // Only show the widget if site has multiple categories.
+								?>
 									<div class="widget widget_categories">
 										<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', '<%= text_domain %>' ); ?></h2>
 										<ul>
@@ -75,7 +77,7 @@
 										<?php
 										printf(
 											wp_kses(
-												// Translators: 1. home url
+												// Translators: 1. home url.
 												__( 'Return to the <a href="%s">home page</a>', '<%= text_domain %>' ),
 												array(
 													'a' => array( 'href' ),
@@ -89,7 +91,7 @@
 										<?php
 										printf(
 											wp_kses(
-												// Translators: 1. History Back Link
+												// Translators: 1. History Back Link.
 												__( 'Click the <a href="%s">Back</a> button', '<%= text_domain %>' ),
 												array(
 													'a' => array( 'href' ),

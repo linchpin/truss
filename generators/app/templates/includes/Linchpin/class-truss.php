@@ -17,7 +17,7 @@ require_once 'class-tinymce.php';
 require_once 'class-utilities.php';
 
 /**
- * Class Truss
+ * Class Core
  */
 class Core {
 

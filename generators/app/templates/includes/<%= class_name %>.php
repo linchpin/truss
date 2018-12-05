@@ -13,6 +13,8 @@ class <%= class_name %> {
 
 	/**
 	 * Apple favicon sizes.
+	 *
+	 * @var array
 	 */
 	public $apple_favicon_sizes = array(
 		57,
@@ -28,6 +30,8 @@ class <%= class_name %> {
 
 	/**
 	 * Generic favicon sizes.
+	 *
+	 * @var array
 	 */
 	public $favicon_sizes = array(
 		16,
@@ -60,8 +64,7 @@ class <%= class_name %> {
 	/**
 	 * Registers the menu in the WordPress admin menu editor.
 	 *
-	 * @access public
-	 * @return void
+	 * @since 1.0
 	 */
 	public function init() {
 		register_nav_menus(
@@ -76,9 +79,10 @@ class <%= class_name %> {
 
 	/**
 	 * Add in the theme author info, truss info and be sure to keep love for WordPress
-	 * admin_footer_text function.
 	 *
-	 * @access public
+	 * @todo needs sanitization
+	 *
+	 * @since 1.0
 	 */
 	public function admin_footer_text() {
 		echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Created by <a href="https://linchpin.com/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Linchpin</a> and <a href="http://github.com/linchpin/truss/?utm_source=truss&utm_medium=truss_footer&utm_campaign=truss_notice" target="_blank">Truss</a> on top';
