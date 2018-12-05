@@ -4,9 +4,9 @@
  *
  * This is pretty much used in blog posts
  *
- * @since      1.0.0
+ * @since      <%= theme_version %>
  *
- * @package    Truss
+ * @package    <%= class_name %>
  * @subpackage TemplateParts
  */
 ?>

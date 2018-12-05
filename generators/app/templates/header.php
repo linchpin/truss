@@ -2,10 +2,10 @@
 /**
  * Header Template
  *
- * @since <%= theme_version %>
+ * @since      <%= theme_version %>
  *
- * @package <%= class_name %>
- * @subpackage Templates
+ * @package    <%= class_name %>
+ * @subpackage TemplateParts
  */
 
 ?>

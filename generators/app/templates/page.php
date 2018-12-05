@@ -4,9 +4,9 @@
  *
  * Default template utilized for all pages
  *
- * @since <%= theme_version %>
+ * @since      <%= theme_version %>
  *
- * @package <%= class_name %>
+ * @package    <%= class_name %>
  * @subpackage Templates
  */
 
@@ -18,4 +18,5 @@
 			<?php get_template_part( 'partials/loop', get_post_type() ); ?>
 		</div>
 	</div>
-<?php get_footer();
+<?php
+get_footer();

@@ -4,9 +4,9 @@
  *
  * @todo This file could definitely use some cleanup -aware
  *
- * @since <%= theme_version %>
+ * @since      <%= theme_version %>
  *
- * @package <%= class_name %>
+ * @package    <%= class_name %>
  * @subpackage Comments
  */
 

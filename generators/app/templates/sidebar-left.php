@@ -4,9 +4,9 @@
  *
  * Template used when the sidebar is shown on the left
  *
- * @since <%= theme_version %>
+ * @since      <%= theme_version %>
  *
- * @package <%= class_name %>
+ * @package    <%= class_name %>
  * @subpackage Sidebars
  */
 
@@ -24,4 +24,5 @@
 
 </aside>
 
-<?php do_action( 'truss_after_sidebar' );
+<?php
+do_action( 'truss_after_sidebar' );

@@ -1,0 +1,212 @@
+/**
+ * Manage the video. This should maybe be more generic so it can be used in multiple places
+ *
+ * 01. Hero
+ */
+
+// 01. Hero
+#homepage-hero {
+  background: {
+	color: get-color(secondary);
+	position: 50%;
+	size: cover;
+  };
+  padding: 50px 0 0;
+  position: relative;
+
+  @media #{$ipad-up} {
+	height: 90vh;
+	padding: 0;
+  }
+
+  &:before {
+	content: '';
+
+	background: get-color(primary);
+	height: .625rem;
+
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 100%;
+  }
+
+  &:after {
+	content: '';
+
+	border: {
+	  top: 1rem solid get-color(primary);
+	  left: 1rem solid transparent;
+	  right: 1rem solid transparent;
+	};
+	display: block;
+	height: 0;
+	width: 0;
+
+	position: absolute;
+	left: 50%;
+	top: 100%;
+
+	margin: {
+	  left: -1rem;
+	  top: .625rem;
+	};
+  }
+}
+
+.hero-content {
+  text-transform: uppercase;
+
+  position: relative;
+  z-index: 4;
+
+  @media #{$ipad-up} {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+  }
+
+  .hero-title {
+	padding: 1.5rem 1.5rem 6rem;
+
+	@include breakpoint(medium) {
+	  padding-left: 1rem;
+	}
+
+	@include breakpoint(large) {
+	  padding: 0;
+	}
+
+	.large {
+	  @include breakpoint(medium up) {
+		font-size: 115%;
+	  }
+	}
+  }
+
+  .hero-video-cta {
+	background: get-color(primary);
+	display: block;
+	font-size: 1.5rem;
+	line-height: 1.75rem;
+	margin: {
+	  left: -(map-get( $grid-column-gutter, small )/2);
+	  top: 1rem;
+	};
+	max-width: 100%;
+	padding: 1rem 2rem;
+
+	@include breakpoint(small only) {
+	  box-sizing: content-box;
+	  margin-right: -(map-get( $grid-column-gutter, small )/2);
+	}
+
+	@include breakpoint(medium) {
+	  display: inline-block;
+	  margin-left: -(map-get( $grid-column-gutter, medium )/2);
+	  max-width: 75%;
+	}
+
+	@include breakpoint(large) {
+	  margin-left: -$grid-row-width/2;
+	  max-width: 50%;
+	  padding: 2rem 2rem 2rem $grid-row-width/2 + 2rem !important;
+	}
+
+	a {
+	  color: $white;
+	  display: table;
+	  min-height: 70px;
+	  width: 100%;
+
+	  > span {
+		display: table-cell;
+		vertical-align: middle;
+	  }
+	}
+
+	[class*="icon"] {
+	  font-size: 70px;
+	  width: 70px;
+	}
+
+	.cta-description {
+	  padding-left: 1rem;
+	}
+  }
+}
+
+
+#hero-background-video {
+  height: inherit;
+
+  > div,
+  > div > video {
+	z-index: 2 !important;
+  }
+}
+
+#hero-video {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+
+  iframe {
+	height: 100%;
+	width: 100%;
+  }
+
+  .hero-video-playing & {
+	z-index: 5;
+  }
+}
+
+#hero-background-video:before {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: $white;
+  z-index: 3;
+  transition: $global-timing opacity $global-easing;
+}
+
+#hero-video-overlay {
+  background: rgba(get-color(secondary), .8);
+  opacity: 1;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+
+  transition: $global-timing opacity $global-easing;
+}
+
+.hero-video-playing {
+  #homepage-hero .hero-content,
+  #main-menu-home {
+	z-index: -1;
+  }
+
+  #hero-video-overlay {
+	opacity: 0;
+  }
+
+  #hero-background-video:before {
+	opacity: 1;
+  }
+
+  #homepage-hero {
+	background-image: none !important;
+	background-color: $white;
+  }
+}

@@ -4,9 +4,9 @@
  *
  * Default template utilized for single posts
  *
- * @since <%= theme_version %>
+ * @since      <%= theme_version %>
  *
- * @package <%= class_name %>
+ * @package    <%= class_name %>
  * @subpackage Templates
  */
 
@@ -18,7 +18,10 @@
 
 			<?php do_action( 'truss_content_before' ); ?>
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php
+			while ( have_posts() ) :
+				the_post();
+			?>
 
 				<?php get_template_part( 'partials/content', 'post' ); ?>
 
@@ -29,4 +32,5 @@
 		</div>
 		<?php get_sidebar(); ?>
 	</div>
-<?php get_footer();
+<?php
+get_footer();

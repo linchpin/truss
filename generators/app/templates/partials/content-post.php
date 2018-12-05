@@ -4,10 +4,10 @@
  *
  * The default template for displaying content. Used within single and index/archive/search templates.
  *
- * @since 1.0.0
+ * @since      <%= theme_version %>
  *
- * @package    Truss
- * @subpackage Templates
+ * @package    <%= class_name %>
+ * @subpackage TemplateParts
  */
 
 ?>

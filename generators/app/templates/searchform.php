@@ -4,9 +4,9 @@
  *
  * Typically used in headers or Top Bars
  *
- * @since <%= theme_version %>
+ * @since      <%= theme_version %>
  *
- * @package <%= class_name %>
+ * @package    <%= class_name %>
  * @subpackage Search
  */
 
@@ -35,4 +35,5 @@
 	</div>
 </form>
 
-<?php do_action( 'truss_searchform_after' );
+<?php
+do_action( 'truss_searchform_after' );

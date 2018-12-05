@@ -1,6 +1,6 @@
 <?php
 /**
- * Hero/Slideshow area
+ * Hero Video Area
  *
  * @since      <%= theme_version %>
  *

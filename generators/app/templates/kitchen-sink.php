@@ -2,9 +2,9 @@
 /**
  * Template Name: Kitchen Sink
  *
- * @since <%= theme_version %>
+ * @since      <%= theme_version %>
  *
- * @package <%= class_name %>
+ * @package    <%= class_name %>
  * @subpackage Templates
  */
 
@@ -13,8 +13,11 @@
 <?php get_header(); ?>
 <div class="grid-x">
 	<div class="small-12 large-12 cell" role="main">
-	<?php while ( have_posts() ) : the_post(); ?>
-		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
+	<?php
+	while ( have_posts() ) :
+		the_post();
+	?>
+		<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 			<header>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
 			</header>

@@ -2,9 +2,9 @@
 /**
  * Template Name: Large Header
  *
- * @since <%= theme_version %>
+ * @since      <%= theme_version %>
  *
- * @package <%= class_name %>
+ * @package    <%= class_name %>
  * @subpackage Templates
  */
 
@@ -53,4 +53,5 @@
 		</div>
 
 	</div>
-<?php get_footer();
+<?php
+get_footer();

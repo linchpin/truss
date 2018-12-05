@@ -4,10 +4,10 @@
  *
  * The default template for displaying looped content.
  *
- * @since 1.0.0
+ * @since      <%= theme_version %>
  *
- * @package 
- * @subpackage Templates
+ * @package    <%= class_name %>
+ * @subpackage TemplateParts
  */
 
 ?>

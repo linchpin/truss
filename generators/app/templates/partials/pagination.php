@@ -4,9 +4,9 @@
  *
  * Display navigation to next/previous pages when applicable.
  *
- * @since 1.0.0
+ * @since      <%= theme_version %>
  *
- * @package
+ * @package    <%= class_name %>
  * @subpackage TemplateParts
  */
 

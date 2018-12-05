@@ -2,9 +2,9 @@
 /**
  * Search Results Template
  *
- * @since <%= theme_version %>
+ * @since      <%= theme_version %>
  *
- * @package <%= class_name %>
+ * @package    <%= class_name %>
  * @subpackage Search
  */
 

@@ -4,10 +4,10 @@
  *
  * All stuff that should typically be in the footer.
  *
- * @since <%= theme_version %>
+ * @since      <%= theme_version %>
  *
- * @package <%= class_name %>
- * @subpackage Templates
+ * @package    <%= class_name %>
+ * @subpackage TemplatesParts
  */
 
 ?>

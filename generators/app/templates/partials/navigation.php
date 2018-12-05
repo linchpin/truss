@@ -4,9 +4,9 @@
  *
  * This template handles our main navigation markup
  *
- * @since 1.0.0
+ * @since      <%= theme_version %>
  *
- * @package    Truss
+ * @package    <%= class_name %>
  * @subpackage TemplateParts
  */
 

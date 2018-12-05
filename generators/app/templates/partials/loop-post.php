@@ -4,10 +4,10 @@
  *
  * The default template for displaying looped content within pages
  *
- * @since 1.0.0
+ * @since      <%= theme_version %>
  *
- * @package    Truss
- * @subpackage Templates
+ * @package    <%= class_name %>
+ * @subpackage TemplateParts
  */
 
 ?>

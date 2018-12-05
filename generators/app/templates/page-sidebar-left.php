@@ -4,9 +4,9 @@
  *
  * Sidebar on left
  *
- * @since <%= theme_version %>
+ * @since      <%= theme_version %>
  *
- * @package <%= class_name %>
+ * @package    <%= class_name %>
  * @subpackage Templates
  */
 
@@ -19,4 +19,5 @@
 	</div>
 	<?php get_sidebar( 'left' ); ?>
 </div>
-<?php get_footer();
+<?php
+get_footer();
