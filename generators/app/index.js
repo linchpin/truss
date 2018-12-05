@@ -8,8 +8,7 @@ const saved_config = (fs.existsSync('yo.truss.config.json')) ? JSON.parse(fs.rea
 
 module.exports = class extends Generator {
     async prompting() {
-        // Have Yeoman greet the user.
-        this.log(`Welcome to the unreal ${chalk.red('generator-linchpin')} generator!`);
+        this.log(`\nStarting ${chalk.hex('#3fc1d0').bold('Linchpin')} Truss build`);
 
         this.default_answers = {
             'theme_name': 'Linchpin Truss',
@@ -21,6 +20,8 @@ module.exports = class extends Generator {
         };
 
         if ( saved_config && saved_config.settings.theme_name ) {
+            this.log(`\n${chalk.hex('#3fc1d0').bold('Build found, loading previous settings.')}\n`);
+
             this.default_answers = {
                 'theme_name': saved_config.settings.theme_name,
                 'theme_description': saved_config.settings.theme_description,
