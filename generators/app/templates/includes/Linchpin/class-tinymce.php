@@ -16,18 +16,18 @@ class TinyMCE {
 	/**
 	 * Construct.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @access public
 	 */
 	public function __construct() {
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'admin_init', array( $this, 'admin_init' ) );                             // Add Base styles to editor.
 	}
 
 	/**
 	 * Add custom css to our admin editor
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @access public
 	 */
