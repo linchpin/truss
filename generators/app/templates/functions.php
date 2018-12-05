@@ -6,10 +6,10 @@
 
 // Useful global constants
 define( '<%= prefix_caps %>VERSION', '<%= theme_version %>' );
-define( 'USE_TYPEKIT', true ); // Define if we are using typekit, this determines if typekit is used in the editor
+define( '<%= prefix_caps %>TYPEKIT', 'csi6jve' ); // Define if we are using typekit, this determines if typekit is used in the editor
 
 if ( ! defined( 'SCRIPT_DEBUG' ) ) {
-	define( 'SCRIPT_DEBUG', true ); // enable script debug by default
+	define( 'SCRIPT_DEBUG', true ); // Enable script debug by default. Should be disabled in production
 }
 
 require_once 'includes/Linchpin/utilities/utilities.php'; // Useful Functions

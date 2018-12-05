@@ -1,7 +1,7 @@
 {
   "name": "linchpin-truss",
   "version": "1.0.0",
-  "description": "Official Linchpin Scaffold for Foundation for Sites.",
+  "description": "Official Linchpin WordPress Theme Scaffold using Foundation for Sites.",
   "main": "gulpfile.babel.js",
   "scripts": {
     "start": "gulp",
@@ -51,7 +51,7 @@
     "email": "truss@linchpin.com"
   },
   "engines": {
-    "node": "10.13.0"
+    "node": "^10.13.0"
   },
   "private": true
 }
