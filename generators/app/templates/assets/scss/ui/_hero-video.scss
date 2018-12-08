@@ -14,10 +14,10 @@
   padding: 50px 0 0;
   position: relative;
 
-  @media #{$ipad-up} {
-	height: 90vh;
-	padding: 0;
-  }
+  //@media #{$ipad-up} {
+//	height: 90vh;
+//	padding: 0;
+//  }
 
   &:before {
 	content: '';
@@ -60,13 +60,13 @@
   position: relative;
   z-index: 4;
 
-  @media #{$ipad-up} {
+/*  @media #{$ipad-up} {
 	position: absolute;
 	left: 0;
 	right: 0;
 	top: 50%;
 	transform: translateY(-50%);
-  }
+  } */
 
   .hero-title {
 	padding: 1.5rem 1.5rem 6rem;

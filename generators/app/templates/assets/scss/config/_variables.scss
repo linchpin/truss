@@ -91,3 +91,8 @@ $comment-gutter:        1.5rem;
 
 $full-page-header-background: get-color(secondary);
 $full-page-header-color:      color-legibility($full-page-header-background);
+
+// 10. Visibility
+
+$ipad-down: 'screen and ( max-width: 768px )';
+$ipad-up: 'screen and ( min-width: 769px )';
