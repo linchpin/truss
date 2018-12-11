@@ -213,7 +213,9 @@ class <%= class_name %> {
 	 * @return void
 	 */
 	public function wp_enqueue_scripts() {
-		wp_enqueue_script( '<%= text_domain %>-js', get_stylesheet_directory_uri() . '/js/<%= text_domain %>.js', array( 'jquery' ), <%= prefix_caps %>VERSION, true );
+		if ( ! is_admin() ) {
+			wp_enqueue_script( '<%= text_domain %>-js', get_stylesheet_directory_uri() . '/js/<%= text_domain %>.js', array( 'jquery' ), <%= prefix_caps %>VERSION, true );
+		}
 	}
 
 	/**
