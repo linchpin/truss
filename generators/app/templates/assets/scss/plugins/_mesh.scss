@@ -1,0 +1,5 @@
+.mesh_section {
+	.grid-x.mesh-row:not(.full-width):not(.full):not(.fullwidth) {
+		@extend .grid-container;
+	}
+}
