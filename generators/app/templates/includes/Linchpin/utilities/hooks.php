@@ -8,10 +8,6 @@
  * @since 1.0.0
  */
 
-?>
-
-<?php
-
 /**
  * Truss truss_comments_before hook.
  * Add extra content before the comments are started.
