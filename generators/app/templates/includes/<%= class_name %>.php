@@ -59,6 +59,8 @@ class <%= class_name %> {
 		add_action( 'customize_register', array( $this, 'customize_register' ) );
 		add_action( 'after_setup_theme', array( $this, 'after_setup_theme' ) );
 		add_action( 'after_setup_theme', array( $this, 'add_editor_styles' ) );
+
+		add_filter( 'gform_init_scripts_footer', '__return_true' );
 	}
 
 	/**
