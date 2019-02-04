@@ -23,7 +23,7 @@ class Utilities {
 	 * @access public
 	 */
 	public function __construct() {
-		include_once 'class-walkernavmenu.php';
+		include_once 'class-walker-nav-menu.php';
 	}
 
 	/**
