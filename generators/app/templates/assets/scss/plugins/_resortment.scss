@@ -1,0 +1,171 @@
+/*
+ * 01. Form Styles
+ * 02. Filter Bubble Styles
+ * 03. Results Container Styles
+ */
+
+.resortment-container {
+
+	.hidden {
+		display: none;
+	}
+
+	// 01. Form Styles
+	form {
+		select, .select2-selection.select2-selection--single, .filter-search {
+			border: $global-border;
+			border-radius: 0;
+			border-width: 3px;
+			height: 46px;
+			outline: none !important;
+			max-width: 100%;
+			font-weight: 600;
+			font-size: .875rem;
+			padding-right: 40px;
+			background: $white;
+			box-shadow: none !important;
+
+			&:active {
+				border: $global-border !important;
+			}
+		}
+
+		.select2-container, .search-box {
+			margin-bottom: 1rem;
+		}
+
+		select {
+			padding-right: 31px;
+		}
+
+		.filter-search:active {
+			border-color: $primary-color;
+		}
+
+		.search-container {
+			position: relative;
+
+			.search-button {
+				position: absolute;
+				top: 3px;
+				right: 3px;
+				height: 40px;
+				width: 40px;
+				padding: 0;
+				border: none;
+				background-color: transparent;
+				color: $primary-color;
+				cursor: pointer;
+				font-size: 1.125rem;
+			}
+		}
+
+		.select2-container--default .select2-selection--single .select2-selection__placeholder {
+			color: $primary-color;
+		}
+
+		.select2-container {
+			outline: none !important;
+			max-width: 100%;
+			width: 100% !important;
+		}
+
+		.select2-selection.select2-selection--single {
+			.select2-selection__rendered {
+				height: 40px; // 46px height - 3px border (x2)
+				line-height: 40px;
+			}
+			.select2-selection__arrow {
+				top: 3px;
+				right: 3px;
+				width: 40px;
+				height: 40px;
+			}
+		}
+	}
+
+	.filtering-container {
+		@include breakpoint( medium up ) {
+			position: relative;
+			min-height: 42px;
+
+			.found-posts {
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+		}
+	}
+
+	.active-filters {
+
+		ul {
+			list-style: none;
+			margin-left: 0;
+
+			li {
+				display: inline-block;
+
+				a {
+					@extend .button;
+					//@extend .button.gray;
+					padding-left: 1rem;
+					padding-right: 1rem;
+					margin-bottom: .5rem;
+					margin-right: .5rem;
+
+					&:after {
+						@include icon-font();
+						content: $icon-close;
+						font-size: 10px;
+						vertical-align: middle;
+						margin-left: .75rem;
+						display: inline-block;
+						margin-top: -1px;
+					}
+				}
+			}
+		}
+	}
+
+	.no-results {
+		margin: 1rem auto;
+		font-size: 1.4375rem;
+	}
+
+}
+
+body.admin-bar > .select2-container--open {
+	margin-top: 32px;
+
+	@include breakpoint (782px down) {
+		margin-top: 46px;
+	}
+}
+
+.select2-container--default .select2-dropdown {
+	border: $global-border;
+	border-radius: 0;
+	border-width: 3px;
+
+	.select2-results__option--highlighted[aria-selected] {
+		background-color: $accent-color;
+	}
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	&:before {
+		@include icon_font();
+		content: $icon-arrow-down;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		font-size: .5rem;
+		color: $primary-color;
+	}
+
+	b {
+		display: none;
+	}
+}

@@ -75,11 +75,19 @@ $foundation-palette: (
   warning: #ffae00,
   alert: #cc4b37,
 );
-$light-gray: #e6e6e6;
-$medium-gray: #cacaca;
+
+$accent-color: #37B9CA;
+
+$lightest-gray: #f6f6f6;
+$lighter-gray: #e6e6e6;
+$light-gray: #DDDDDD;
+$medium-gray: #bfbfbf;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
+
+$red: #CB0000; // Alerts
+
 $body-background: $white;
 $body-font-color: $black;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;

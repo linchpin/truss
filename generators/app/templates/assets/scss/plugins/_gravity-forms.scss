@@ -1,0 +1,232 @@
+/**
+ * 00. Global Gravity
+ * 01. Ajax Form Spinner
+ */
+
+// 00. Global Gravity
+.gform_wrapper {
+
+	@include breakpoint(medium up) {
+		form {
+			padding-left: 1rem;
+		}
+
+		ul.gform_fields {
+			li.half-width, li.half_width {
+				width: 50%;
+				float: left;
+				clear: none !important;
+			}
+
+			.gfield:not(.half-width) {
+				clear: both;
+			}
+		}
+	}
+
+	ul {
+		margin: 0;
+		list-style-type: none;
+	}
+
+	textarea {
+		height: 120px;
+
+		&.small {
+			height: 80px;
+		}
+	}
+
+	ul.gform_fields {
+		li {
+			@include breakpoint(medium up) {
+				padding-right: 1rem;
+			}
+		}
+
+		label {
+			color: $primary-color;
+			font-weight: 600;
+		}
+
+		select, input, textarea {
+			border: $global-border;
+			border-width: 3px;
+			outline: none !important;
+			box-shadow: none !important;
+			line-height: 1.125rem;
+
+			@include placeholder-style {
+				opacity: 1;
+			}
+
+			&:active, &:focus {
+				border-color: $accent-color;
+			}
+		}
+
+		ul.gfield_radio {
+			input[type="radio"] {
+				vertical-align: top;
+				padding-top: 0;
+				margin-top: 4px;
+
+				opacity: 0;
+				display: none;
+
+				+ label {
+					position: relative;
+					padding-left: 2rem;
+
+					&:before, &:after {
+						content: "";
+						display: block;
+						border-radius: 100px;
+						position: absolute;
+					}
+
+					&:before {
+						height: 20px;
+						width: 20px;
+						border: $global-border;
+						border-width: 3px;
+						top: 0;
+						left: 0;
+					}
+
+					&:after {
+						height: 10px;
+						width: 10px;
+						background-color: transparent;
+						top: 5px;
+						left: 5px;
+					}
+				}
+
+				&:checked {
+					+ label:after {
+						background-color: $accent-color;
+					}
+				}
+
+			}
+
+			label {
+				font-weight: 400 !important;
+			}
+		}
+	}
+
+	.gform_footer {
+		text-align: center;
+
+		@include breakpoint(medium up) {
+			padding-right: 1rem;
+		}
+
+		input {
+			margin-bottom: 0;
+			margin-top: .5rem;
+		}
+
+		input[type="submit"][disabled] {
+			background: $dark-gray;
+			border-color: $dark-gray;
+		}
+	}
+
+	&.gform_validation_error {
+		.validation_error {
+			color: $secondary-color;
+			font-weight: 600;
+			font-size: 0.8125rem; //0.875rem 14px @ 600 breaks numbers, might affect suggested emails;
+			margin-bottom: 1rem;
+			background: none !important;
+			border: none !important;
+		}
+
+		li.gfield.gfield_error {
+
+			border: none !important;
+			background-color: transparent;
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+
+			.ginput_container {
+				margin-top: 0 !important;
+			}
+
+			label {
+				margin-top: 0 !important;
+			}
+
+			input, textarea {
+				border: $global-border !important;
+				border-color: $red !important;
+				margin-bottom: 0;
+			}
+			.gfield_description.validation_message {
+				background-color: $red;
+				color: $white;
+				font-size: .875rem;
+				width: 100% !important;
+				padding: .25rem .5rem !important;
+				margin: 0 0 1rem 0 !important;
+
+				a {
+					color: $white;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+// Anti Spam Styles
+
+.gform_validation_container,
+.gform_wrapper .gform_validation_container,
+body .gform_wrapper .gform_body ul.gform_fields li.gfield.gform_validation_container,
+body .gform_wrapper li.gform_validation_container,
+body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
+	display: none !important;
+	position: absolute !important;
+	left: -9000px !important;
+}
+
+
+
+// 01. Ajax Form Spinner
+
+@keyframes rotatingSpinner {
+	0% {
+		transform: rotate(0deg) translate(0, -50%);
+	}
+	100% {
+		transform: rotate(360deg) translate(0, -50%);
+	}
+}
+
+//.gform_ajax_spinner {
+//	border-radius: 100px;
+//	border: 6px solid rgba( $white, 0.5);
+//	animation: rotatingSpinner 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+//	background: none;
+//	border-top-color: $white;
+//	height: 0;
+//	width: 0;
+//	padding: 18px;
+//	margin-top: 2px;
+//	transform-origin: top center;
+//
+//	position: absolute;
+//	left: 50%;
+//	top: 50%;
+//	transform: translate(0, -50%);
+//
+//	//height: 60px;
+//	//margin-left: -38px;
+//
+//	margin-left: -34px; // -1rem for container padding, -18px for spinner padding
+//}
+

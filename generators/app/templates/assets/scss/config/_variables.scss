@@ -1,4 +1,5 @@
 /**
+ * 00. Miscellaneous
  * 01. Colors
  * -- Include functions that require colors
  * 02. Animations
@@ -11,6 +12,10 @@
  * 09. Page Templates
  */
 
+
+// 00. Miscellaneous
+$global-border-width: 4px;
+$global-border: $global-border-width solid $light-gray;
 
 // 01. Colors
 $color-map: (

@@ -1,17 +1,45 @@
+// If changes are made, add menu-icon-### to new icons and older if deleted ( .icon-###, .menu-icon-### > a
+
+$icomoon-font-family: "truss" !default;
+$icomoon-font-path: "../assets/fonts" !default;
+
+$icon-edit: "\e90d";
+$icon-facebook: "\e900";
+$icon-google-plus: "\e901";
+$icon-linkedin: "\e902";
+$icon-twitter: "\e903";
+$icon-youtube: "\e904";
+$icon-search: "\e905";
+$icon-arrow-left: "\e906";
+$icon-arrow-right: "\e907";
+$icon-arrow-down: "\e908";
+$icon-arrow-up: "\e909";
+$icon-play: "\e90a";
+$icon-menu: "\e90b";
+$icon-close: "\e90c";
+
+$social-list: (
+		facebook : $icon-facebook,
+		//instagram : $icon-instagram,
+		linkedin : $icon-linkedin,
+		twitter : $icon-twitter
+);
+
 @font-face {
-	font-family: 'truss';
-	src:  url('fonts/truss.eot?vvlf1s');
-	src:  url('fonts/truss.eot?vvlf1s#iefix') format('embedded-opentype'),
-	url('fonts/truss.ttf?vvlf1s') format('truetype'),
-	url('fonts/truss.woff?vvlf1s') format('woff'),
-	url('fonts/truss.svg?vvlf1s#truss') format('svg');
+	font-family: '#{$icomoon-font-family}';
+	src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?gbrxib');
+	src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?gbrxib#iefix') format('embedded-opentype'),
+	url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?gbrxib') format('woff2'),
+	url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?gbrxib') format('truetype'),
+	url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?gbrxib') format('woff'),
+	url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?gbrxib##{$icomoon-font-family}') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+@mixin icon-font() {
 	/* use !important to prevent issues with browser extensions that change fonts */
-	font-family: 'truss' !important;
+	font-family: '#{$icomoon-font-family}' !important;
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -24,45 +52,80 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-edit:before {
-	content: "\e90d";
+[class^="icon-"], [class*=" icon-"] {
+	@include icon-font();
 }
-.icon-facebook:before {
-	content: "\e900";
+
+
+
+/* Icon List */
+.icon-edit, .menu-icon-edit > a {
+	&:before {
+		content: $icon-edit;
+	}
 }
-.icon-google-plus:before {
-	content: "\e901";
+.icon-facebook, .menu-icon-facebook > a {
+	&:before {
+		content: $icon-facebook;
+	}
 }
-.icon-linkedin:before {
-	content: "\e902";
+.icon-google-plus, .menu-icon-google-plus > a {
+	&:before {
+		content: $icon-google-plus;
+	}
 }
-.icon-twitter:before {
-	content: "\e903";
+.icon-linkedin, .menu-icon-linkedin > a {
+	&:before {
+		content: $icon-linkedin;
+	}
 }
-.icon-youtube:before {
-	content: "\e904";
+.icon-twitter, .menu-icon-twitter > a {
+	&:before {
+		content: $icon-twitter;
+	}
 }
-.icon-search:before {
-	content: "\e905";
+.icon-youtube, .menu-icon-youtube > a {
+	&:before {
+		content: $icon-youtube;
+	}
 }
-.icon-arrow-left:before {
-	content: "\e906";
+.icon-search, .menu-icon-search > a {
+	&:before {
+		content: $icon-search;
+	}
 }
-.icon-arrow-right:before {
-	content: "\e907";
+.icon-arrow-left, .menu-icon-arrow-left > a {
+	&:before {
+		content: $icon-arrow-left;
+	}
 }
-.icon-arrow-down:before {
-	content: "\e908";
+.icon-arrow-right, .menu-icon-arrow-right > a {
+	&:before {
+		content: $icon-arrow-right;
+	}
 }
-.icon-arrow-up:before {
-	content: "\e909";
+.icon-arrow-down, .menu-icon-arrow-down > a {
+	&:before {
+		content: $icon-arrow-down;
+	}
 }
-.icon-play:before {
-	content: "\e90a";
+.icon-arrow-up, .menu-icon-arrow-up > a {
+	&:before {
+		content: $icon-arrow-up;
+	}
 }
-.icon-menu:before {
-	content: "\e90b";
+.icon-play, .menu-icon-play > a {
+	&:before {
+		content: $icon-play;
+	}
 }
-.icon-close:before {
-	content: "\e90c";
+.icon-menu, .menu-icon-menu > a {
+	&:before {
+		content: $icon-menu;
+	}
+}
+.icon-close, .menu-icon-close > a {
+	&:before {
+		content: $icon-close;
+	}
 }
