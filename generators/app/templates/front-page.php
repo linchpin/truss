@@ -17,13 +17,9 @@
 
 <?php get_template_part( 'partials/hero' ); ?>
 
-<div class="grid-container">
-	<div class="grid-x">
-		<div class="cell small-12" role="main">
-			<?php get_template_part( 'partials/loop', 'page' ); ?>
-		</div>
-	</div>
-</div>
+<?php if ( function_exists( 'mesh_display_sections' ) ) {
+	mesh_display_sections();
+} ?>
 
 <?php
 get_footer();

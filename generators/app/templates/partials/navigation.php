@@ -35,7 +35,7 @@ if ( isset( $options['logo_upload'] ) ) {
 </nav>
 
 <div id="main-menu" class="show-for-medium" data-parent="<?php echo esc_attr( get_post_type() ); ?>">
-	<div class="top-bar" data-topbar="">
+	<div class="top-bar grid-container" data-topbar="">
 		<div class="top-bar-title">
 			<a href="<?php echo esc_attr( home_url() ); ?>">
 				<?php if ( ! empty( $logo ) ) : ?>

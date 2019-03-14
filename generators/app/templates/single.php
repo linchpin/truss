@@ -13,7 +13,8 @@
 ?>
 <?php get_header(); ?>
 
-	<div class="grid-x container">
+<div class="grid-container">
+    <div class="grid-x container">
 		<div class="small-12 medium-8 cell" role="main">
 
 			<?php do_action( 'truss_content_before' ); ?>
@@ -32,5 +33,7 @@
 		</div>
 		<?php get_sidebar(); ?>
 	</div>
+</div>
+
 <?php
 get_footer();
