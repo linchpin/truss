@@ -1,0 +1,66 @@
+ol.commentlist {
+	list-style: none;
+	margin: 0 0 rem-calc(20);
+
+	li.comment {
+		padding: rem-calc(20) 0;
+
+		.comment-author {
+
+			.author-meta {
+				margin-bottom: rem-calc(20);
+
+				cite {
+					font-style: normal;
+				}
+
+				.comment-edit-link {
+					float: right;
+					margin-right: rem-calc(10);
+				}
+
+			}
+
+		}
+
+		ul {
+			list-style: none;
+			margin: 0 0 0 rem-calc(20);
+		}
+
+		ul.children {
+			text-indent: 0;
+			list-style: none;
+			margin: rem-calc(12) rem-calc(12) 0;
+
+			li.depth-2,
+			li.depth-3,
+			li.depth-4,
+			li.depth-5 {
+				margin:0 0 0 rem-calc(10);
+			}
+
+		}
+
+	}
+
+	li.comment.even.depth-1,
+	li.comment.odd.depth-1 {
+		border-bottom: 1px solid #CCC;
+	}
+
+	li.even { background: #fff; }
+	li.odd { background: #f6f6f6; }
+
+}
+
+.post-sharing {
+
+	li {
+		display: inline-block !important;
+
+		@include breakpoint( large up ) {
+			display: block !important;
+		}
+	}
+}

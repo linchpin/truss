@@ -1,0 +1,789 @@
+/**
+ * 00. Global Header
+ * 01. Top bar
+ * 02. Primary Menu
+ * 03. Utility
+ * 04. Mobile
+ */
+
+// 00. Global Header
+#main-menu {
+	background-color: $white;
+	position: relative;
+	z-index: 1060;
+
+	> div {
+		position: relative;
+	}
+}
+
+.header-spacer {
+	display: none;
+}
+
+body.landing-header {
+	#main-menu, .top-bar {
+		background: transparent;
+		box-shadow: none !important;
+		margin-top: 1rem;
+	}
+
+	#main-menu {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		display: block;
+	}
+}
+
+@media #{$desktop-up} {
+
+	#main-menu {
+		box-shadow: 0px 0px 20px rgba($black, .15);
+
+		.header-fixed &, .header-clicked & {
+			position: fixed;
+			width: 100%;
+			top: 0;
+		}
+
+		.with-utility & {
+			top: $utility-item-height;
+		}
+
+		.admin-bar.header-clicked & {
+			margin-top: 32px;
+		}
+	}
+
+	.header-spacer {
+		.header-fixed &, .header-clicked & {
+			display: block;
+			padding-top: $topbar-item-height;
+		}
+
+		.with-utility & {
+			padding-top: $topbar-item-height + $utility-item-height;
+		}
+	}
+
+	.admin-bar.header-fixed {
+		#main-menu, #utility {
+			margin-top: 32px;
+		}
+	}
+}
+
+.header-logo {
+	max-width: 100%;
+	max-height: 100%;
+	padding: 1rem 0;
+	transition: padding $global-timing;
+
+	.has-utility & {
+		padding: .375rem 0 1.625rem;
+
+		.header-clicked & {
+			padding: .875rem 0 1.125rem;
+		}
+	}
+}
+
+body .menu {
+	.active > a {
+		background: transparent;
+	}
+}
+
+// 01. Top bar
+.top-bar {
+	@include breakpoint(medium up) {
+		padding: $topbar-padding-medium;
+	}
+
+	.top-bar-title,
+	.top-bar-left,
+	.top-bar-right {
+		height: $topbar-item-height;
+		line-height: $topbar-item-height;
+		width: auto;
+		margin: 0;
+	}
+
+	.top-bar-right {
+		margin-left: auto; // IE 11
+	}
+
+	.top-bar-title {
+		padding: 0;
+	}
+}
+
+
+// 02. Primary Menu
+#primary-menu {
+	height: $primary-menu-height;
+	line-height: $primary-menu-line-height;
+	position: static;
+
+	.menu-item {
+		height: inherit;
+		line-height: inherit;
+
+		a {
+			height: inherit;
+			line-height: inherit;
+			padding-top: 0;
+			padding-bottom: 0;
+			color: $primary-color;
+
+			&:hover {
+				color: $secondary-color;
+			}
+		}
+
+		&.as-button {
+			a {
+				height: $topbar-item-height - 3rem;
+				line-height: $topbar-item-height - 3rem;
+				margin: 1.5rem 1rem;
+
+				background-color: $secondary-color;
+				border-radius: 100px;
+				color: $white;
+				transition: all $global-timing ease-out;
+
+				&:hover {
+					background-color: $primary-color;
+				}
+			}
+		}
+
+		&.active {
+			a {
+				background: transparent !important;
+			}
+		}
+	}
+
+	.has-dropdown {
+		position: relative;
+
+		//&:before {
+		//	content: '';
+		//
+		//	border: {
+		//		left: 6px solid transparent;
+		//		right: 6px solid transparent;
+		//		bottom: 6px solid $secondary-color;
+		//	};
+		//	display: none;
+		//	height: 0;
+		//	margin-left: -6px;
+		//	width: 0;
+		//
+		//	position: absolute;
+		//	bottom: 0;
+		//	left: 50%;
+		//}
+
+
+	}
+
+	.sub-menu {
+		background: $primary-submenu-bg-color;
+		border-top: .25rem solid $secondary-color;
+		display: none;
+		list-style: none;
+		margin: 0;
+		//max-width: 350px;
+		//min-width: 100px;
+		width: 250px;
+		padding: .5rem;
+		text-align: right;
+
+		position: absolute;
+		right: 0;
+		top: 100%;
+
+
+		.menu-item {
+			height: auto;
+			line-height: 1rem;
+		}
+
+		a {
+			display: block;
+			padding: .5rem;
+			color: $primary-submenu-link-color
+		}
+
+		.sub-menu {
+			right: auto;
+			left: 100%;
+			top: -.75rem;
+		}
+	}
+
+	> li > .sub-menu {
+		padding: 1rem;
+	}
+
+	.mega, .mega-menu {
+		position: static;
+
+		> .sub-menu {
+			padding: 1rem;
+			right: 0;
+			text-align: left;
+			margin: 0;
+			width: auto;
+			background: $primary-color;
+			border-top: 4px solid $secondary-color;
+
+			> li {
+				display: inline-block;
+				vertical-align: top;
+				padding: 0 1rem;
+
+				&:before { // Hides Arrow
+					display: none !important;
+					border: none !important;
+				}
+
+				a {
+					padding: .5rem 0;
+					font-size: .875rem;
+				}
+
+				> a {
+					font-size: 1.125rem;
+					span.description {
+						color: $white;
+						display: block;
+						font-size: .875rem;
+						font-weight: normal;
+						margin-top: .25rem;
+					}
+					&:hover {
+						color: $secondary-color;
+					}
+				}
+
+				> ul {
+					margin-top: .5rem;
+					border-top: 1px solid rgba($secondary-color, .75);
+					padding: .5rem 0;
+					width: 90%;
+				}
+			}
+
+			li[class*="menu-icon-"], li[class*=" menu-icon"] {
+				> a:before {
+					@include icon-font();
+					margin-right: .5rem;
+					display: inline-block;
+					color: $secondary-color;
+					position: relative;
+					top: .25rem;
+					font-size: 1.5rem;
+				}
+
+				.description {
+					margin-top: .5rem;
+				}
+			}
+
+			.sub-menu {
+				display: block;
+				position: static;
+				text-align: left;
+				background: none;
+
+				a {
+					color: $secondary-color;
+
+					span.description {
+						color: $white;
+						display: block;
+						font-weight: normal;
+						margin-top: .25rem;
+					}
+
+					&:hover {
+						color: $white;
+					}
+				}
+			}
+
+			a {
+				color: $white;
+			}
+		}
+	}
+
+	/* Traditional Menu Hover Styles */
+	&.is-traditional-menu {
+		.has-dropdown {
+			&:hover {
+				&:before {
+					display: block;
+				}
+
+				> .sub-menu {
+					display: block;
+				}
+			}
+		}
+	}
+
+	/* Mega Menu Click Styles */
+
+	&.is-mega-menu {
+		> li > .dropdown {
+			position: absolute;
+			opacity: 0;
+			display: block;
+
+			> li {
+				display: block;
+			}
+		}
+
+		> .menu-item-has-children > .dropdown>li > a,
+		> li.stacked > .dropdown li:first-of-type a {
+			padding-top: 6px;
+		}
+
+		.dropdown {
+
+			z-index: -100;
+			top: -1000vh;
+
+			transition: $global-timing all $global-easing, $global-timing * .5 z-index, 0s top;
+
+			will-change: transform, opacity, z-index;
+
+			> li,
+			> li > a {
+				text-align: left;
+				height: auto;
+				line-height: 1rem;
+				vertical-align: top;
+
+				@media screen and ( min-width: 1190px ) {
+					font-size: 1rem;
+				}
+			}
+		}
+
+		.mega {
+			> .dropdown {
+				right: auto;
+				font-size: 0;
+				> li {
+					display: inline-block;
+				}
+			}
+
+			.dropdown {
+				> li,
+				> li > a {
+					text-align: left;
+				}
+			}
+
+			&.full {
+				> ul {
+					width: 100%;
+					left: 0;
+					right: auto;
+					padding: 0;
+
+					> li {
+						padding: 1rem;
+					}
+
+					.menu-item-type-yawp_wim {
+						padding: 0;
+
+						&:after {
+							content: "";
+							position: absolute;
+							top: 0;
+							background: $white;
+							width: inherit;
+							height: 100%;
+						}
+
+						.yawp_wim_wrap {
+							position: relative;
+							z-index: 2;
+							overflow: hidden;
+							padding: 1rem;
+
+							&:before {
+								content: "";
+								height: 90%;
+								width: 400px;
+								position: absolute;
+								left: 40%;
+								top: 0;
+								background-image: url("/wp-content/themes/freshaddress/images/freshaddress-pattern-right-dark.svg");
+								background-repeat: no-repeat;
+								opacity: .35;
+								background-size: contain;
+							}
+						}
+					}
+
+					> li:last-of-type {
+						&.menu-item-type-yawp_wim {
+							.yawp_wim_wrap {
+								overflow: visible;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.menu-item-has-children {
+
+			> a {
+				position: relative;
+			}
+
+			&.menu-item-has-children-open {
+				> a {
+					position: relative;
+					color: $secondary-color;
+
+					&:before {
+						opacity: 1;
+					}
+				}
+
+				.dropdown {
+					opacity: 0;
+					z-index: 1090;
+					top: 100%;
+
+					transform: translateY(0);
+				}
+
+				&.mihco-visible {
+					.dropdown {
+						opacity: 1;
+						top: 100%;
+					}
+				}
+			}
+		}
+
+		.widget-area {
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+
+		.mega-menu-widget {
+			margin-bottom: 0;
+			.mega-widget-text {
+				padding: 1rem 2rem;
+				font-size: 1rem;
+				text-align: left;
+				font-weight: normal;
+				color: $white;
+			}
+			img {
+				padding-bottom: 1rem;
+			}
+			a {
+				line-height: 1;
+				font-size: 1rem;
+				font-weight: normal;
+				text-decoration: underline;
+				&.color-white {
+					color: $white !important;
+				}
+
+				&:hover {
+					opacity: .75;
+				}
+			}
+		}
+	}
+}
+
+.mega-menu-bg {
+	background: $primary-color;
+	height: 0px;
+	position: absolute;
+	top: 100%;
+	z-index: -10;
+	width: 0px;
+	left: 0;
+	border-top: 4px solid $secondary-color;
+	transition: 0.25s opacity;
+	opacity: 0;
+
+	.mega-arrow {
+		border-style: solid;
+		border-width: 0 20px 0 20px;
+		border-color: transparent transparent $secondary-color transparent;
+		background: none;
+		bottom: 100%;
+		position: absolute;
+		left: 80px;
+		transition: all .25s;
+	}
+
+	.mega-widget-bg {
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: 0;
+		transition: background .25s;
+	}
+
+	&.mega-menu-open {
+		z-index: 1085;
+	}
+
+	&.mega-menu-visible {
+		opacity: 1;
+		transition: 0.25s all;
+
+		.mega-arrow {
+			border-width: 20px;
+		}
+	}
+
+	&:before, &:after {
+		content: "";
+		height: 100%;
+		width: 0;
+		display: block;
+		background: $primary-color;
+		position: absolute;
+		top: 0px;
+		border-top: 4px solid $secondary-color;
+		margin-top: -4px;
+		box-sizing: content-box;
+		transition: width .3s;
+	}
+
+	&:before {
+		right: 100%;
+	}
+
+	&:after {
+		left: 100%;
+	}
+
+	&.mega-menu-full {
+		&:before, &:after {
+			width: 50vw;
+			width: calc( ( 100vw - 1200px) / 2 );
+		}
+	}
+
+	&:not(.mega-menu-open):not(.mega-menu-visible) {
+		height: 0 !important;
+	}
+}
+
+body.mega-open {
+	.mega-overlay {
+		height: 100vh;
+		width: 100vw;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background: rgba(0,0,0,.1);
+		z-index: 600;
+	}
+}
+
+// 03. Utility
+
+.utility-menu-container {
+	overflow: auto;
+	background: $white;
+	position: relative;
+	z-index: 1065;
+
+	.with-utility & {
+		position: fixed;
+		width: 100%;
+		top: 0;
+	}
+
+	.utility-menu {
+		float: right;
+		li {
+			margin-bottom: 0;
+			a {
+				padding: 0 1rem;
+				height: $utility-item-height;
+				line-height: $utility-item-height + .25rem;
+				font-size: .875rem;
+				font-weight: 400;
+				color: $primary-color;
+
+				&:focus, &:active {
+					color: $primary-color;
+				}
+
+				&:hover {
+					color: $secondary-color;
+				}
+
+			}
+		}
+	}
+}
+
+
+// 04. Mobile
+.top-bar.mobile-header {
+	padding: .5rem;
+	> section {
+		padding: .5rem;
+	}
+
+	.mobile-logo {
+		img {
+			max-height: 46px;
+			max-width: 100%;
+		}
+	}
+
+	.hamburger {
+		a.menu-icon{
+			width: 30px;
+			height: 25px;
+
+			&:after {
+				background: $primary-color;
+				height: 4px;
+				box-shadow: 0 10px 0 $primary-color, 0 20px 0 $primary-color;
+			}
+		}
+	}
+}
+
+.off-canvas {
+	height: 100%;
+	background: $primary-color;
+
+	* {
+		&:focus,
+		&:active {
+			outline: none;
+		}
+	}
+
+	.off-canvas-list {
+		list-style: none;
+		margin: 0;
+		padding: 1rem;
+	}
+
+	.button {
+		display: block;
+		-webkit-font-smoothing: antialiased;
+
+		a {
+			color: inherit;
+		}
+	}
+
+	a {
+		color: white;
+		display: block;
+		font-size: 1.25rem;
+		line-height: 1.1;
+		padding: .5rem 0;
+	}
+
+	.utility-item {
+		border-top: 2px solid white;
+		margin-top: 1.5rem;
+		padding-top: 1.5rem;
+
+		~ .utility-item {
+			border-top: none;
+			margin-top: 0;
+			padding-top: 0;
+		}
+	}
+
+	.dropdown {
+		list-style: none;
+		margin: 0;
+		padding: 0 1.25rem;
+	}
+
+	.is-drilldown {
+		height: 100% !important;
+
+		a, .is-drilldown-submenu {
+			background: $primary-color;
+		}
+
+		.is-drilldown-submenu-parent {
+			> a:after {
+				border-color: transparent transparent transparent $secondary-color;
+				right: .75rem;
+			}
+		}
+
+		.js-drilldown-back {
+			padding: 1rem 0;
+			> a:before {
+				border-color: transparent $secondary-color transparent transparent;
+			}
+		}
+
+		.drilldown {
+			padding: .5rem 0;
+
+			li {
+				a {
+					padding: .5rem 1.5rem .5rem 1rem;
+				}
+			}
+		}
+
+		.dropdown {
+			padding: 0;
+		}
+	}
+
+	span.description {
+		color: $white;
+		display: block;
+		font-size: .875rem;
+		font-weight: normal;
+		margin-top: .25rem;
+	}
+
+	li[class*="menu-icon-"], li[class*=" menu-icon"] {
+		> a:before {
+			@include icon-font();
+			margin-right: .5rem;
+			display: inline-block;
+			color: $secondary-color;
+			position: relative;
+			top: .25rem;
+			font-size: 1.5rem;
+		}
+
+		.description {
+			margin-top: .5rem;
+		}
+	}
+}

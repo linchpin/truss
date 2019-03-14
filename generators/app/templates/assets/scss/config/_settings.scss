@@ -77,6 +77,11 @@ $foundation-palette: (
 );
 
 $accent-color: #37B9CA;
+$light-primary     : lighten( get-color(primary), 10%);
+$light-secondary   : lighten( get-color(secondary), 10%);
+
+$gradient-dark: get-color(primary);
+$gradient-light: $light-primary;
 
 $lightest-gray: #f6f6f6;
 $lighter-gray: #e6e6e6;

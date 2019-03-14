@@ -1,0 +1,15 @@
+/**
+ * 01. Global Form Styles
+ */
+
+
+// 01. Global Form Styles
+input::-ms-clear {
+	display: none !important; // Prevent IE clearing "x"
+}
+
+input {
+	@include placeholder-style {
+		color: $medium-gray;
+	};
+}

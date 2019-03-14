@@ -10,17 +10,20 @@
  * 07. Forms
  * 08. Comments
  * 09. Page Templates
+ * 10. Visibility
  */
 
 
 // 00. Miscellaneous
-$global-border-width: 4px;
-$global-border: $global-border-width solid $light-gray;
+$global-pattern-height: 300px;
 
 // 01. Colors
 $color-map: (
 		primary     : get-color(primary),
 		secondary   : get-color(secondary),
+		light-primary : $light-primary,
+		light-secondary : $light-secondary,
+		accent      : $accent-color,
 		light-gray  : $light-gray,
 		medium-gray : $medium-gray,
 		dark-gray   : $dark-gray,
@@ -28,12 +31,15 @@ $color-map: (
 		white       : $white
 );
 
+$global-border-width: 4px;
+$global-border: $global-border-width solid $light-gray;
+
 // -- functions that require colors
 
 @import 'functions';
 
 // 02. Animations
-$global-timing: 400ms;
+$global-timing: 250ms;
 $global-easing: ease-in-out;
 
 
@@ -52,33 +58,33 @@ $spacing-sizes: (
 		large  : 4rem
 );
 
+$menu-item-padding: 1rem;
+
 
 // 04. Topbar Extended
-$topbar-height:         rem-calc(50);
+$topbar-height:         rem-calc(100);
 $topbar-height-small:   rem-calc(32);
 $topbar-support-width:  rem-calc(300);
 $topbar-item-height:    $topbar-height - 1rem;
-$topbar-padding-medium: .5rem (map-get($grid-column-gutter, medium)/2);
+$topbar-padding-medium: 0 (map-get($grid-column-gutter, medium)/2);
+
+$utility-item-height: rem-calc( 26 );
 
 
 // 05. Primary Menu
-$primary-menu-height:      $topbar-height;
-$primary-menu-line-height: $topbar-height;
+$primary-menu-height:      $topbar-item-height;
+$primary-menu-line-height: $topbar-item-height;
 $primary-menu-margin-top:  -.5rem;
 
-$primary-submenu-bg-color:   scale-color($topbar-background, $lightness: -40%);
-$primary-submenu-link-color: $anchor-color;
+$primary-submenu-bg-color:   $primary-color;
+$primary-submenu-link-color: $white;
 
 
 // 06. Footer
-$footer-bg-color:   $light-gray;
-$footer-text-color: $dark-gray;
-$footer-link-color: $footer-text-color;
-
-$subfooter-bg-color:   $dark-gray;
-$subfooter-text-color: $light-gray;
-$subfooter-link-color: $subfooter-text-color;
-
+$footer-bg-color:   $primary-color;
+$footer-text-color: $light-gray;
+$footer-link-color: $light-gray;
+$footer-link-hover: $white;
 
 // 07. Forms
 $form-item-padding: .5rem;
@@ -99,5 +105,5 @@ $full-page-header-color:      color-legibility($full-page-header-background);
 
 // 10. Visibility
 
-$ipad-down: 'screen and ( max-width: 768px )';
-$ipad-up: 'screen and ( min-width: 769px )';
+$mobile-down: 'screen and ( max-width: 768px)';
+$desktop-up: 'screen and ( min-width: 769px)';

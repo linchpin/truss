@@ -1,0 +1,144 @@
+/**
+ * 01. Global
+ * 02. Main Footer
+ * 03. Social Footer
+ * 04. Copyright Footer
+ */
+
+
+// 01. Global
+#footer {
+
+}
+
+// 02. Main Footer
+.main-footer {
+	background-color: $footer-bg-color;
+	color: $footer-text-color;
+
+	a {
+		color: $footer-link-color;
+		font-size: .875rem;
+
+		&:hover {
+			color: $footer-link-hover;
+		}
+	}
+
+	.menu,
+	.sub-menu {
+		list-style: none;
+	}
+
+	.sub-menu {
+		margin: .5rem 0 0;
+
+		a {
+			font-size: .875rem;
+			padding: $menu-item-padding;
+		}
+	}
+
+	.footer-menu {
+		margin: 1rem -1rem;
+
+		@include breakpoint(small only) {
+			li {
+				display: block;
+				text-align: center;
+				width: 100%;
+
+				a {
+					display: inline-block;
+				}
+			}
+		}
+	}
+}
+
+// 03. Social Footer
+ul.social.menu {
+	display: block;
+	font-size: 0;
+	margin-top: .5rem;
+
+	li {
+		display: inline-block;
+		vertical-align: top;
+
+		a {
+			font-size: 0;
+			background-color: $accent-color;
+			color: $white;
+			border-radius: 100px;
+			padding: .8125rem;
+			margin: .25rem;
+
+			&:before {
+				@include icon-font();
+				font-size: 16px;
+			}
+
+			&:hover {
+				color: $primary-color;
+			}
+		}
+	}
+
+	@each $social, $icon in $social-list {
+		li.#{$social} {
+			a:before {
+				content: $icon;
+			}
+		}
+	}
+}
+
+// 04. Copyright Footer
+.copyright-footer {
+	background: $primary-color;
+	color: $light-primary;
+	font-size: .75rem;
+	font-weight: bold;
+	padding: .5rem 0 1.5rem;
+
+	@include breakpoint(small only) {
+		text-align: center;
+	}
+
+	.copyright-menu-container {
+		a {
+			color: $light-primary;
+			&:hover {
+				color: $accent-color;
+			}
+		}
+
+		@include breakpoint( small only ) {
+			ul, li {
+				display: block;
+				width: 100%;
+			}
+
+			ul {
+				margin-top: .5rem;
+			}
+		}
+
+		@include breakpoint(medium up) {
+			display: inline-block;
+
+			ul, li {
+				display: inline-block;
+			}
+
+			li {
+				padding: 0 0 0 2rem;
+
+				a {
+					padding: 0;
+				}
+			}
+		}
+	}
+}

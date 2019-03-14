@@ -14,7 +14,7 @@
   padding: 50px 0 0;
   position: relative;
 
-  //@media #{$ipad-up} {
+  //@media #{$desktop-up} {
 //	height: 90vh;
 //	padding: 0;
 //  }
@@ -60,7 +60,7 @@
   position: relative;
   z-index: 4;
 
-/*  @media #{$ipad-up} {
+/*  @media #{$desktop-up} {
 	position: absolute;
 	left: 0;
 	right: 0;

@@ -1,0 +1,140 @@
+/**
+ * 00. Display & Media Queries
+ * 01. Colors
+ * 02. Spacing
+ * 03. Container
+ * 04. Min and Max
+ */
+
+
+
+// 00. Display and Media Queries
+.inline {
+	display: inline;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.show-for-mobile {
+	display: none;
+}
+
+.show-for-desktop {
+	display: block;
+}
+
+@media #{$mobile-down} {
+	.show-for-mobile {
+		display: flex;
+	}
+	.show-for-desktop {
+		display: none;
+	}
+}
+
+
+// 01. Colors
+@each $label, $hex in $color-map {
+	.background-#{$label} {
+		background-color: $hex;
+	}
+
+	.color-#{$label}, .color-#{$label}:focus {
+		color: $hex;
+	}
+
+	.links-#{$label} a, .links-#{$label} a:focus {
+		color: $hex;
+	}
+	.bullet-color-#{$label} li:before {
+		color: $hex !important;
+	}
+}
+
+
+// 02. Spacing
+@include spacing-layout( 'padding' );
+@include spacing-layout( 'margin' );
+
+@include breakpoint(medium up) {
+	@include spacing-layout( 'padding', 'medium' );
+	@include spacing-layout( 'margin', 'medium' );
+}
+
+@include breakpoint(large up) {
+	@include spacing-layout( 'padding', 'large' );
+	@include spacing-layout( 'margin', 'large' );
+}
+
+// 03. Container
+.container {
+	padding: {
+		bottom: map-get($spacing-sizes, small);
+		top: map-get($spacing-sizes, small);
+	};
+
+	@include breakpoint(medium up) {
+		&:not(.small) {
+			padding: {
+				bottom: map-get($spacing-sizes, medium);
+				top: map-get($spacing-sizes, medium);
+			};
+		}
+	}
+
+	@include breakpoint(large up) {
+		&.large {
+			padding: {
+				bottom: map-get($spacing-sizes, large);
+				top: map-get($spacing-sizes, large);
+			};
+		}
+	}
+
+	&:empty {
+		padding: 0 !important;
+	}
+}
+
+.grid-offset {
+	margin-left: -0.75rem; // Using a .75rem spacing on the loop posts
+	margin-right: -0.75rem;
+
+	.offset-padding {
+		padding-left: .75rem;
+		padding-right: .75rem;
+	}
+}
+
+.mobile-grid-offset {
+	@include breakpoint(small only) {
+		margin-left: -0.75rem !important;
+		margin-right: -0.75rem !important;
+	}
+}
+
+.overflow-container {
+	overflow: hidden;
+}
+
+
+// 04. Min and Max
+@for $i from 1 to 13 {
+	.min-height-#{$i * 50} {
+		min-height: $i * 50px;
+	}
+
+	.max-height-#{$i * 50} {
+		max-height: $i * 50px;
+	}
+
+	.min-width-#{$i * 50} {
+		min-width: $i * 50px;
+	}
+
+	.max-width-#{$i * 50} {
+		max-width: $i * 50px;
+	}
+}

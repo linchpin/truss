@@ -1,0 +1,68 @@
+/*
+ * 01. Category / Isotope Buttons
+ * 02. Infinite Loading Posts
+ */
+
+
+// 01. Category / Isotope Buttons
+.categories-list, .isotope-list {
+	list-style-type: none;
+	margin: 0 0 2rem;
+	font-size: 0;
+
+	li {
+		display: inline-block;
+		margin-right: .75rem;
+		a, span {
+			background: $light-gray;
+			border-radius: 100px;
+			color: $primary-color;
+			display: block;
+			font-size: 1rem;
+			margin-bottom: .5rem;
+			padding: .5rem 1.75rem;
+			font-weight: 600;
+			cursor: pointer;
+
+			&:hover {
+				background-color: $medium-gray;
+			}
+		}
+
+		&.active {
+			a, span {
+				background-color: $accent-color;
+				color: $white;
+			}
+		}
+	}
+}
+
+// 02. Infinite Loading / Scrolling Posts
+
+.infinite-scroll .infinite-container {
+	.pagination {
+		display: none;
+	}
+
+	#infinite-handle, .infinite-loader {
+		display: block;
+		width: 100%;
+		clear: both;
+		text-align: center;
+		margin: 1rem 0 2rem;
+
+		span {
+			background: none;
+			button {
+				@extend .button;
+			}
+		}
+
+		.spinner {
+			top: 0 !important;
+			left: 0 !important;
+			margin: 0 auto;
+		}
+	}
+}
