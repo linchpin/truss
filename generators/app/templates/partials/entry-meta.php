@@ -14,9 +14,15 @@
 	<?php
 	printf(
 		wp_kses(
-			// translators: 1. date of post 2. time of post
-			__( 'Posted on <span itemprop="datePublished">%1$s</span> at %2$s.', '<%= text_domain %>' )
-		), get_the_time( 'l, F jS, Y' ),
+		// translators: 1. date of post 2. time of post
+			__( 'Posted on <span itemprop="datePublished">%1$s</span> at %2$s.', 'leviosa' ),
+			array(
+				'span' => array(
+					'itemprop' => array(),
+				),
+			)
+		),
+		get_the_time( 'l, F jS, Y' ),
 		get_the_time()
 	);
 	?>
