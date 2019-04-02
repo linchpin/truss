@@ -61,6 +61,12 @@ class <%= class_name %> {
 		add_action( 'after_setup_theme', array( $this, 'add_editor_styles' ) );
 
 		add_filter( 'gform_init_scripts_footer', '__return_true' );
+
+		// Jetpack //
+		add_action( 'loop_start', array( $this, 'remove_jp_social' ) );
+		add_filter( 'wp', array( $this, 'remove_jp_related', 20 ) );
+		add_filter( 'jetpack_relatedposts_filter_options', array( $this, 'jetpackme_no_related_posts' ) );
+		
 	}
 
 	/**
@@ -75,6 +81,7 @@ class <%= class_name %> {
 				'footer'            => esc_html__( 'Footer', '<%= text_domain %>' ),
 				'mobile-off-canvas' => esc_html__( 'Mobile (Off Canvas)', '<%= text_domain %>' ),
 				'social'            => esc_html__( 'Social Links', '<%= text_domain %>' ),
+				'utility'           => esc_html__( 'Utility', '<%= text_domain %>' ),
 			)
 		);
 	}
@@ -206,6 +213,8 @@ class <%= class_name %> {
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'automatic-feed-links' );
 		update_option( 'image_default_link_type', 'none' );
+
+		add_image_size( 'loop_medium', 768 );  // was small
 	}
 
 	/**
@@ -269,6 +278,93 @@ class <%= class_name %> {
 				'extensions' => array( 'jpg', 'jpeg', 'png', 'gif', 'svg' ),
 			) )
 		);
+
+		$wp_customize->add_setting(
+			'<%= text_domain %>_theme_options[alternate_logo_upload]', array(
+				'default'    => get_stylesheet_directory_uri() . '/assets/images/linchpin-icon-white.svg',
+				'capability' => 'edit_theme_options',
+				'type'       => 'option',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Image_Control( $wp_customize, 'alternate_logo_upload', array(
+				'label'      => esc_html__( 'Alternate Site Logo', '<%= text_domain %>' ),
+				'section'    => '<%= text_domain %>_logo',
+				'settings'   => '<%= text_domain %>_theme_options[alternate_logo_upload]',
+				'extensions' => array( 'jpg', 'jpeg', 'png', 'gif', 'svg' ),
+			) )
+		);
+
+		$wp_customize->add_section (
+			'menu_options', array(
+				'title' 	=> __('Primary Menu Options', '<%= text_domain %>'),
+				'priority' 	=> 80,
+			)
+		);
+
+		$wp_customize->add_setting (
+			'<%= text_domain %>_theme_options[menu_type]', array(
+				'default'		=> 'traditional',
+				'capability' 	=> 'edit_theme_options',
+				'type'			=> 'option',
+			)
+		);
+
+		$wp_customize->add_control (
+			new WP_Customize_Control( $wp_customize, 'menu_type', array (
+				'label'		=> __('Menu Navigation Style', '<%= text_domain %>'),
+				'section' 	=> 'menu_options',
+				'settings' 	=> '<%= text_domain %>_theme_options[menu_type]',
+				'type'      => 'select',
+				'choices'    => array(
+					'traditional'  => __('Hover (Default)', '<%= text_domain %>'),
+					'mega' => __('Click (Mega Menu)', '<%= text_domain %>'),
+				),
+			) )
+		);
+
+		$wp_customize->add_setting (
+			'<%= text_domain %>_theme_options[header_position]', array(
+				'default'		=> 'static',
+				'capability' 	=> 'edit_theme_options',
+				'type'			=> 'option',
+			)
+		);
+
+		$wp_customize->add_control (
+			new WP_Customize_Control( $wp_customize, 'header_position', array (
+				'label'		=> __('Menu Positioning', '<%= text_domain %>'),
+				'section' 	=> 'menu_options',
+				'settings' 	=> '<%= text_domain %>_theme_options[header_position]',
+				'type'      => 'select',
+				'choices'    => array(
+					'static'  => __('Static', '<%= text_domain %>'),
+					'fixed' => __('Fixed', '<%= text_domain %>'),
+				),
+			) )
+		);
+
+		$wp_customize->add_setting (
+			'<%= text_domain %>_theme_options[utility_menu_position]', array(
+				'default'		=> 'with',
+				'capability' 	=> 'edit_theme_options',
+				'type'			=> 'option',
+			)
+		);
+
+		$wp_customize->add_control (
+			new WP_Customize_Control( $wp_customize, 'utility_menu_position', array (
+				'label'		=> __('Utility Menu Positioning', '<%= text_domain %>'),
+				'section' 	=> 'menu_options',
+				'settings' 	=> '<%= text_domain %>_theme_options[utility_menu_position]',
+				'type'      => 'select',
+				'choices'    => array(
+					'with'  => __('Scrolls with menu', '<%= text_domain %>'),
+					'click' => __('Stays at top, menu clicks in place', '<%= text_domain %>'),
+				),
+			) )
+		);
 	}
 
 	/**
@@ -294,4 +390,32 @@ class <%= class_name %> {
 
 		add_editor_style( $admin_style );
 	}
+
+
+	// Jetpack //
+	/**
+	 * Remove Jetpack Sharing icons and Related Posts from displaying by default
+	 */
+	function remove_jp_social() {
+		if ( function_exists( 'sharing_display' ) ) {
+			remove_filter( 'the_content', 'sharing_display', 19 );
+			remove_filter( 'the_excerpt', 'sharing_display', 19 );
+		}
+	}
+
+	function remove_jp_related() {
+		if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
+			$jprp = Jetpack_RelatedPosts::init();
+			$callback = array( $jprp, 'filter_add_target_to_dom' );
+			remove_filter( 'the_content', $callback, 40 );
+		}
+	}
+
+	function jetpackme_no_related_posts( $options ) {
+		if ( !is_admin() ) {
+			$options['enabled'] = false;
+		}
+		return $options;
+	}
+
 }
