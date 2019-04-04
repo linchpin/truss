@@ -66,7 +66,18 @@ class <%= class_name %> {
 		add_action( 'loop_start', array( $this, 'remove_jp_social' ) );
 		add_filter( 'wp', array( $this, 'remove_jp_related', 20 ) );
 		add_filter( 'jetpack_relatedposts_filter_options', array( $this, 'jetpackme_no_related_posts' ) );
-		
+
+		// Jetpack Scrolling
+		add_action( 'after_setup_theme', array( $this, 'jetpack_scroll_settings' ) );
+		add_filter( 'infinite_scroll_js_settings', array( $this, 'jetpack_scroll_button') );
+
+		// Gravity Forms //
+		add_filter( 'gform_init_scripts_footer', '__return_true' );
+		// add_filter( 'gform_replace_merge_tags', array( $this, 'embed_url_no_query_string' ), 10, 7 );
+
+		// Gated Resources
+		// add_action( 'init',            array( $this, 'add_rewrite_rules' ) );
+		// add_filter( 'query_vars',      array( $this, 'register_query_vars' ) );
 	}
 
 	/**
@@ -418,4 +429,139 @@ class <%= class_name %> {
 		return $options;
 	}
 
+	/**
+	 *
+	 * Jetpack Infinite Scrolling and Buttons
+	 */
+
+	public function jetpack_scroll_settings() {
+		add_theme_support( 'infinite-scroll', array(
+			'container' => 'infinite',
+			'type'  => 'click',
+			'footer' => false,
+			'render'         => 'infinite_post_render',
+			'posts_per_page' => get_option( 'posts_per_page' ),
+			'wrapper' => false,
+		) );
+	}
+
+	public function jetpack_scroll_button( $settings ) {
+		$settings['text'] = __('Load More', 'freshaddress' );
+
+		return $settings;
+	}
+
+	// Gravity Forms
+
+	function embed_url_no_query_string( $text, $form, $entry, $url_encode, $esc_html, $nl2br, $format ) {
+
+		$custom_merge_tag = '{embed_url_no_queryparams}';
+
+		if ( strpos( $text, $custom_merge_tag ) === false ) {
+			return $text;
+		}
+
+		//embed url
+		$current_page_url = empty( $entry ) ? RGFormsModel::get_current_page_url() : rgar( $entry, 'source_url' );
+
+		if ( $esc_html ) {
+			$current_page_url = esc_html( $current_page_url );
+		}
+
+		if ( $url_encode ) {
+			$current_page_url = rawurlencode( $current_page_url );
+		}
+
+		$current_page_parsed = wp_parse_url( $current_page_url );
+		$current_page_url = $current_page_parsed['scheme'] . '://' . $current_page_parsed['host'] . $current_page_parsed['path'];
+
+		$text = str_replace( $custom_merge_tag, $current_page_url, $text );
+
+		return $text;
+	}
+
+	/**
+	 * Create query_vars and thank-you pages for resources
+	 */
+
+	public function register_query_vars( $vars ) {
+		$vars[] = 'resource_id';
+		return $vars;
+	}
+
+	public function add_rewrite_rules() {
+		add_rewrite_rule( '^resource/([^/]*)/thank-you/([^/]*)/?', 'index.php?post_type=resource&resource=$matches[1]&resource_id=$matches[2]','top' );
+	}
+
+}
+
+function get_loop_block( $name, $small = '', $medium = '', $large = '', $classes = '') {
+
+	if ( '' == $name )
+		return false;
+
+	$template = "partials/loop-{$name}.php";
+
+	$grid_small = '';
+	$grid_medium = '';
+	$grid_large = '';
+	$check = false;
+
+	/**
+	 * $grid_set gets passed through to locate_template
+	 * Within loop-###.php, set defaults for if $grid_set is not set
+	 */
+	$grid_set = '';
+
+
+	if ( '' !== $small ) {
+		$grid_small = 'small-' . $small;
+		$check      = true;
+	}
+
+	if ( '' !== $medium ) {
+		$grid_medium = 'medium-' . $medium;
+		$check       = true;
+	}
+
+	if ( '' !== $large ) {
+		$grid_large = 'large-' . $large;
+		$check      = true;
+	}
+
+	if ( $check ) {
+		$grid_set = 'cell ' . $grid_small . ' ' . $grid_medium . ' ' . $grid_large;
+	}
+
+	/**
+	 * $loop_block_classes gets passed through to locate_template
+	 * Within loop-###.php, $loop_block_classes are set on the outer most container (traditionally) to add extra classes (primarily for shortcode usage)
+	 */
+	$loop_block_classes = $classes;
+
+	include( locate_template( $template, false, false) );
+
+}
+
+
+/**
+ * For use with Yoast's primary Taxonomies
+ */
+if ( ! function_exists( 'get_primary_taxonomy_id' ) ) {
+	function get_primary_taxonomy_id( $post_id, $taxonomy = 'category' ) {
+		$prm_term = '';
+		if (class_exists('WPSEO_Primary_Term')) {
+			$wpseo_primary_term = new WPSEO_Primary_Term( $taxonomy, $post_id );
+			$prm_term = $wpseo_primary_term->get_primary_term();
+		}
+		if ( !is_object($wpseo_primary_term) || empty( $prm_term ) ) {
+			$term = wp_get_post_terms( $post_id, $taxonomy );
+			if (isset( $term ) && !empty( $term ) ) {
+				return $term[0]->term_id;
+			} else {
+				return '';
+			}
+		}
+		return $wpseo_primary_term->get_primary_term();
+	}
 }
