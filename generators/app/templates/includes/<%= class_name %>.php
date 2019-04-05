@@ -447,7 +447,7 @@ class <%= class_name %> {
 	}
 
 	public function jetpack_scroll_button( $settings ) {
-		$settings['text'] = __('Load More', 'freshaddress' );
+		$settings['text'] = __('Load More', '<%= text_domain %>' );
 
 		return $settings;
 	}

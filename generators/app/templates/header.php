@@ -14,7 +14,7 @@ $exploded = explode(".", $parsed );
 $test_tld = 'tld-' . end($exploded);
 
 $header_position = 'header-static';
-$options = get_option( 'freshaddress_theme_options' );
+$options = get_option( '<%= text_domain %>_theme_options' );
 
 if ( $options['header_position'] == 'fixed' ) {
 	$header_position = 'header-fixed';
