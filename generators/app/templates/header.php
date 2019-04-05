@@ -8,6 +8,26 @@
  * @subpackage TemplateParts
  */
 
+$url = 'http://' . $_SERVER['SERVER_NAME'];
+$parsed = parse_url($url, PHP_URL_HOST);
+$exploded = explode(".", $parsed );
+$test_tld = 'tld-' . end($exploded);
+
+$header_position = 'header-static';
+$options = get_option( 'freshaddress_theme_options' );
+
+if ( $options['header_position'] == 'fixed' ) {
+	$header_position = 'header-fixed';
+
+	if ( has_nav_menu( 'utility' ) ) {
+		$header_position = 'header-fixed with-utility';
+
+		if ( $options['utility_menu_position'] == 'click' ) {
+			$header_position = 'header-click';
+		}
+	}
+}
+
 ?>
 <!doctype html>
 <html class="no-js" <?php language_attributes(); ?> >
@@ -21,7 +41,7 @@
 	do_action( 'truss_head_scripts' );
 	?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class( $test_tld . ' ' . $header_position ); ?>>
 
 <?php do_action( 'truss_body_tag_after' ); ?>
 

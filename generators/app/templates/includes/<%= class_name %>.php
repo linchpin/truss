@@ -90,6 +90,7 @@ class <%= class_name %> {
 			array(
 				'top-bar'           => esc_html__( 'Top Bar', '<%= text_domain %>' ),
 				'footer'            => esc_html__( 'Footer', '<%= text_domain %>' ),
+				'copyright'         => esc_html__( 'Copyright', '<%= text_domain %>' ),
 				'mobile-off-canvas' => esc_html__( 'Mobile (Off Canvas)', '<%= text_domain %>' ),
 				'social'            => esc_html__( 'Social Links', '<%= text_domain %>' ),
 				'utility'           => esc_html__( 'Utility', '<%= text_domain %>' ),
