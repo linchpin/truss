@@ -48,63 +48,8 @@
 }
 
 // 01. Buttons
-.button, button, input[type="submit"] {
-	background: $secondary-color;
-	border: 2px solid $secondary-color;
-	color: $white;
-	font-family: $header-font-family;
-	font-weight: 700;
-	border-radius: 50px;
-	padding: .625rem 1.5rem;
-	transition: all $global-timing $global-easing;
-
-	&:focus {
-		background: $secondary-color;
-		border-color: $secondary-color;
-		color: $white;
-	}
-
-	&:hover {
-		background: $primary-color;
-		border-color: $primary-color;
-	}
-
-	&.outline {
-		background: transparent;
-
-		&:not( [class*="color-"] ) {
-			color: $secondary-color;
-		}
-
-		&:hover {
-			background: $secondary-color;
-			border-color: $secondary-color;
-			color: $white;
-		}
-	}
-
-	&.outline-hover, &.hover-outline {
-		&:hover {
-			background: transparent;
-			border-color: $secondary-color;
-		}
-	}
-
-	&.gray {
-		background-color: lighten( $medium-gray, 6% );
-		border-color: lighten( $medium-gray, 6% );
-		color: $primary-color;
-
-		&:hover {
-			background-color: $medium-gray;
-			border-color: $medium-gray;
-			color: $primary-color;
-		}
-	}
-
-	.buttons &, .buttons-row & {
-		margin: .25rem .5rem 1.5rem;
-	}
+input[type="submit"] {
+	@extend .button;
 }
 
 
