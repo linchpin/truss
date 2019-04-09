@@ -43,7 +43,7 @@ if ( $options['header_position'] == 'fixed' ) {
 </head>
 <body <?php body_class( $test_tld . ' ' . $header_position ); ?>>
 
-<?php do_action( 'truss_body_tag_after' ); ?>
+<?php do_action( 'wp_body_open' ); ?>
 
 <div class="off-canvas-wrapper">
 	<div class="off-canvas position-right" id="offCanvas" data-off-canvas>

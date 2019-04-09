@@ -310,3 +310,17 @@ function truss_footer_after() {
 function truss_body_before_close() {
 	do_action( 'truss_body_before_close' );
 }
+
+
+/**
+ * Fallback wp_body_open hook
+ *
+ * @package Truss
+ * @subpackge hooks
+ * 
+ * @since 2.1
+ */
+
+if ( ! function_exists( 'wp_body_open' ) ) {
+	do_action( 'wp_body_open' );
+}	
