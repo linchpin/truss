@@ -321,6 +321,11 @@ function truss_body_before_close() {
  * @since 2.1
  */
 
+// Check if wp_body_open hook exists, introduced in WP 5.2
 if ( ! function_exists( 'wp_body_open' ) ) {
-	do_action( 'wp_body_open' );
+
+	// Register hook/function if it's not available
+	function wp_body_open() {
+		do_action( 'wp_body_open' );
+	}
 }	
