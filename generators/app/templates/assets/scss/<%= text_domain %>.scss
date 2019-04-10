@@ -13,3 +13,53 @@
 'config/typography',
 'plugins/plugins',
 'site/site';
+
+
+/* Testing Lines */
+/*
+.tld-test #main-menu {
+	outline: 1px solid blue;
+
+	> div {
+		position: relative;
+		&:before, &:after {
+			content: "";
+			position: absolute;
+			height: 4000px;
+			width: 1px;
+			top: 0;
+			left: 0;
+			background: cyan;
+			box-shadow: .9375rem 0px 0px tomato;
+		}
+		&:after {
+			left: auto;
+			right: 0;
+			box-shadow: -.9375rem 0px 0px tomato;
+		}
+	}
+}
+
+.tld-build, .tld-test {
+	.off-canvas-wrapper {
+		a[href="#"]:not(.load-more), a[href=""]:not(.load-more) {
+			color: red !important;
+			outline: 2px solid red !important;
+			animation: pulse 1s infinite;
+		}
+	}
+}
+
+@keyframes pulse {
+	0% {
+		outline: 2px solid red;
+	}
+	50% {
+		outline: 2px solid transparent
+	}
+	100% {
+		outline: 2px solid red;
+	}
+}
+
+*/
