@@ -78,6 +78,7 @@ $primary-menu-margin-top:  -.5rem;
 
 $primary-submenu-bg-color:   $primary-color;
 $primary-submenu-link-color: $white;
+$primary-submenu-hover-color: darken( $primary-submenu-link-color, 10%);
 
 
 // 06. Footer

@@ -18,8 +18,7 @@ if ( isset( $options['logo_upload'] ) ) {
 	$logo = true;
 }
 
-$is_mega = ( isset( $options['menu_options'] ) && $options['menu_options'] == 'mega' ) ? ' is-mega-menu ' : ' is-traditional-menu ';
-
+$is_mega = ( isset( $options['menu_type'] ) && $options['menu_type'] == 'mega' ) ? ' is-mega-menu ' : ' is-traditional-menu ';
 $primary_menu_class = 'dropdown menu ' . $is_mega;
 
 ?>

@@ -193,7 +193,6 @@ body .menu {
 
 	.sub-menu {
 		background: $primary-submenu-bg-color;
-		border-top: .25rem solid $secondary-color;
 		display: none;
 		list-style: none;
 		margin: 0;
@@ -206,6 +205,8 @@ body .menu {
 		position: absolute;
 		right: 0;
 		top: 100%;
+
+		border-top: .25rem solid $secondary-color;
 
 
 		.menu-item {
@@ -239,7 +240,8 @@ body .menu {
 			text-align: left;
 			margin: 0;
 			width: auto;
-			background: $primary-color;
+			background: $primary-submenu-bg-color;
+
 			border-top: 4px solid $secondary-color;
 
 			> li {
@@ -255,6 +257,7 @@ body .menu {
 				a {
 					padding: .5rem 0;
 					font-size: .875rem;
+					color: $primary-submenu-link-color;
 				}
 
 				> a {
@@ -267,15 +270,15 @@ body .menu {
 						margin-top: .25rem;
 					}
 					&:hover {
-						color: $secondary-color;
+						color: $primary-submenu-hover-color;
 					}
 				}
 
 				> ul {
 					margin-top: .5rem;
-					border-top: 1px solid rgba($secondary-color, .75);
 					padding: .5rem 0;
 					width: 90%;
+					border-top: 1px solid rgba($secondary-color, .75);
 				}
 			}
 
@@ -284,7 +287,7 @@ body .menu {
 					@include icon-font();
 					margin-right: .5rem;
 					display: inline-block;
-					color: $secondary-color;
+					color: $primary-submenu-link-color;
 					position: relative;
 					top: .25rem;
 					font-size: 1.5rem;
@@ -302,7 +305,7 @@ body .menu {
 				background: none;
 
 				a {
-					color: $secondary-color;
+					color: $primary-submenu-link-color;
 
 					span.description {
 						color: $white;
@@ -312,13 +315,13 @@ body .menu {
 					}
 
 					&:hover {
-						color: $white;
+						color: $primary-submenu-hover-color;
 					}
 				}
 			}
 
 			a {
-				color: $white;
+				color: $primary-submenu-link-color;
 			}
 		}
 	}
@@ -333,6 +336,74 @@ body .menu {
 
 				> .sub-menu {
 					display: block;
+				}
+			}
+		}
+
+		.full {
+			position: static;
+
+			> .dropdown {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				right: 0;
+
+				> li {
+					display: inline-block;
+				}
+
+				> .cell {
+					width: auto;
+
+					@for $i from 1 to 12 {
+						&.small-#{$i} {
+							width: $i / 12 * 100%;
+						}
+
+						@include breakpoint( medium ) {
+							&.medium-#{$i} {
+								width: $i / 12 * 100%;
+							}
+						}
+
+						@include breakpoint( large ) {
+							&.large-#{$i} {
+								width: $i / 12 * 100%;
+							}
+						}
+					}
+				}
+
+				&:before, &:after {
+					content: "";
+					height: 100%;
+					width: 50vw;
+					display: block;
+					background: $primary-submenu-bg-color;
+					position: absolute;
+					top: 0px;
+
+					width: calc( ( 100vw - 1200px ) / 2 );
+
+					border-top: 4px solid $secondary-color;
+					margin-top: -4px;
+					box-sizing: content-box;
+				}
+
+				&:before {
+					left: 100%;
+				}
+
+				&:after {
+					right: 100%;
+				}
+			}
+
+			&:hover {
+				> .dropdown {
+					@include xy-grid;
+					@include flex-align($y: top);
 				}
 			}
 		}
@@ -517,16 +588,17 @@ body .menu {
 }
 
 .mega-menu-bg {
-	background: $primary-color;
+	background: $primary-submenu-bg-color;
 	height: 0px;
 	position: absolute;
 	top: 100%;
 	z-index: -10;
 	width: 0px;
 	left: 0;
-	border-top: 4px solid $secondary-color;
 	transition: 0.25s opacity;
 	opacity: 0;
+
+	border-top: 4px solid $secondary-color;
 
 	.mega-arrow {
 		border-style: solid;
@@ -566,13 +638,14 @@ body .menu {
 		height: 100%;
 		width: 0;
 		display: block;
-		background: $primary-color;
+		background: $primary-submenu-bg-color;
 		position: absolute;
 		top: 0px;
+		transition: width .3s;
+
 		border-top: 4px solid $secondary-color;
 		margin-top: -4px;
 		box-sizing: content-box;
-		transition: width .3s;
 	}
 
 	&:before {
