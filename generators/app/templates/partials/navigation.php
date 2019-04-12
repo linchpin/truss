@@ -17,6 +17,11 @@ $options = get_option( '<%= text_domain %>_theme_options' );
 if ( isset( $options['logo_upload'] ) ) {
 	$logo = true;
 }
+
+$is_mega = ( isset( $options['menu_options'] ) && $options['menu_options'] == 'mega' ) ? ' is-mega-menu ' : ' is-traditional-menu ';
+
+$primary_menu_class = 'dropdown menu ' . $is_mega;
+
 ?>
 <nav class="top-bar show-for-small-only">
 	<section class="top-bar-title">
@@ -96,7 +101,7 @@ if ( $options['menu_type'] == 'mega' ) {
 					'container_class' => '',
 					'menu'            => '',
 					'menu_id'         => 'primary-menu',
-					'menu_class'      => 'dropdown menu',
+					'menu_class'      => $primary_menu_class,
 					'theme_location'  => 'top-bar',
 					'before'          => '',
 					'after'           => '',
