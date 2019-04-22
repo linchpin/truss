@@ -30,9 +30,29 @@
     #{$property}: 2rem;
   }
 
+  .#{$property_class}-vertical {
+    #{$property}-top: 2rem;
+    #{$property}-bottom: 2rem;
+  }
+
+  .#{$property_class}-horizontal {
+    #{$property}-left: 2rem;
+    #{$property}-right: 2rem;
+  }
+
   @each $type, $size in $spacing-sizes {
     .#{$property_class}-all-#{$type} {
       #{$property}: $size;
+    }
+
+    .#{$property_class}-vertical-#{$type} {
+      #{$property}-top: $size;
+      #{$property}-bottom: $size;
+    }
+
+    .#{$property_class}-horizontal-#{$type} {
+      #{$property}-left: $size;
+      #{$property}-right: $size;
     }
   }
 }
