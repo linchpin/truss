@@ -31,3 +31,5 @@ PATHS:
   # Paths to JavaScript entry points for webpack to bundle modules
   entries:
     - "assets/js/<%= text_domain %>.js"
+
+LOCAL_PATH: "http://<%= text_domain %>.test"
