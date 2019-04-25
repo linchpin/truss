@@ -42,6 +42,9 @@ let webpackConfig = {
             }
         ]
     },
+    externals: {
+        jquery: 'jQuery'
+    },
     devtool: ! PRODUCTION && 'source-map'
 };
 

@@ -6,4 +6,6 @@ import site from './site'
 // the line below
 //import './lib/foundation-explicit-pieces';
 
-site();
+jquery( function() {
+    site();
+});
