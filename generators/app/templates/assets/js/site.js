@@ -31,7 +31,7 @@ export default function site() {
                 $a = $tgt.find('a:first'),
                 $btn = $tgt.find('button:first'),
                 uri = $a.attr('href'),
-                new_window = $tgt.hasClass('external-link') || $a.hasClass('external-link') || event.metaKey || event.ctrlKey;
+                new_window = $tgt.hasClass('external-link') || $a.hasClass('external-link') || $a.attr('target') == '_blank' || event.metaKey || event.ctrlKey;
 
             if ($btn.length > 0) {
                 event.stopImmediatePropagation();
