@@ -64,7 +64,7 @@ class <%= class_name %> {
 
 		// Jetpack //
 		add_action( 'loop_start', array( $this, 'remove_jp_social' ) );
-		add_filter( 'wp', array( $this, 'remove_jp_related', 20 ) );
+		add_filter( 'wp', array( $this, 'remove_jp_related' ), 20 );
 		add_filter( 'jetpack_relatedposts_filter_options', array( $this, 'jetpackme_no_related_posts' ) );
 
 		// Jetpack Scrolling
