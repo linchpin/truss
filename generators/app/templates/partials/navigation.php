@@ -26,7 +26,7 @@ $primary_menu_class = 'dropdown menu ' . $is_mega;
 	<section class="top-bar-title">
 		<a href="<?php echo esc_attr( home_url() ); ?>">
 			<?php if ( ! empty( $logo ) ) : ?>
-				<img src="<?php echo esc_attr( $options['logo_upload'] ); ?>" alt="<?php echo esc_attr( bloginfo( 'name' ) ); ?>"/>
+				<img src="<?php echo esc_attr( $options['logo_upload'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"/>
 			<?php else : ?>
 				<?php bloginfo( 'name' ); ?>
 			<?php endif; ?>
