@@ -16,14 +16,18 @@ $test_tld = 'tld-' . end($exploded);
 $header_position = 'header-static';
 $options = get_option( '<%= text_domain %>_theme_options' );
 
-if ( $options['header_position'] == 'fixed' ) {
+if ( 'fixed' === $options['header_position'] ) {
 	$header_position = 'header-fixed';
 
 	if ( has_nav_menu( 'utility' ) ) {
 		$header_position = 'header-fixed with-utility';
 
-		if ( $options['utility_menu_position'] == 'click' ) {
+		if ( 'click' === $options['utility_menu_position'] ) {
 			$header_position = 'header-click';
+		}
+
+		if ( 'scroll' === $options['utility_menu_position']) {
+			$header_position = 'header-fixed with-utility with-scroll-utility';
 		}
 	}
 }

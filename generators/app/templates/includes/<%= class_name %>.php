@@ -374,6 +374,7 @@ class <%= class_name %> {
 				'choices'    => array(
 					'with'  => __('Scrolls with menu', '<%= text_domain %>'),
 					'click' => __('Stays at top, menu clicks in place', '<%= text_domain %>'),
+					'scroll' => __( 'Scroll Down remove, scroll up show', '<%= text_domain %>' ),
 				),
 			) )
 		);

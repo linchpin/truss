@@ -52,6 +52,10 @@ body.landing-header {
 			top: $utility-item-height;
 		}
 
+		.hide-utility & {
+			margin-top: #{$utility-item-height * -1}
+		}
+
 		.admin-bar.header-clicked & {
 			margin-top: 32px;
 		}
@@ -60,17 +64,49 @@ body.landing-header {
 	.header-spacer {
 		.header-fixed &, .header-clicked & {
 			display: block;
-			padding-top: $topbar-item-height;
+			padding-top: $topbar-item-height + .25rem;
 		}
 
 		.with-utility & {
-			padding-top: $topbar-item-height + $utility-item-height;
+			padding-top: $topbar-item-height + $utility-item-height + .25rem;
 		}
 	}
 
 	.admin-bar.header-fixed {
-		#main-menu, #utility {
+		#main-menu, .utility-menu-container {
 			margin-top: 32px;
+		}
+	}
+
+	.with-scroll-utility {
+		#main-menu, .utility-menu-container {
+			transition: margin $global-timing;
+		}
+
+		&.hide-utility {
+			#main-menu, .utility-menu-container {
+				margin-top: #{ ($utility-item-height * -1) };
+			}
+		}
+
+		&.admin-bar {
+			#main-menu, .utility-menu-container {
+				margin-top: 32px;
+			}
+
+			&.hide-utility {
+				#main-menu, .utility-menu-container {
+					margin-top: #{ ($utility-item-height * -1) + rem-calc(32) };
+				}
+			}
+		}
+	}
+
+	.utility-menu-container {
+		.with-utility & {
+			position: fixed;
+			width: 100%;
+			top: 0;
 		}
 	}
 }
