@@ -96,24 +96,27 @@ ul.social.menu {
 
 // 04. Copyright Footer
 .copyright-footer {
-	background: $primary-color;
-	color: $light-primary;
+	background: $subfooter-bg-color;
+	color: $subfooter-link-color;
 	font-size: .75rem;
 	font-weight: bold;
 	padding: .5rem 0 1.5rem;
+
+	a {
+		color: $subfooter-link-color;
+		font-weight: normal;
+		font-size: .75rem;
+
+		&:hover {
+			color: $subfooter-link-hover-color;
+		}
+	}
 
 	@include breakpoint(small only) {
 		text-align: center;
 	}
 
 	.copyright-menu-container {
-		a {
-			color: $light-primary;
-			&:hover {
-				color: $accent-color;
-			}
-		}
-
 		@include breakpoint( small only ) {
 			ul, li {
 				display: block;
