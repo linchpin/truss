@@ -2,10 +2,12 @@
 PORT: 8000
 
 # Autoprefixer will make sure your CSS works with these browsers
+# These have been moved to the package.json file
 COMPATIBILITY:
   - "last 2 versions"
   - "ie >= 10"
   - "ios >= 7"
+
 
 # UnCSS will use these settings
 UNCSS_OPTIONS:

@@ -98,7 +98,7 @@ function sass() {
 
     const postCssPlugins = [
         // Autoprefixer
-        autoprefixer({ browsers: COMPATIBILITY }),
+        autoprefixer(),
 
         // UnCSS - Uncomment to remove unused styles in production
         // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
