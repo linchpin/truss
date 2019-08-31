@@ -10,11 +10,9 @@ let $ = jquery;
 export default function site() {
 
     // Private Variables
-    let $window  = $(window),
-        $doc     = $(document),
-        $body    = $('body'),
-        $success = $('.gform_confirmation_message'),
-        $error   = $('.gfield_description.validation_message');
+    let $window = $(window),
+        $doc    = $(document),
+        $body   = $('body');
 
     $doc.foundation();
 
@@ -56,41 +54,16 @@ export default function site() {
         $body.on( 'click', '#infinite-handle button', afterInfiniteLoad );
     }
 
-
-    // Mesh Enabled Anchor Bar
-    if ( $('.anchor-bar').length ) {
-
-        $( document ).ready(function() {
-            anchorBarLoad();
-        });
-
-        $window.resize( function() {
-            anchorBarScroll();
-        });
-
-        $window.scroll( function() {
-            anchorBarScroll();
-        });
-
-        $body.on('click', '.anchor-bar li', anchorBarClick );
-
-    }
-
-    //////////////////////////
-    //                      //
-    // Functions Below Here //
-    //                      //
-    //////////////////////////
-
     /**
      * Jetpack Infinite Loading, triggers on click of load button and reruns the equalizer
+     *
      * @param event
      */
     function afterInfiniteLoad( event ) {
         var loop_length = $('.loop-post' ).length;
 
         var checkExist = setInterval(function() {
-            if ( $('.loop-post' ).length != loop_length ) {
+            if ( $('.loop-post' ).length !== loop_length ) {
                 clearInterval(checkExist);
 
                 $(this).delay(50).queue(function () {
@@ -102,27 +75,58 @@ export default function site() {
             }
 
         }, 100); // check every 100ms
-
     }
 
     /**
      * Anchor Bar Functionality
      * Loading, Sticky Scrolling, and Clicking
      */
-    function anchorBarLoad() {
-        var anchor_height = ( $('.anchor-bar li.load-active').height() ),
-            anchor_width = ( $('.anchor-bar li.load-active').width() ),
-            anchor_top = $('.anchor-bar li.load-active span').position().top,
-            anchor_left = $('.anchor-bar li.load-active span').position().left;
 
-        $('.anchor-bar .anchor-bg').width( anchor_width ).height( anchor_height ).css({top: anchor_top, left:anchor_left});
+  // Mesh Enabled Anchor Bar
+  if ( $('.anchor-bar').length ) {
 
-        $('.anchor-bar li.load-active').removeClass('load-active');
+    $( document ).ready(function() {
+      anchorBarLoad();
+    });
 
-        $('.anchor-bar-spacer').height( $('.anchor-bar').outerHeight() );
+    $window.resize( function() {
+      anchorBarScroll();
+    });
+
+    $window.scroll( function() {
+      anchorBarScroll();
+    });
+
+    $body.on('click', '.anchor-bar li', anchorBarClick );
+  }
+
+
+  /**
+   * Load the anchor bar
+   */
+  function anchorBarLoad() {
+
+        var $anchorBar    = $('.anchor-bar'),
+            $loadActive   = $anchorBar.find( 'li.load-active'),
+            anchor_height = ( $loadActive.height() ),
+            anchor_width  = ( $loadActive.width() ),
+            anchor_top    = $loadActive.find('span').position().top,
+            anchor_left   = $loadActive.find('span').position().left;
+
+        $anchorBar.find('.anchor-bg')
+                    .width( anchor_width )
+                    .height( anchor_height )
+                    .css( {top: anchor_top, left:anchor_left} );
+
+        $loadActive.removeClass('load-active');
+
+        $('.anchor-bar-spacer').height( $anchorBar.outerHeight() );
     }
 
-    function anchorBarScroll() {
+  /**
+   * Scroll anchor bar
+   */
+  function anchorBarScroll() {
 
         var anchor_offset = $('.anchor-bar-container').offset().top,
             fixed_position = $('.header-spacer').outerHeight(),
@@ -142,24 +146,23 @@ export default function site() {
 
         $( $('.anchor-bar li').get().reverse()).each( function() {
 
-            if ( active_mesh == false ) {
+            if ( false === active_mesh ) {
 
-                var scroll_to = $(this).data('scroll-to'),
+                var scroll_to   = $(this).data('scroll-to'),
                     offset_mesh = $('.mesh_section#' + scroll_to).offset().top;
 
-                if ( offset_mesh < $doc.scrollTop() + 215 ) {
-
-                    previous = scroll_to
-
+                if ( offset_mesh < $doc.scrollTop() + 215 ) { // @todo what is this 215 and should it be dynamic?
+                    previous    = scroll_to;
                     active_mesh = true;
                 }
 
-                if ( previous != false ) {
+                if ( previous !== false ) {
 
-                    var active_height = $('.anchor-bar li[data-scroll-to="' + previous + '"]').height(),
-                        active_width = $('.anchor-bar li[data-scroll-to="' + previous + '"]').width(),
-                        active_top = $('.anchor-bar li[data-scroll-to="' + previous + '"] span').position().top,
-                        active_left = $('.anchor-bar li[data-scroll-to="' + previous + '"] span').position().left;
+                    var $previous     = $('.anchor-bar li[data-scroll-to="' + previous + '"]'),
+                        active_height = $previous.height(),
+                        active_width  = $previous.width(),
+                        active_top    = $previous.find('span').position().top,
+                        active_left   = $previous.find('span').position().left;
 
                     $('.anchor-bar .anchor-bg').width( active_width ).height( active_height ).css({ top: active_top, left: active_left});
 
@@ -168,12 +171,16 @@ export default function site() {
         });
     }
 
-    function anchorBarClick( event ) {
-        var scroll_to = $(this).data('scroll-to'),
+  /**
+   * Clicking when you utilize the anchorBar
+   * @param event
+   */
+  function anchorBarClick( event ) {
+        var scroll_to   = $(this).data('scroll-to'),
             offset_mesh = $('.mesh_section#' + scroll_to ).offset().top;
 
         $('html, body').animate({
-            scrollTop: offset_mesh - 208 // 13rem
+            scrollTop: offset_mesh - 208 // 13rem @todo what is 13rem tall and should this be dynamic?
         }, 300, );
     }
 }

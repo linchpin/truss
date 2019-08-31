@@ -98,7 +98,7 @@ function sass() {
 
     const postCssPlugins = [
         // Autoprefixer
-        autoprefixer({ browsers: COMPATIBILITY }),
+        autoprefixer(),
 
         // UnCSS - Uncomment to remove unused styles in production
         // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
@@ -111,7 +111,7 @@ function sass() {
         })
             .on('error', $.sass.logError))
         .pipe($.postcss(postCssPlugins))
-        .pipe($.if(sassConfig.production, $.cleanCss({ compatibility: 'ie10' })))
+        .pipe($.if(sassConfig.production, $.cleanCss({ compatibility: 'ie11' })))
         .pipe($.if(!sassConfig.production, $.sourcemaps.write()))
         .pipe(gulp.dest('css'))
         .pipe(browser.reload({ stream: true }));

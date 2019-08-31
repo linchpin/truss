@@ -53,14 +53,10 @@ export default function navigation() {
         } );
     }
 
-    //////////////////////////
-    //                      //
-    // Functions Below Here //
-    //                      //
-    //////////////////////////
-
-
-    function clickedHeader() {
+	/**
+	 * Fired any time you click the header menu items.
+	 */
+	function clickedHeader() {
 
         var $utilityMenuContainer = $('.utility-menu-container'),
             menu_position         = $utilityMenuContainer.offset().top + $utilityMenuContainer.outerHeight(),
@@ -135,15 +131,17 @@ export default function navigation() {
      */
     function triggerMegaMenu( event ) {
 
-        if ( $(this).hasClass('mega-overlay') ) {
+		var $this          = $(this),
+			open_class     = 'menu-item-has-children-open',
+			visible_class  = 'mihco-visible',
+			menu_item_open = '';
 
-            var open_class = 'menu-item-has-children-open',
-                visible_class = 'mihco-visible'
+        if ( $this.hasClass('mega-overlay') ) {
 
             $('.menu-item-has-children').removeClass(visible_class);
             $('.mega-widget-bg').css('background-color', '');
 
-            $(this).delay(150).queue(function () {
+            $this.delay(150).queue(function () {
                 $('.menu-item-has-children').removeClass(open_class);
                 megaMenuDropdown('close');
                 $(this).dequeue();
@@ -151,16 +149,16 @@ export default function navigation() {
 
         } else {
 
-            var $this = $(this).parent('.menu-item-has-children'),
-                open_class = 'menu-item-has-children-open',
-                visible_class = 'mihco-visible',
-                menu_item_open = $('.menu-item-has-children.' + open_class).length;
+            $this          = $(this).parent('.menu-item-has-children');
+            open_class     = 'menu-item-has-children-open';
+            visible_class  = 'mihco-visible';
+            menu_item_open = $('.menu-item-has-children.' + open_class).length;
 
-            if (!$this.hasClass('menu-item-has-children')) {
-                $('.menu-item-has-children.' + open_class).removeClass(visible_class);
+            if ( ! $this.hasClass('menu-item-has-children') ) {
+                $('.menu-item-has-children.' + open_class ).removeClass(visible_class);
 
                 $(this).delay(150).queue(function () {
-                    $('.menu-item-has-children.' + open_class).removeClass(open_class);
+                    $('.menu-item-has-children.' + open_class ).removeClass(open_class);
                     $(this).dequeue();
                 });
 
@@ -226,25 +224,24 @@ export default function navigation() {
     }
 
     function megaMenuDropdown( event ) {
-        var $mega_bg = $('.mega-menu-bg'),
+        var $mega_bg        = $('.mega-menu-bg'),
             $mega_widget_bg = $('.mega-widget-bg');
 
-        if ('open' == event) {
+        if ( 'open' === event ) {
 
             $mega_bg.addClass('mega-menu-open');
             $body.addClass('mega-open');
 
-            var $open = $('.menu-item-has-children-open'),
-                menu_offset = $open.offset().left,
-                menu_width = $open.outerWidth(),
-                menu_border = 4,
-                menu_padding = 32;
-
-            var arrow_offset = 0,
+            var $open           = $('.menu-item-has-children-open'),
+                menu_offset     = $open.offset().left,
+                menu_width      = $open.outerWidth(),
+                menu_border     = 4,
+                menu_padding    = 32,
+				arrow_offset    = 0,
                 arrow_direction = 1, //Position Number for left aligned arrow
-                total_width = 0,
-                total_height = 0,
-                window_width = $window.width();
+                total_width     = 0,
+                total_height    = 0,
+                window_width    = $window.width();
 
             if ( ( $open ).hasClass('full') ) {
                 $mega_bg.addClass('mega-menu-full');
@@ -270,19 +267,18 @@ export default function navigation() {
 
                 $('> ul', $open).css('left', '' );
 
-                var items_width = 0;
-                total_height = $('> ul', $open).outerHeight();
-                total_width = $('> ul', $open).outerWidth();
-
+                var items_width  = 0,
+					$target      = $('> ul', $open);
+                	total_height = $target.outerHeight();
+                	total_width  = $target.outerWidth();
 
                 //
                 // Run through each direct li from the open sub menu, get all of the widths
                 //
-
                 $('> ul > li', $open).each(function () {
 
                     var item_width = $(this).outerWidth();
-                    items_width = items_width + item_width;
+                    items_width    = items_width + item_width;
 
                 });
 
@@ -291,11 +287,10 @@ export default function navigation() {
                 //
                 // If we want a full width, 1200px menu ( plus background overhang to edge )
                 //
-
                 if ( $open.hasClass('full') ) {
-                    total_width = '100%';
+                    total_width  = '100%';
                     arrow_offset = menu_offset;
-                    menu_offset = 0;
+                    menu_offset  = 0;
 
                     if ( $open.hasClass('equal') ) {
                         var total_li = $( ' > ul.dropdown > li', $open).length,
@@ -314,9 +309,9 @@ export default function navigation() {
                     //
 
                     if (items_width > ( window_width - 10 )) { // Account for padding, with extra spacing in case font size is not 0
-                        total_width = '100%';
+                        total_width  = '100%';
                         arrow_offset = menu_offset;
-                        menu_offset = 0;
+                        menu_offset  = 0;
 
                         $('> ul', $open).css('left', '0');
 
@@ -356,22 +351,28 @@ export default function navigation() {
                 //
 
             } else {
-                total_height = $('> ul', $open).outerHeight();
-                total_width = $('> ul', $open).outerWidth();
-                items_width = $('> ul', $open).outerWidth();
+				$target      = $('> ul', $open);
+                total_height = $target.outerHeight();
+                total_width  = $target.outerWidth();
+                items_width  = $target.outerWidth();
 
                 menu_offset = top_menu_offset + menu_width - items_width;
             }
 
             var arrow_position = top_menu_offset - menu_offset + (menu_width / 2 * arrow_direction) - 20; // 20 for 40px width arrow
 
-            $mega_bg.width( total_width ).height( total_height - menu_border );
-            $mega_bg.css('left', menu_offset );
+            $mega_bg
+				.width( total_width )
+				.height( total_height - menu_border )
+				.css('left', menu_offset );
+
             $('.mega-arrow').css('left', arrow_position );
 
-            if ( $('.mega-menu-widget', $open).length > 0 ) {
-                var mega_widget_bg = $('.mega-menu-widget', $open).data('bg'),
-                    mega_widget_width = $('.mega-menu-widget', $open).width();
+            var $megaMenuWidget = $('.mega-menu-widget', $open);
+
+            if ( $megaMenuWidget.length > 0 ) {
+                var mega_widget_bg    = $megaMenuWidget.data('bg'),
+                    mega_widget_width = $megaMenuWidget.width();
 
                 $mega_widget_bg.width( mega_widget_width );
 
