@@ -53,5 +53,10 @@
   "engines": {
     "node": "^10.13.0"
   },
+  "browserslist": [
+    "last 2 versions",
+    "ie >= 10",
+    "ios >= 7"
+  ],
   "private": true
 }
