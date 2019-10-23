@@ -85,7 +85,7 @@ if ( $options['menu_type'] == 'mega' ) {
 		<div class="top-bar-title">
 			<a href="<?php echo esc_attr( home_url() ); ?>">
 				<?php if ( ! empty( $logo ) ) : ?>
-					<img src="<?php echo esc_attr( $options['logo_upload'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
+					<img class="header-logo" src="<?php echo esc_attr( $options['logo_upload'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
 				<?php else : ?>
 					<?php bloginfo( 'name' ); ?>
 				<?php endif; ?>
