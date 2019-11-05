@@ -571,3 +571,4 @@ if ( ! function_exists( 'get_primary_taxonomy_id' ) ) {
 		return $wpseo_primary_term->get_primary_term();
 	}
 }
+

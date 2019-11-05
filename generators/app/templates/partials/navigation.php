@@ -22,8 +22,8 @@ $is_mega = ( isset( $options['menu_type'] ) && $options['menu_type'] == 'mega' )
 $primary_menu_class = 'dropdown menu ' . $is_mega;
 
 ?>
-<nav class="top-bar show-for-small-only">
-	<section class="top-bar-title">
+<nav class="top-bar mobile-header show-for-small-only grid-x">
+  <section class="top-bar-title-container cell auto">
 		<a href="<?php echo esc_attr( home_url() ); ?>">
 			<?php if ( ! empty( $logo ) ) : ?>
 				<img src="<?php echo esc_attr( $options['logo_upload'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"/>
@@ -33,7 +33,7 @@ $primary_menu_class = 'dropdown menu ' . $is_mega;
 		</a>
 	</section>
 
-	<section class="top-bar-right">
+  <section class="cell shrink text-right">
 		<a class="right-off-canvas-toggle menu-icon" data-toggle="offCanvas"><span></span></a>
 	</section>
 </nav>
