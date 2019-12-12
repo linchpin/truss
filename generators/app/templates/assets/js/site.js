@@ -10,7 +10,8 @@ let $ = jquery;
 export default function site() {
 
     // Private Variables
-    let $window = $(window),
+    let $slider = $('#hero-slider'),
+        $window = $(window),
         $doc    = $(document),
         $body   = $('body');
 
@@ -52,6 +53,10 @@ export default function site() {
     // Jetpack Infinite Scrolling
     if ( $('.infinite-container').length ) {
         $body.on( 'click', '#infinite-handle button', afterInfiniteLoad );
+    }
+
+    if ( $slider.length ) {
+        $slider.slick();
     }
 
     /**

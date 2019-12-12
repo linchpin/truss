@@ -9,14 +9,6 @@
  */
 
 ?>
-<header id="homepage-hero" class="container text-center" role="banner">
-    <div class="grid-container">
-        <div class="grid-x">
-            <div class="cell text-center">
-
-				<?php the_content(); ?>
-
-            </div>
-        </div>
-    </div>
+<header id="homepage-hero" class="text-center" role="banner">
+    <?php get_template_part( 'partials/hero-slider' ); ?>
 </header>

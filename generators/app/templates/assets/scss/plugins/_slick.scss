@@ -1,0 +1,24 @@
+.slick-slider {
+	.slick-prev,
+	.slick-next {
+		z-index: 1;
+	}
+
+	.slick-prev {
+		transition: left $global-timing $global-easing;
+	}
+
+	.slick-next {
+		transition: right $global-timing $global-easing;
+	}
+
+	&:hover {
+		.slick-prev {
+			left: 25px;
+		}
+
+		.slick-next {
+			right: 25px;
+		}
+	}
+}
