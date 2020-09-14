@@ -4,7 +4,6 @@ PORT: 8000
 # Autoprefixer will make sure your CSS works with these browsers
 COMPATIBILITY:
   - "last 2 versions"
-  - "ie >= 10"
   - "ios >= 7"
 
 # UnCSS will use these settings
@@ -20,10 +19,10 @@ UNCSS_OPTIONS:
 PATHS:
   # Path to dist folder
   dist: ""
-  # Paths to static assets that aren't images, CSS, or JavaScript
+  # Paths to static assets that aren't CSS or JavaScript
   assets:
     - "assets/**/*"
-    - "!assets/{img,js,scss}/**/*"
+    - "!assets/{js,scss}/**/*"
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
     - "node_modules/foundation-sites/scss"

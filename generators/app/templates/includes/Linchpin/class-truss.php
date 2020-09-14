@@ -12,7 +12,6 @@ namespace Truss;
 
 require_once 'class-activate.php';
 require_once 'class-menu.php';
-require_once 'class-options.php';
 require_once 'class-tinymce.php';
 require_once 'class-utilities.php';
 
@@ -26,7 +25,6 @@ class Core {
 	 */
 	public function __construct() {
 		$truss_activate = new Activate();
-		$truss_option   = new Options();
 		$truss_menu     = new Menu();
 		$truss_tinymce  = new TinyMCE();
 	}
